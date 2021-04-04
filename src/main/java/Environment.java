@@ -15,6 +15,7 @@ public class Environment {
     public Creature c = null;
     
     public Environment() {
+         /*
           WS3DProxy proxy = new WS3DProxy();
           try {   
              World w = World.getInstance();
@@ -32,7 +33,7 @@ public class Environment {
               
           }
           System.out.println("Robot "+c.getName()+" is ready to go.");
-		
+          */
 
 
 	}
