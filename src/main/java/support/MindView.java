@@ -1,5 +1,3 @@
-
-
 package support;
 
 import br.unicamp.cst.core.entities.Memory;
@@ -29,10 +27,7 @@ class MVTimerTask extends TimerTask {
         enabled = value;
     }
 }
-/**
- *
- * @author fabiogr
- */
+
 public class MindView extends javax.swing.JFrame {
 
     Timer t;

@@ -7,8 +7,6 @@ import java.util.logging.Logger;
  */
 public class ExperimentMain {
 	
-	
-        
         public Logger logger = Logger.getLogger(ExperimentMain.class.getName());
         
         

@@ -15,7 +15,6 @@ import java.util.Collections;
 import java.util.List;
 import memory.CreatureInnerSense;
 import support.MindView;
-import ws3dproxy.model.Thing;
 
 /**
  *
