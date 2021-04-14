@@ -18,24 +18,29 @@ public class AgentMind extends Mind {
                 super();
 
                 // Declare Memory Objects
+                Memory entitiesMO;
                 Memory visionMO;
                 Memory innerSenseMO;
 
                 // Initialize Memory Objects
+                entitiesMO = createMemoryObject("ENTITIES", "");
+
                 visionMO = createMemoryObject("VISION", "");
                 CreatureInnerSense cis = new CreatureInnerSense();
                 innerSenseMO = createMemoryObject("INNER", cis);
 
                 // Create and Populate MindViewer
-                MindView mv = new MindView("MindView");
-                mv.addMO(visionMO);
-                mv.addMO(innerSenseMO);
-                mv.StartTimer();
-                mv.setVisible(true);
+                // TODO: Create output system later.
+                // MindView mv = new MindView("MindView");
+                // mv.addMO(visionMO);
+                // mv.addMO(innerSenseMO);
+                // mv.StartTimer();
+                // mv.setVisible(true);
 
                 // Create Sensor Codelets
                 Codelet vision = new Vision();
-                vision.addOutput(visionMO);
+                vision.addOutput(entitiesMO);
+                // vision.addOutput(visionMO);
                 insertCodelet(vision); // Creates a vision sensor
 
                 Codelet innerSense = new InnerSense();

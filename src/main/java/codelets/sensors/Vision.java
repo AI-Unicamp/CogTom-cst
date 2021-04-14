@@ -3,6 +3,9 @@ package codelets.sensors;
 import br.unicamp.cst.core.entities.Codelet;
 import br.unicamp.cst.core.entities.Memory;
 import br.unicamp.cst.core.entities.MemoryObject;
+import tech.tablesaw.*;
+import tech.tablesaw.api.Table;
+
 import java.util.List;
 
 /**
@@ -11,10 +14,9 @@ import java.util.List;
  * 
  * @author fabiogr
  */
-// TODO How about implementing getvs 0 in Client?
 public class Vision extends Codelet {
 
-	private Memory visionMO;
+	private Memory entitiesMO;
 
 	public Vision() {
 
@@ -22,11 +24,14 @@ public class Vision extends Codelet {
 
 	@Override
 	public void accessMemoryObjects() {
-		visionMO = (MemoryObject) this.getOutput("VISION");
+		entitiesMO = (MemoryObject) this.getOutput("ENTITIES");
 	}
 
 	@Override
 	public void proc() {
+
+		// Read in the table from file entities.txt using TableSaw.
+		Table t = Table.read().file("input\\entities.txt");
 
 	}// end proc()
 
