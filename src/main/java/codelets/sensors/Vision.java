@@ -6,6 +6,7 @@ import br.unicamp.cst.core.entities.MemoryObject;
 import tech.tablesaw.*;
 import tech.tablesaw.api.Table;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -31,7 +32,13 @@ public class Vision extends Codelet {
 	public void proc() {
 
 		// Read in the table from file entities.txt using TableSaw.
-		Table t = Table.read().file("input\\entities.txt");
+		try {
+			Table t = Table.read().file("input\\entities");
+			t.copy();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}// end proc()
 
