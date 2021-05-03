@@ -32,6 +32,8 @@ dependencies {
     implementation 'com.github.CST-Group:cst:0.2.4'
     implementation 'org.json:json:20180813'
     implementation 'com.opencsv:opencsv:5.4'
+    implementation group: 'tech.tablesaw', name: 'tablesaw-core', version: '0.38.2'
+
     
     //implementation fileTree(dir: 'lib', include: ['*.jar'])
     //implementation 'com.github.CST-Group:cst:0.2.4'

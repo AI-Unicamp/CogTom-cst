@@ -11,6 +11,9 @@ import com.opencsv.exceptions.CsvException;
 import br.unicamp.cst.core.entities.Codelet;
 import br.unicamp.cst.core.entities.Memory;
 import br.unicamp.cst.core.entities.MemoryObject;
+import tech.tablesaw.api.Row;
+import tech.tablesaw.api.Table;
+import tech.tablesaw.io.csv.CsvReadOptions;
 
 /**
  * Vision codelet is responsible for getting vision information from the
@@ -35,11 +38,18 @@ public class Vision extends Codelet {
 	public void proc() {
 
 		try {
-			CSVReader reader = new CSVReader(new FileReader("input/entities.csv"));
-			List<String[]> myEntries = reader.readAll();
-			myEntries.isEmpty();
-		} catch (IOException | CsvException e) {
-			// TODO Auto-generated catch block e.printStackTrace();
+			Table entities = Table.read().csv("input/entities.csv");
+
+			// Loop through each one of the rows of the table.
+			for (int i = 0; i < entities.rowCount(); i++) {
+				Row r = entities.row(i);
+				String name = r.getString("Entity");
+				Boolean isAgent = r.getBoolean("Is_Agent");
+			}
+
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 
 	}// end proc()
