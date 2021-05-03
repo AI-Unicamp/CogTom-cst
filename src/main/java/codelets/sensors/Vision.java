@@ -1,5 +1,6 @@
 package codelets.sensors;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
@@ -36,9 +37,9 @@ public class Vision extends Codelet {
 		try {
 			CSVReader reader = new CSVReader(new FileReader("input/entities.csv"));
 			List<String[]> myEntries = reader.readAll();
+			myEntries.isEmpty();
 		} catch (IOException | CsvException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// TODO Auto-generated catch block e.printStackTrace();
 		}
 
 	}// end proc()
