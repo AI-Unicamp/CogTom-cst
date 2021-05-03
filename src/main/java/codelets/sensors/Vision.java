@@ -1,13 +1,15 @@
 package codelets.sensors;
 
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.List;
+
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvException;
+
 import br.unicamp.cst.core.entities.Codelet;
 import br.unicamp.cst.core.entities.Memory;
 import br.unicamp.cst.core.entities.MemoryObject;
-import tech.tablesaw.*;
-import tech.tablesaw.api.Table;
-
-import java.io.IOException;
-import java.util.List;
 
 /**
  * Vision codelet is responsible for getting vision information from the
@@ -31,11 +33,10 @@ public class Vision extends Codelet {
 	@Override
 	public void proc() {
 
-		// Read in the table from file entities.txt using TableSaw.
 		try {
-			Table t = Table.read().file("input\\entities");
-			t.copy();
-		} catch (IOException e) {
+			CSVReader reader = new CSVReader(new FileReader("input/entities.csv"));
+			List<String[]> myEntries = reader.readAll();
+		} catch (IOException | CsvException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
