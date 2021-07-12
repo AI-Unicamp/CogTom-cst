@@ -1,10 +1,10 @@
 t,Scene
-1,"Sally and Anne are in the room. Basket, box and ball are on the floor."
-2,"Sally reaches for the ball." 
-3,"Sally puts the ball in the basket."
-4,"Sally exits the room."
-5,"Anne reaches for the basket."
-6,"Anne gets the ball from the basket."
-7,"Anne puts the ball in the box."
-8,"Anne exits the room, and Sally enters."
-9,"Sally searches for the ball in the room."
+1,Sally and Anne are in the room. Basket box and ball are on the floor.
+2,Sally reaches for the ball.
+3,Sally puts the ball in the basket.
+4,Sally exits the room.
+5,Anne reaches for the basket.
+6,Anne gets the ball from the basket.
+7,Anne puts the ball in the box.
+8,Anne exits the room and Sally enters.
+9,Sally searches for the ball in the room.
