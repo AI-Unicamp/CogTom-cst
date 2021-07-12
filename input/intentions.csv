@@ -7,7 +7,7 @@ t,Agent,Intention,Object,Target
 3,Anne,None,None,None
 4,Sally,Exits,None,None
 4,Anne,None,None,None
-5,Anne,ReachFor,Basket  None
+5,Anne,ReachFor,Basket,None
 6,Anne,Gets,Ball,Basket
 7,Anne,Puts,Ball,Box
 8,Anne,Exits,None,None
