@@ -1,9 +1,17 @@
-# Project Name
-Project Description
+# CogTom-cst
+This is an exercise on porting the CogTom cognitive architecture to the CST toolkit - https://github.com/CST-Group/cst
 
-### Column Name
-- [ ] Task title ~3d #type @name yyyy-mm-dd  
-  - [ ] Sub-task or description  
+### Input files
+- [ ] Sally-Anne Test case
+  - [x] Copy over text files, convert to csv  
+- [ ] Facebook bAbI test cases
 
-### Completed Column ✓
-- [x] Completed task title  
+### Create Codelets on Working Memory
+- [ ] ID Codelet  
+  - [ ] Read entities.csv file
+- [ } Affordances codelet
+- [ ] EDD Codelet
+- [ ] SAM Codelet
+- [ ] ToMM Codelet
+
+### Test-Run for Sally-Anne
