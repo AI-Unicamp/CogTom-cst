@@ -9,7 +9,7 @@ This is an exercise on porting the CogTom cognitive architecture to the CST tool
 ### Create Codelets on Working Memory
 - [ ] ID Codelet  
   - [ ] Read entities.csv file
-- [ } Affordances codelet
+- [ ] Affordances codelet
 - [ ] EDD Codelet
 - [ ] SAM Codelet
 - [ ] ToMM Codelet
