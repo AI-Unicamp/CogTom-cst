@@ -1,12 +1,12 @@
 import br.unicamp.cst.core.entities.Codelet;
 import br.unicamp.cst.core.entities.Memory;
 import br.unicamp.cst.core.entities.Mind;
-import codelets.behaviors.Forage;
-import codelets.perception.AppleDetector;
-import codelets.sensors.InnerSense;
-import codelets.sensors.Vision;
-import memory.CreatureInnerSense;
-import support.MindView;
+//import codelets.behaviors.Forage;
+import codelets.perception.IntentionalityDetector;
+//import codelets.sensors.InnerSense;
+//import codelets.sensors.Vision;
+//import memory.CreatureInnerSense;
+//import support.MindView;
 
 /**
  *
@@ -18,16 +18,16 @@ public class AgentMind extends Mind {
                 super();
 
                 // Declare Memory Objects
-                Memory entitiesMO;
-                Memory visionMO;
-                Memory innerSenseMO;
+                //Memory entitiesMO;
+                //Memory visionMO;
+                //Memory innerSenseMO;
 
                 // Initialize Memory Objects
-                entitiesMO = createMemoryObject("ENTITIES", "");
+                //entitiesMO = createMemoryObject("ENTITIES", "");
 
-                visionMO = createMemoryObject("VISION", "");
-                CreatureInnerSense cis = new CreatureInnerSense();
-                innerSenseMO = createMemoryObject("INNER", cis);
+                //visionMO = createMemoryObject("VISION", "");
+                //CreatureInnerSense cis = new CreatureInnerSense();
+                //innerSenseMO = createMemoryObject("INNER", cis);
 
                 // Create and Populate MindViewer
                 // TODO: Create output system later.
@@ -38,27 +38,31 @@ public class AgentMind extends Mind {
                 // mv.setVisible(true);
 
                 // Create Sensor Codelets
-                Codelet vision = new Vision();
-                vision.addOutput(entitiesMO);
+                //Codelet vision = new Vision();
+                //vision.addOutput(entitiesMO);
                 // vision.addOutput(visionMO);
-                insertCodelet(vision); // Creates a vision sensor
+                //insertCodelet(vision); // Creates a vision sensor
 
-                Codelet innerSense = new InnerSense();
-                innerSense.addOutput(innerSenseMO);
-                insertCodelet(innerSense); // A sensor for the inner state of the creature
+                //Codelet innerSense = new InnerSense();
+                //innerSense.addOutput(innerSenseMO);
+                //insertCodelet(innerSense); // A sensor for the inner state of the creature
 
                 // Create Perception Codelets
-                Codelet ad = new AppleDetector();
-                ad.addInput(visionMO);
-                insertCodelet(ad);
+                Codelet id = new IntentionalityDetector();
+                insertCodelet(id);
 
-                Codelet forage = new Forage();
-                insertCodelet(forage);
+                //Codelet ad = new AppleDetector();
+                //ad.addInput(visionMO);
+                //insertCodelet(ad);
+
+                //Codelet forage = new Forage();
+                //insertCodelet(forage);
 
                 // sets a time step for running the codelets to avoid heating too much your
                 // machine
                 for (Codelet c : this.getCodeRack().getAllCodelets())
-                        c.setTimeStep(200);
+                        // probably 1 second
+                        c.setTimeStep(1000);
 
                 // Start Cognitive Cycle
                 start();

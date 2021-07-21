@@ -1,11 +1,16 @@
 package codelets.perception;
 
+import base.Entity;
+import base.Intention;
+
 import br.unicamp.cst.core.entities.Codelet;
 import br.unicamp.cst.core.entities.Memory;
 import br.unicamp.cst.core.entities.MemoryObject;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
 import tech.tablesaw.io.csv.CsvReadOptions;
+
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -20,46 +25,13 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class IntentionalityDetector extends Codelet {
 
-   /*
-   * Class to encapsulate the data read in from the input tables.
-   */
-   class Entity {
-      
-      private int mindStep;
-      private String name;
-      private boolean isAgent;
 
-      /*
-      Setters and Getters
-      */
-      void setMindStep(int aStep) {
-         mindStep = aStep;
-      }
-
-      void setName(String aName) {
-         name = aName;
-      }
-
-      void setIsAgent(boolean aIsAgent) {
-         isAgent = aIsAgent;
-      }
-
-      String name() {
-         return name;
-      }
-
-      boolean isAgent() {
-         return isAgent;
-      }
-
-      int mindStep() {
-         return mindStep;
-      } 
-   }
 
    List<Entity> entities;
-   private Memory visionMO;
-   private Memory knownApplesMO;
+   List<Intention> intentions;
+
+   //private Memory visionMO;
+   //private Memory knownApplesMO;
    
 
    public IntentionalityDetector() {
@@ -76,6 +48,14 @@ public class IntentionalityDetector extends Codelet {
 				Boolean isAgent = r.getBoolean("Is_Agent");
 			}
 
+         for (int i = 0; i < intentionTable.rowCount(); i++) {
+				Row r = intentionTable.row(i);
+            int time = r.getInt("t");
+				String agent = r.getString("Agent");
+            String intention = r.getString("Intention");
+				String object = r.getString("Object");
+            String target = r.getString("Target");
+			}
 
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
@@ -86,9 +66,9 @@ public class IntentionalityDetector extends Codelet {
    @Override
    public void accessMemoryObjects() {
       synchronized (this) {
-         this.visionMO = (MemoryObject) this.getInput("VISION");
+         //this.visionMO = (MemoryObject) this.getInput("VISION");
       }
-      this.knownApplesMO = (MemoryObject) this.getOutput("KNOWN_APPLES");
+      //this.knownApplesMO = (MemoryObject) this.getOutput("KNOWN_APPLES");
    }
 
    @Override
