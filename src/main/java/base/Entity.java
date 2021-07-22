@@ -1,28 +1,44 @@
 package base;
 
 /*
-* Class to encapsulate the Entity data read in from the input.
+* Class to encapsulate the Entity data read in from the input files.
 */
 public class Entity {
       
-    private String name;
-    private boolean isAgent;
+   private int mindStep;
+   private String name;
+   private boolean isAgent;
 
-    /*
-    Setters and Getters
-    */
-    void setName(String aName) {
+   public Entity(int aMindStep, String aName, boolean aIsAgent) {
+      mindStep = aMindStep;
+      name = aName;
+      isAgent = aIsAgent;
+   }
+
+   /*
+   Setters and Getters
+   */
+   void setMindStep(int aMindStep) {
+      mindStep = aMindStep;
+   }
+
+   int mindStep() {
+      return mindStep;
+   }
+   
+   void setName(String aName) {
        name = aName;
-    }
+   }
 
-    String name() {
-        return name;
-    }
+   String name() {
+      return name;
+   }
 
-    void setIsAgent(boolean aIsAgent) {
+   void setIsAgent(boolean aIsAgent) {
        isAgent = aIsAgent;
-    }
-    boolean isAgent() {
-       return isAgent;
-    } 
+   }
+   
+   boolean isAgent() {
+      return isAgent;
+   } 
 }

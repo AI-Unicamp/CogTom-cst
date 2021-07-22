@@ -25,8 +25,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class IntentionalityDetector extends Codelet {
 
-
-
    List<Entity> entities;
    List<Intention> intentions;
 
@@ -43,22 +41,27 @@ public class IntentionalityDetector extends Codelet {
 			// Loop through each one of the rows of the tables.
 			for (int i = 0; i < entityTable.rowCount(); i++) {
 				Row r = entityTable.row(i);
-            int time = r.getInt("t");
+            int mindStep = r.getInt("t");
 				String name = r.getString("Entity");
 				Boolean isAgent = r.getBoolean("Is_Agent");
+            // Add to List
+            Entity e = new Entity(mindStep, name, isAgent);
+            entities.add(e);
 			}
 
          for (int i = 0; i < intentionTable.rowCount(); i++) {
 				Row r = intentionTable.row(i);
-            int time = r.getInt("t");
+            int mindStep = r.getInt("t");
 				String agent = r.getString("Agent");
             String intention = r.getString("Intention");
 				String object = r.getString("Object");
             String target = r.getString("Target");
+            // Add to list
+            Intention it = new Intention(mindStep, agent, intention, object, target);
+            intentions.add(it);
 			}
 
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
    }
