@@ -18,17 +18,23 @@ public class AgentMind extends Mind {
                 super();
 
                 // Declare Memory Objects
-                //Memory entitiesMO;
-                //Memory visionMO;
-                //Memory innerSenseMO;
-
+                Memory agentsMO;
+                Memory objectsMO;
+                Memory intentionsMO;
+                Memory affordancesMO;
+                Memory attentionsMO;
+                Memory sharedAttentionsMO;
+                Memory BeliefsMO;
+                
                 // Initialize Memory Objects
-                //entitiesMO = createMemoryObject("ENTITIES", "");
-
-                //visionMO = createMemoryObject("VISION", "");
-                //CreatureInnerSense cis = new CreatureInnerSense();
-                //innerSenseMO = createMemoryObject("INNER", cis);
-
+                agentsMO = createMemoryObject("AGENTS", "");
+                objectsMO = createMemoryObject("OBJECTS", "");
+                intentionsMO = createMemoryObject("INTENTIONS", "");
+                affordancesMO = createMemoryObject("AFFORDANCES", "");
+                attentionsMO = createMemoryObject("ATTENTIONS", "");
+                sharedAttentionsMO = createMemoryObject("SHAREDATTN", "");
+                beliefsMO = createMemoryObject("BELIEFS", "");
+               
                 // Create and Populate MindViewer
                 // TODO: Create output system later.
                 // MindView mv = new MindView("MindView");
@@ -37,26 +43,15 @@ public class AgentMind extends Mind {
                 // mv.StartTimer();
                 // mv.setVisible(true);
 
-                // Create Sensor Codelets
-                //Codelet vision = new Vision();
-                //vision.addOutput(entitiesMO);
-                // vision.addOutput(visionMO);
-                //insertCodelet(vision); // Creates a vision sensor
-
-                //Codelet innerSense = new InnerSense();
-                //innerSense.addOutput(innerSenseMO);
-                //insertCodelet(innerSense); // A sensor for the inner state of the creature
-
                 // Create Perception Codelets
+                // ID
                 Codelet id = new IntentionalityDetector();
+                id.addOutput(agentsMO);
+                id.addOutput(objectsMO);
+                id.addOutput(intentionsMO);
                 insertCodelet(id);
 
-                //Codelet ad = new AppleDetector();
-                //ad.addInput(visionMO);
-                //insertCodelet(ad);
-
-                //Codelet forage = new Forage();
-                //insertCodelet(forage);
+                // TODO: EDD, SAM, ToMM
 
                 // sets a time step for running the codelets to avoid heating too much your
                 // machine
