@@ -1,12 +1,8 @@
 import br.unicamp.cst.core.entities.Codelet;
 import br.unicamp.cst.core.entities.Memory;
 import br.unicamp.cst.core.entities.Mind;
-//import codelets.behaviors.Forage;
+
 import codelets.perception.IntentionalityDetector;
-//import codelets.sensors.InnerSense;
-//import codelets.sensors.Vision;
-//import memory.CreatureInnerSense;
-//import support.MindView;
 
 /**
  *
@@ -14,7 +10,7 @@ import codelets.perception.IntentionalityDetector;
  */
 public class AgentMind extends Mind {
 
-        public AgentMind(Environment env) {
+        public AgentMind() {
                 super();
 
                 // Declare and initialize Memory Objects
