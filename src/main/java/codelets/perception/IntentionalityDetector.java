@@ -1,19 +1,16 @@
 package codelets.perception;
 
-import base.Entity;
-import base.Intention;
+import base.ToMEntity;
+import base.ToMIntention;
 
 import br.unicamp.cst.core.entities.Codelet;
-import br.unicamp.cst.core.entities.Memory;
-import br.unicamp.cst.core.entities.MemoryObject;
+import br.unicamp.cst.core.entities.MemoryContainer;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
-import tech.tablesaw.io.csv.CsvReadOptions;
 
 import java.io.IOException;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * The Intentionality Detector creates Memory Objects for the Agents, objects
@@ -25,18 +22,24 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class IntentionalityDetector extends Codelet {
 
-   List<Entity> entities;
-   List<Intention> intentions;
+   List<ToMEntity> entities;
+   List<ToMIntention> intentions;
 
-   //private Memory visionMO;
-   //private Memory knownApplesMO;
-   
+   MemoryContainer agentsContainer;
+   MemoryContainer objectsContainer;
+   MemoryContainer intentionsContainer;
+
+   // Codelets do not seem to record the current time step.
+   int mindStep;
 
    public IntentionalityDetector() {
 
       try {
 			Table entityTable = Table.read().csv("input/entities.csv");
          Table intentionTable = Table.read().csv("input/intentions.csv");
+
+         entities = new ArrayList<>();
+         intentions = new ArrayList<>();
 
 			// Loop through each one of the rows of the tables.
 			for (int i = 0; i < entityTable.rowCount(); i++) {
@@ -45,7 +48,7 @@ public class IntentionalityDetector extends Codelet {
 				String name = r.getString("Entity");
 				Boolean isAgent = r.getBoolean("Is_Agent");
             // Add to List
-            Entity e = new Entity(mindStep, name, isAgent);
+            ToMEntity e = new ToMEntity(mindStep, name, isAgent);
             entities.add(e);
 			}
 
@@ -57,31 +60,55 @@ public class IntentionalityDetector extends Codelet {
 				String object = r.getString("Object");
             String target = r.getString("Target");
             // Add to list
-            Intention it = new Intention(mindStep, agent, intention, object, target);
+            ToMIntention it = new ToMIntention(mindStep, agent, intention, object, target);
             intentions.add(it);
 			}
 
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
+      // Started simulation, set mindStep
+      mindStep = 1;
    }
 
    @Override
    public void accessMemoryObjects() {
       synchronized (this) {
-         //this.visionMO = (MemoryObject) this.getInput("VISION");
+         // Memory Containers
+         agentsContainer = (MemoryContainer) getOutput("AGENTS");
+         objectsContainer = (MemoryContainer) getOutput("OBJECTS");
+         intentionsContainer = (MemoryContainer) getOutput("INTENTIONS");
       }
-      //this.knownApplesMO = (MemoryObject) this.getOutput("KNOWN_APPLES");
    }
 
    @Override
    public void proc() {
+      // Get sublists based on the current mind step and populate Memory Objects.
+      for (ToMEntity e: entities) {
+         // Entities from the current mindStep
+         if (e.mindStep() == mindStep) {
+            if (e.isAgent()) {
+               // An Agent, create Memory Object and add to Memory Container
+               agentsContainer.setI(e);
+            } else {
+               // An Object, create Memory Object and add to Memory Container
+               objectsContainer.setI(e);
+            }
+         }
+      }
 
+      for (ToMIntention i: intentions) {
+         // Entities from the current mindStep
+         if (i.mindStep() == mindStep) {
+            intentionsContainer.setI(i);
+         }
+      }
+
+      mindStep++;
    }// end proc
 
    @Override
    public void calculateActivation() {
-
    }
 
 }// end class

@@ -17,23 +17,14 @@ public class AgentMind extends Mind {
         public AgentMind(Environment env) {
                 super();
 
-                // Declare Memory Objects
-                Memory agentsMO;
-                Memory objectsMO;
-                Memory intentionsMO;
-                Memory affordancesMO;
-                Memory attentionsMO;
-                Memory sharedAttentionsMO;
-                Memory BeliefsMO;
-                
-                // Initialize Memory Objects
-                agentsMO = createMemoryObject("AGENTS", "");
-                objectsMO = createMemoryObject("OBJECTS", "");
-                intentionsMO = createMemoryObject("INTENTIONS", "");
-                affordancesMO = createMemoryObject("AFFORDANCES", "");
-                attentionsMO = createMemoryObject("ATTENTIONS", "");
-                sharedAttentionsMO = createMemoryObject("SHAREDATTN", "");
-                beliefsMO = createMemoryObject("BELIEFS", "");
+                // Declare and initialize Memory Objects
+                Memory agentsMO = createMemoryContainer("AGENTS");
+                Memory objectsMO = createMemoryContainer("OBJECTS");
+                Memory intentionsMO = createMemoryContainer("INTENTIONS");
+                Memory affordancesMO = createMemoryContainer("AFFORDANCES");
+                Memory attentionsMO = createMemoryContainer("ATTENTIONS");
+                Memory sharedAttentionsMO = createMemoryContainer("SHAREDATTN");
+                Memory beliefsMO = createMemoryContainer("BELIEFS");
                
                 // Create and Populate MindViewer
                 // TODO: Create output system later.
