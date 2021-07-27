@@ -4,6 +4,7 @@ import base.ToMEntity;
 import base.ToMIntention;
 
 import br.unicamp.cst.core.entities.Codelet;
+import br.unicamp.cst.core.entities.Memory;
 import br.unicamp.cst.core.entities.MemoryContainer;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
@@ -83,6 +84,10 @@ public class IntentionalityDetector extends Codelet {
 
    @Override
    public void proc() {
+
+      // Clear out memory containers.
+      clearMemory();
+      
       // Get sublists based on the current mind step and populate Memory Objects.
       for (ToMEntity e: entities) {
          // Entities from the current mindStep
@@ -109,6 +114,21 @@ public class IntentionalityDetector extends Codelet {
 
    @Override
    public void calculateActivation() {
+   }
+
+   /*
+   * Utility Method to clear out memory contente between simulation cycles.
+   */
+   private void clearMemory() {
+
+      // Reset Memory Containers at every mind step, since 
+      // the perception memories are not kept between simulation cycles.
+      ArrayList<Memory> agts = agentsContainer.getAllMemories();
+      agts.clear();
+      ArrayList<Memory> objs = objectsContainer.getAllMemories();
+      objs.clear();
+      ArrayList<Memory> ints = intentionsContainer.getAllMemories();
+      ints.clear();
    }
 
 }// end class
