@@ -34,5 +34,6 @@ This is an exercise on porting the CogTom cognitive architecture to the CST tool
 - [x] Should MOs have information only for the current simulation step? - Solution is to clear out when necessary.
 - [x] Implement mechanism to update the MOs on the containers for each simulation step.
 - [x] How to maintain the mind step information across containers - MOs maintain the current mindStep.
+- [ ] How should the EDD Codelet use ID input, since the csv has agent/object information already.
 
 ### Test-Run for Sally-Anne

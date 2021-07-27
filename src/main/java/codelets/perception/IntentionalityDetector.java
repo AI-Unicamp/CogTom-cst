@@ -117,7 +117,7 @@ public class IntentionalityDetector extends Codelet {
    }
 
    /*
-   * Utility Method to clear out memory contente between simulation cycles.
+   * Utility Method to clear out memory contents between simulation cycles.
    */
    private void clearMemory() {
 

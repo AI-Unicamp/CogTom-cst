@@ -3,6 +3,8 @@ package codelets.perception;
 import base.ToMEyeDirection;
 
 import br.unicamp.cst.core.entities.Codelet;
+import br.unicamp.cst.core.entities.Memory;
+import br.unicamp.cst.core.entities.MemoryContainer;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
 
@@ -19,12 +21,17 @@ import java.io.IOException;
  */
 public class EyeDirectionDetector extends Codelet {
 
+    List<ToMEyeDirection> eyeDirections;
+
+    MemoryContainer agentsContainer;
+    MemoryContainer objectsContainer;
+    MemoryContainer intentionsContainer;        
+    MemoryContainer attentionsContainer;
+
+    // Codelets do not seem to record the current time step.
+    int mindStep;
+
     public EyeDirectionDetector() {
-
-        List<ToMEyeDirection> eyeDirections;
-
-        // Codelets do not seem to record the current time step.
-        int mindStep;
 
         try {
             Table entityTable = Table.read().csv("input/eye_directions.csv");
@@ -41,31 +48,50 @@ public class EyeDirectionDetector extends Codelet {
                 ToMEyeDirection eye = new ToMEyeDirection(step, agt, obj);
                 eyeDirections.add(eye);
             }
-
-  
           } catch (IOException e1) {
               e1.printStackTrace();
           }
         // Started simulation, set mindStep
         mindStep = 1;
-     }
+    }
+
     @Override
     public void accessMemoryObjects() {
-        // TODO Auto-generated method stub
-        
+        // Memory Containers
+        agentsContainer = (MemoryContainer) getInput("AGENTS");
+        objectsContainer = (MemoryContainer) getInput("OBJECTS");
+        intentionsContainer = (MemoryContainer) getInput("INTENTIONS");
+        attentionsContainer = (MemoryContainer) getOutput("ATTENTIONS");
     }
 
     @Override
     public void calculateActivation() {
-        // TODO Auto-generated method stub
-        
     }
 
     @Override
     public void proc() {
-        // TODO Auto-generated method stub
-        mindStep;
-        
+         // Clear out memory containers.
+        clearMemory();
+
+        // Get sublists based on the current mind step and populate Memory Objects.
+        for (ToMEyeDirection eye: eyeDirections) {
+            // Entities from the current mindStep
+            if (eye.mindStep() == mindStep) {
+                // Current mindstep
+                attentionsContainer.setI(eye);
+            }
+        }
+        mindStep++;
     }
-    
+
+    /*
+   * Utility Method to clear out memory contents between simulation cycles.
+   */
+   private void clearMemory() {
+
+        // Reset Memory Containers at every mind step, since 
+        // the perception memories are not kept between simulation cycles.
+        ArrayList<Memory> attns = attentionsContainer.getAllMemories();
+        attns.clear();
+ }
 }
