@@ -7,11 +7,16 @@ This is an exercise on porting the CogTom cognitive architecture to the CST tool
 - [ ] Facebook bAbI test cases
   - [ ] Copy over main test cases, convert to csv 
 
-### Create Memory Objects/Containers
-- [x] Create on AgentMind
+### AgentMind
+- [x] Create all Memory Containers
+- [ ] Create and instantiate Codelets, with inputs and outputs
+  - [ ] ID
+  - [ ] EDD
+  - [ ] SAM
+  - [ ] ToMM
 
 ### Create Codelets on Working Memory
-- [ ] ID Codelet  
+- [x] ID Codelet  
   - [x] Organize codelets according to architecture
   - [x] Read entities.csv file
   - [x] Read intentions.csv file
@@ -19,6 +24,9 @@ This is an exercise on porting the CogTom cognitive architecture to the CST tool
   - [x] Populate output Memory Objects for the entities and intentions.
 - [ ] Affordances codelet
 - [ ] EDD Codelet
+  - [x] Read eye direction data from file
+  - [ ] Read MemoryContainers from ID
+  - [ ] Create Attention Memory Objects as output
 - [ ] SAM Codelet
 - [ ] ToMM Codelet
 

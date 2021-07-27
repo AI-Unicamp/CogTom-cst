@@ -1,7 +1,7 @@
 import br.unicamp.cst.core.entities.Codelet;
 import br.unicamp.cst.core.entities.Memory;
 import br.unicamp.cst.core.entities.Mind;
-
+import codelets.perception.EyeDirectionDetector;
 import codelets.perception.IntentionalityDetector;
 
 /**
@@ -14,13 +14,13 @@ public class AgentMind extends Mind {
                 super();
 
                 // Declare and initialize Memory Objects
-                Memory agentsMO = createMemoryContainer("AGENTS");
-                Memory objectsMO = createMemoryContainer("OBJECTS");
-                Memory intentionsMO = createMemoryContainer("INTENTIONS");
-                Memory affordancesMO = createMemoryContainer("AFFORDANCES");
-                Memory attentionsMO = createMemoryContainer("ATTENTIONS");
-                Memory sharedAttentionsMO = createMemoryContainer("SHAREDATTN");
-                Memory beliefsMO = createMemoryContainer("BELIEFS");
+                Memory agentsMC = createMemoryContainer("AGENTS");
+                Memory objectsMC = createMemoryContainer("OBJECTS");
+                Memory intentionsMC = createMemoryContainer("INTENTIONS");
+                Memory affordancesMC = createMemoryContainer("AFFORDANCES");
+                Memory attentionsMC = createMemoryContainer("ATTENTIONS");
+                Memory sharedAttentionsMC = createMemoryContainer("SHAREDATTN");
+                Memory beliefsMC = createMemoryContainer("BELIEFS");
                
                 // Create and Populate MindViewer
                 // TODO: Create output system later.
@@ -33,12 +33,20 @@ public class AgentMind extends Mind {
                 // Create Perception Codelets
                 // ID
                 Codelet id = new IntentionalityDetector();
-                id.addOutput(agentsMO);
-                id.addOutput(objectsMO);
-                id.addOutput(intentionsMO);
+                id.addOutput(agentsMC);
+                id.addOutput(objectsMC);
+                id.addOutput(intentionsMC);
                 insertCodelet(id);
 
-                // TODO: EDD, SAM, ToMM
+                // EDD
+                Codelet edd = new EyeDirectionDetector();
+                edd.addInput(agentsMC);
+                edd.addInput(objectsMC);
+                edd.addInput(intentionsMC);
+                edd.addOutput(attentionsMC);
+                insertCodelet(edd);
+
+                // TODO: SAM, ToMM
 
                 // sets a time step for running the codelets to avoid heating too much your
                 // machine

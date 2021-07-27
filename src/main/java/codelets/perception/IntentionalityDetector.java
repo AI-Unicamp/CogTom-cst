@@ -1,6 +1,6 @@
 package codelets.perception;
 
-import base.ToMEyeDirection;
+import base.ToMEntity;
 import base.ToMIntention;
 
 import br.unicamp.cst.core.entities.Codelet;
@@ -23,7 +23,7 @@ import java.util.List;
  */
 public class IntentionalityDetector extends Codelet {
 
-   List<ToMEyeDirection> entities;
+   List<ToMEntity> entities;
    List<ToMIntention> intentions;
 
    MemoryContainer agentsContainer;
@@ -49,7 +49,7 @@ public class IntentionalityDetector extends Codelet {
 				String name = r.getString("Entity");
 				Boolean isAgent = r.getBoolean("Is_Agent");
             // Add to List
-            ToMEyeDirection e = new ToMEyeDirection(step, name, isAgent);
+            ToMEntity e = new ToMEntity(step, name, isAgent);
             entities.add(e);
 			}
 
@@ -89,7 +89,7 @@ public class IntentionalityDetector extends Codelet {
       clearMemory();
       
       // Get sublists based on the current mind step and populate Memory Objects.
-      for (ToMEyeDirection e: entities) {
+      for (ToMEntity e: entities) {
          // Entities from the current mindStep
          if (e.mindStep() == mindStep) {
             if (e.isAgent()) {

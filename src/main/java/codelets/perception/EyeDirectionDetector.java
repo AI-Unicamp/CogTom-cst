@@ -1,8 +1,14 @@
 package codelets.perception;
 
+import base.ToMEyeDirection;
+
 import br.unicamp.cst.core.entities.Codelet;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.io.IOException;
 
 /**
  * EDD codelet identifies eye direction and attaches that information to the Attention MOs.
@@ -15,7 +21,7 @@ public class EyeDirectionDetector extends Codelet {
 
     public EyeDirectionDetector() {
 
-        List<ToMEyeDirections> eyeDirections;
+        List<ToMEyeDirection> eyeDirections;
 
         // Codelets do not seem to record the current time step.
         int mindStep;
@@ -33,7 +39,7 @@ public class EyeDirectionDetector extends Codelet {
                 String obj = r.getString("Object");
                 // Add to List
                 ToMEyeDirection eye = new ToMEyeDirection(step, agt, obj);
-                entities.add(eye);
+                eyeDirections.add(eye);
             }
 
   
@@ -58,6 +64,7 @@ public class EyeDirectionDetector extends Codelet {
     @Override
     public void proc() {
         // TODO Auto-generated method stub
+        mindStep;
         
     }
     
