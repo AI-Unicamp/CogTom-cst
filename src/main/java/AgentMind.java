@@ -7,7 +7,8 @@ import codelets.perception.EyeDirectionDetector;
 import codelets.perception.IntentionalityDetector;
 
 /**
- * 
+ * Mind class. Instantiates Memory and Codelets.
+ * Synchronizes processing of the codelets.
  * @author fabiogr
  */
 public class AgentMind extends Mind {
@@ -79,5 +80,13 @@ public class AgentMind extends Mind {
                 // Start Cognitive Cycle
                 start();
         }
+
+        /*
+        * Called from Codelets to indicate processing for the time step is done.
+        */
+        public void mindStepDone() {
+
+        }
+
 
 }
