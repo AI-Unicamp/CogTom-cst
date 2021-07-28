@@ -110,6 +110,9 @@ public class IntentionalityDetector extends Codelet {
       }
 
       mindStep++;
+
+      // Sets EDD activation, indicating it can run now.
+      
    }// end proc
 
    @Override

@@ -5,6 +5,7 @@ import base.ToMEyeDirection;
 import br.unicamp.cst.core.entities.Codelet;
 import br.unicamp.cst.core.entities.Memory;
 import br.unicamp.cst.core.entities.MemoryContainer;
+import br.unicamp.cst.core.exceptions.CodeletActivationBoundsException;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
 
@@ -66,6 +67,19 @@ public class EyeDirectionDetector extends Codelet {
 
     @Override
     public void calculateActivation() {
+        // Codelet should be activated only if there are inputs available to it.
+        ArrayList<Memory> mem = agentsContainer.getAllMemories();
+        try {
+            if (!mem.isEmpty()) {
+                // Set activation to allow the codelet to run.
+                    setActivation(1.0d);
+            } else {
+                // Keep the codelet from running.
+                setActivation(0.0d);
+            }
+        } catch (CodeletActivationBoundsException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

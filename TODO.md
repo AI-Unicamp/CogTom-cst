@@ -35,5 +35,9 @@ This is an exercise on porting the CogTom cognitive architecture to the CST tool
 - [x] Implement mechanism to update the MOs on the containers for each simulation step.
 - [x] How to maintain the mind step information across containers - MOs maintain the current mindStep.
 - [ ] How should the EDD Codelet use ID input, since the csv has agent/object information already.
+- [x] How to properly sinchronize ID and EDD, due to multithreading nature of the toolkit - use Codelet activation.
+
+### Lessons Learned
+- [x] Codelets run in separate threads. Do not assume sequential execution.
 
 ### Test-Run for Sally-Anne

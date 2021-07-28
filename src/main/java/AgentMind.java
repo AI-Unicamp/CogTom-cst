@@ -1,6 +1,8 @@
 import br.unicamp.cst.core.entities.Codelet;
 import br.unicamp.cst.core.entities.Memory;
 import br.unicamp.cst.core.entities.Mind;
+import br.unicamp.cst.core.exceptions.CodeletActivationBoundsException;
+import br.unicamp.cst.core.exceptions.CodeletThresholdBoundsException;
 import codelets.perception.EyeDirectionDetector;
 import codelets.perception.IntentionalityDetector;
 
@@ -10,10 +12,10 @@ import codelets.perception.IntentionalityDetector;
  */
 public class AgentMind extends Mind {
 
-        public AgentMind() {
+        public AgentMind() throws CodeletThresholdBoundsException {
                 super();
 
-                // Declare and initialize Memory Objects
+                // Declare and initialize Memory Containers (for multiple MOs)
                 Memory agentsMC = createMemoryContainer("AGENTS");
                 Memory objectsMC = createMemoryContainer("OBJECTS");
                 Memory intentionsMC = createMemoryContainer("INTENTIONS");
@@ -44,6 +46,14 @@ public class AgentMind extends Mind {
                 edd.addInput(objectsMC);
                 edd.addInput(intentionsMC);
                 edd.addOutput(attentionsMC);
+                try {
+                        // EDD can only run when activated by ID
+                        // So the activation will have to be explicitly set.
+                        edd.setActivation(0.0d);
+                        edd.setThreshold(1.0d);
+                } catch (CodeletActivationBoundsException e) {
+                        e.printStackTrace();
+                }
                 insertCodelet(edd);
 
                 // TODO: SAM, ToMM
