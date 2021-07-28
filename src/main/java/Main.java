@@ -1,10 +1,11 @@
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import br.unicamp.cst.core.exceptions.CodeletActivationBoundsException;
 import br.unicamp.cst.core.exceptions.CodeletThresholdBoundsException;
 
 /**
- *
+ * This is the base Java class.
  * @author fabiogr
  */
 public class Main {
@@ -13,10 +14,13 @@ public class Main {
 
         public Main() {
                 Logger.getLogger("codelets").setLevel(Level.SEVERE);
-                // Create the Agent Mind
+                // Create the Agent Mind and start the cognitive cycles.
                 try {
-                        AgentMind a = new AgentMind();
+                        AgentMind mind = new AgentMind();
+                        mind.run();
                 } catch (CodeletThresholdBoundsException e) {
+                        e.printStackTrace();
+                } catch (CodeletActivationBoundsException e) {
                         e.printStackTrace();
                 }
         }
