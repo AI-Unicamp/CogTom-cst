@@ -6,6 +6,7 @@ import base.ToMIntention;
 import br.unicamp.cst.core.entities.Codelet;
 import br.unicamp.cst.core.entities.Memory;
 import br.unicamp.cst.core.entities.MemoryContainer;
+import br.unicamp.cst.core.entities.Mind;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
 
@@ -23,6 +24,9 @@ import java.util.List;
  */
 public class IntentionalityDetector extends Codelet {
 
+   // Reference to the Agent Mind
+   Mind mind;
+
    List<ToMEntity> entities;
    List<ToMIntention> intentions;
 
@@ -33,8 +37,10 @@ public class IntentionalityDetector extends Codelet {
    // Codelets do not seem to record the current time step.
    int mindStep;
 
-   public IntentionalityDetector() {
+   public IntentionalityDetector(Mind aMind) {
 
+      mind = aMind;
+      
       try {
 			Table entityTable = Table.read().csv("input/entities.csv");
          Table intentionTable = Table.read().csv("input/intentions.csv");
