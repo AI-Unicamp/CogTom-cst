@@ -5,7 +5,7 @@ import base.ToMEyeDirection;
 import br.unicamp.cst.core.entities.Codelet;
 import br.unicamp.cst.core.entities.Memory;
 import br.unicamp.cst.core.entities.MemoryContainer;
-import br.unicamp.cst.core.entities.Mind;
+import br.unicamp.cst.core.entities.MemoryObject;
 import br.unicamp.cst.core.exceptions.CodeletActivationBoundsException;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
@@ -23,9 +23,6 @@ import java.io.IOException;
  */
 public class EyeDirectionDetector extends Codelet {
 
-    // Reference to the Agent Mind
-    Mind mind;
-
     List<ToMEyeDirection> eyeDirections;
 
     MemoryContainer agentsContainer;
@@ -33,12 +30,12 @@ public class EyeDirectionDetector extends Codelet {
     MemoryContainer intentionsContainer;        
     MemoryContainer attentionsContainer;
 
+    MemoryObject eddActivationMO;
+
     // Codelets do not seem to record the current time step.
     int mindStep;
 
-    public EyeDirectionDetector(Mind aMind) {
-
-        mind = aMind;
+    public EyeDirectionDetector() {
 
         try {
             Table entityTable = Table.read().csv("input/eye_directions.csv");
@@ -69,23 +66,22 @@ public class EyeDirectionDetector extends Codelet {
         objectsContainer = (MemoryContainer) getInput("OBJECTS");
         intentionsContainer = (MemoryContainer) getInput("INTENTIONS");
         attentionsContainer = (MemoryContainer) getOutput("ATTENTIONS");
+        // Activation MOs
+        eddActivationMO = (MemoryObject) getInput("EDD_ACTIVATION");
+
     }
 
     @Override
     public void calculateActivation() {
-        // Codelet should be activated only if there are inputs available to it.
-        ArrayList<Memory> mem = agentsContainer.getAllMemories();
         try {
-            if (!mem.isEmpty()) {
-                // Set activation to allow the codelet to run.
-                setActivation(1.0d);
+            if ((boolean) eddActivationMO.getI() == true) {
+               setActivation(1.0d);
             } else {
-                // Keep the codelet from running.
-                setActivation(0.0d);
+               setActivation(0.0d);
             }
-        } catch (CodeletActivationBoundsException e) {
-            e.printStackTrace();
-        }
+         } catch (CodeletActivationBoundsException e) {
+               e.printStackTrace();
+            } 
     }
 
     @Override

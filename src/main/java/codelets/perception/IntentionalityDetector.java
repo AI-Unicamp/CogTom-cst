@@ -6,7 +6,8 @@ import base.ToMIntention;
 import br.unicamp.cst.core.entities.Codelet;
 import br.unicamp.cst.core.entities.Memory;
 import br.unicamp.cst.core.entities.MemoryContainer;
-import br.unicamp.cst.core.entities.Mind;
+import br.unicamp.cst.core.entities.MemoryObject;
+import br.unicamp.cst.core.exceptions.CodeletActivationBoundsException;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
 
@@ -24,9 +25,6 @@ import java.util.List;
  */
 public class IntentionalityDetector extends Codelet {
 
-   // Reference to the Agent Mind
-   Mind mind;
-
    List<ToMEntity> entities;
    List<ToMIntention> intentions;
 
@@ -34,13 +32,14 @@ public class IntentionalityDetector extends Codelet {
    MemoryContainer objectsContainer;
    MemoryContainer intentionsContainer;
 
+   MemoryObject idActivationMO;
+   MemoryObject eddActivationMO;
+
    // Codelets do not seem to record the current time step.
    int mindStep;
 
-   public IntentionalityDetector(Mind aMind) {
+   public IntentionalityDetector() {
 
-      mind = aMind;
-      
       try {
 			Table entityTable = Table.read().csv("input/entities.csv");
          Table intentionTable = Table.read().csv("input/intentions.csv");
@@ -85,6 +84,9 @@ public class IntentionalityDetector extends Codelet {
          agentsContainer = (MemoryContainer) getOutput("AGENTS");
          objectsContainer = (MemoryContainer) getOutput("OBJECTS");
          intentionsContainer = (MemoryContainer) getOutput("INTENTIONS");
+         // Activation MOs
+         idActivationMO = (MemoryObject) getInput("ID_ACTIVATION");
+         eddActivationMO = (MemoryObject) getOutput("EDD_ACTIVATION");
       }
    }
 
@@ -118,11 +120,20 @@ public class IntentionalityDetector extends Codelet {
       mindStep++;
 
       // Sets EDD activation, indicating it can run now.
-      
+      eddActivationMO.setI(true);
    }// end proc
 
    @Override
    public void calculateActivation() {
+      try {
+         if ((boolean) idActivationMO.getI() == true) {
+            setActivation(1.0d);
+         } else {
+            setActivation(0.0d);
+         }
+      } catch (CodeletActivationBoundsException e) {
+            e.printStackTrace();
+      } 
    }
 
    /*

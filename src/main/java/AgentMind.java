@@ -1,5 +1,7 @@
 import br.unicamp.cst.core.entities.Codelet;
 import br.unicamp.cst.core.entities.Memory;
+import br.unicamp.cst.core.entities.MemoryContainer;
+import br.unicamp.cst.core.entities.MemoryObject;
 import br.unicamp.cst.core.entities.Mind;
 import br.unicamp.cst.core.exceptions.CodeletActivationBoundsException;
 import br.unicamp.cst.core.exceptions.CodeletThresholdBoundsException;
@@ -13,19 +15,26 @@ import codelets.perception.IntentionalityDetector;
  */
 public class AgentMind extends Mind {
 
-        Memory agentsMC;
-        Memory objectsMC;
-        Memory intentionsMC;
-        Memory affordancesMC;
-        Memory attentionsMC;
-        Memory sharedAttentionsMC;
-        Memory beliefsMC;
+        // Memory Containers
+        MemoryContainer agentsMC;
+        MemoryContainer objectsMC;
+        MemoryContainer intentionsMC;
+        MemoryContainer affordancesMC;
+        MemoryContainer attentionsMC;
+        MemoryContainer sharedAttentionsMC;
+        MemoryContainer beliefsMC;
+
+        // Activation Memory Objects
+        MemoryObject idActivationMO;
+        MemoryObject eddActivationMO;
+        MemoryObject samActivationMO;
+        MemoryObject tommActivationMO;
 
         public AgentMind() throws CodeletThresholdBoundsException,
                                   CodeletActivationBoundsException {
                 super();
 
-                // Declare and initialize Memory Containers (for multiple MOs)
+                // Declare and initialize Memory Containers & Memory Objects.
                 agentsMC = createMemoryContainer("AGENTS");
                 objectsMC = createMemoryContainer("OBJECTS");
                 intentionsMC = createMemoryContainer("INTENTIONS");
@@ -33,6 +42,12 @@ public class AgentMind extends Mind {
                 attentionsMC = createMemoryContainer("ATTENTIONS");
                 sharedAttentionsMC = createMemoryContainer("SHAREDATTN");
                 beliefsMC = createMemoryContainer("BELIEFS");
+
+                // ID is initially activated.
+                idActivationMO = createMemoryObject("ID_ACTIVATION", false);
+                eddActivationMO = createMemoryObject("EDD_ACTIVATION", false);
+                samActivationMO = createMemoryObject("SAM_ACTIVATION", false);
+                tommActivationMO = createMemoryObject("TOMM_ACTIVATION", false);
                
                 // Create and Populate MindViewer
                 // TODO: Create output system later.
@@ -44,24 +59,23 @@ public class AgentMind extends Mind {
 
                 // Create Perception Codelets
                 // ID
-                Codelet id = new IntentionalityDetector(this);
+                Codelet id = new IntentionalityDetector();
+                id.addInput(idActivationMO);
                 id.addOutput(agentsMC);
                 id.addOutput(objectsMC);
                 id.addOutput(intentionsMC);
-                id.setActivation(1.0d);
-                id.setThreshold(0.0d);
+                id.addOutput(eddActivationMO);
+                id.setThreshold(1.0d);
                 insertCodelet(id);
 
                 // EDD
-                Codelet edd = new EyeDirectionDetector(this);
+                Codelet edd = new EyeDirectionDetector();
+                edd.addInput(eddActivationMO);
                 edd.addInput(agentsMC);
                 edd.addInput(objectsMC);
                 edd.addInput(intentionsMC);
-                edd.addOutput(attentionsMC);
-                // EDD can only run when activated by ID
-                // So the activation will have to be explicitly set.
-                edd.setActivation(0.0d);
-                edd.setThreshold(1.0d);    
+                edd.addOutput(attentionsMC);  
+                edd.setThreshold(1.0d);
                 insertCodelet(edd);
 
                 // TODO: SAM, ToMM
@@ -78,15 +92,7 @@ public class AgentMind extends Mind {
         */
         public void run() {
                 // Start Cognitive Cycle
+                idActivationMO.setI(true);
                 start();
         }
-
-        /*
-        * Called from Codelets to indicate processing for the time step is done.
-        */
-        public void mindStepDone() {
-
-        }
-
-
 }
