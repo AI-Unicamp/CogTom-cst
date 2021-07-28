@@ -7,22 +7,31 @@ import codelets.perception.EyeDirectionDetector;
 import codelets.perception.IntentionalityDetector;
 
 /**
- *
+ * 
  * @author fabiogr
  */
 public class AgentMind extends Mind {
 
-        public AgentMind() throws CodeletThresholdBoundsException {
+        Memory agentsMC;
+        Memory objectsMC;
+        Memory intentionsMC;
+        Memory affordancesMC;
+        Memory attentionsMC;
+        Memory sharedAttentionsMC;
+        Memory beliefsMC;
+
+        public AgentMind() throws CodeletThresholdBoundsException,
+                                  CodeletActivationBoundsException {
                 super();
 
                 // Declare and initialize Memory Containers (for multiple MOs)
-                Memory agentsMC = createMemoryContainer("AGENTS");
-                Memory objectsMC = createMemoryContainer("OBJECTS");
-                Memory intentionsMC = createMemoryContainer("INTENTIONS");
-                Memory affordancesMC = createMemoryContainer("AFFORDANCES");
-                Memory attentionsMC = createMemoryContainer("ATTENTIONS");
-                Memory sharedAttentionsMC = createMemoryContainer("SHAREDATTN");
-                Memory beliefsMC = createMemoryContainer("BELIEFS");
+                agentsMC = createMemoryContainer("AGENTS");
+                objectsMC = createMemoryContainer("OBJECTS");
+                intentionsMC = createMemoryContainer("INTENTIONS");
+                affordancesMC = createMemoryContainer("AFFORDANCES");
+                attentionsMC = createMemoryContainer("ATTENTIONS");
+                sharedAttentionsMC = createMemoryContainer("SHAREDATTN");
+                beliefsMC = createMemoryContainer("BELIEFS");
                
                 // Create and Populate MindViewer
                 // TODO: Create output system later.
@@ -34,26 +43,24 @@ public class AgentMind extends Mind {
 
                 // Create Perception Codelets
                 // ID
-                Codelet id = new IntentionalityDetector();
+                Codelet id = new IntentionalityDetector(this);
                 id.addOutput(agentsMC);
                 id.addOutput(objectsMC);
                 id.addOutput(intentionsMC);
+                id.setActivation(1.0d);
+                id.setThreshold(0.0d);
                 insertCodelet(id);
 
                 // EDD
-                Codelet edd = new EyeDirectionDetector();
+                Codelet edd = new EyeDirectionDetector(this);
                 edd.addInput(agentsMC);
                 edd.addInput(objectsMC);
                 edd.addInput(intentionsMC);
                 edd.addOutput(attentionsMC);
-                try {
-                        // EDD can only run when activated by ID
-                        // So the activation will have to be explicitly set.
-                        edd.setActivation(0.0d);
-                        edd.setThreshold(1.0d);
-                } catch (CodeletActivationBoundsException e) {
-                        e.printStackTrace();
-                }
+                // EDD can only run when activated by ID
+                // So the activation will have to be explicitly set.
+                edd.setActivation(0.0d);
+                edd.setThreshold(1.0d);    
                 insertCodelet(edd);
 
                 // TODO: SAM, ToMM
@@ -63,7 +70,12 @@ public class AgentMind extends Mind {
                 for (Codelet c : this.getCodeRack().getAllCodelets())
                         // probably 1 second
                         c.setTimeStep(1000);
+        }
 
+        /*
+        * Starts running the cognitive cycles
+        */
+        public void run() {
                 // Start Cognitive Cycle
                 start();
         }
