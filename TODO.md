@@ -5,7 +5,8 @@ This is an exercise on porting the CogTom cognitive architecture to the CST tool
 - [x] Sally-Anne Test case
   - [x] Copy over text files, convert to csv
 - [ ] Facebook bAbI test cases
-  - [ ] Copy over main test cases, convert to csv 
+  - [ ] Copy over main test cases, convert to csv
+- [ ] Reorganize inputs to allow case selection from the user interface
 
 ### AgentMind
 - [x] Create all Memory Containers
