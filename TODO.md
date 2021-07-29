@@ -9,6 +9,9 @@ This is an exercise on porting the CogTom cognitive architecture to the CST tool
 
 ### AgentMind
 - [x] Create all Memory Containers
+- [x] Create Activation Memory Objects
+  - [x] Use activation to synchronize the current mind step 
+  - [ ] Execute simulation time steps to the end, create stop criteria (in ID codelet?)
 - [x] Create and instantiate Codelets, with inputs and outputs
   - [x] ID
   - [x] EDD
