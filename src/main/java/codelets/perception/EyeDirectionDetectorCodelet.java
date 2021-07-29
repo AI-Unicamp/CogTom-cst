@@ -21,7 +21,7 @@ import java.io.IOException;
  * @author fabiogr
  *
  */
-public class EyeDirectionDetector extends Codelet {
+public class EyeDirectionDetectorCodelet extends Codelet {
 
     List<ToMEyeDirection> eyeDirections;
 
@@ -35,7 +35,7 @@ public class EyeDirectionDetector extends Codelet {
     // Codelets do not seem to record the current time step.
     int mindStep;
 
-    public EyeDirectionDetector() {
+    public EyeDirectionDetectorCodelet() {
 
         try {
             Table entityTable = Table.read().csv("input/eye_directions.csv");

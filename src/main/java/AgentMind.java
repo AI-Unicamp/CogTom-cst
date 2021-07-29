@@ -1,12 +1,13 @@
 import br.unicamp.cst.core.entities.Codelet;
-import br.unicamp.cst.core.entities.Memory;
 import br.unicamp.cst.core.entities.MemoryContainer;
 import br.unicamp.cst.core.entities.MemoryObject;
 import br.unicamp.cst.core.entities.Mind;
 import br.unicamp.cst.core.exceptions.CodeletActivationBoundsException;
 import br.unicamp.cst.core.exceptions.CodeletThresholdBoundsException;
-import codelets.perception.EyeDirectionDetector;
-import codelets.perception.IntentionalityDetector;
+import codelets.perception.EyeDirectionDetectorCodelet;
+import codelets.perception.IntentionalityDetectorCodelet;
+import codelets.perception.SharedAttentionCodelet;
+import codelets.perception.TheoryOfMindModuleCodelet;
 
 /**
  * Mind class. Instantiates Memory and Codelets.
@@ -59,7 +60,7 @@ public class AgentMind extends Mind {
 
                 // Create Perception Codelets
                 // ID
-                Codelet id = new IntentionalityDetector();
+                Codelet id = new IntentionalityDetectorCodelet();
                 id.addInput(idActivationMO);
                 id.addOutput(agentsMC);
                 id.addOutput(objectsMC);
@@ -69,16 +70,34 @@ public class AgentMind extends Mind {
                 insertCodelet(id);
 
                 // EDD
-                Codelet edd = new EyeDirectionDetector();
+                Codelet edd = new EyeDirectionDetectorCodelet();
                 edd.addInput(eddActivationMO);
                 edd.addInput(agentsMC);
                 edd.addInput(objectsMC);
                 edd.addInput(intentionsMC);
                 edd.addOutput(attentionsMC);  
+                edd.addOutput(samActivationMO);
                 edd.setThreshold(1.0d);
                 insertCodelet(edd);
 
-                // TODO: SAM, ToMM
+                // SAM
+                Codelet sam = new SharedAttentionCodelet();
+                sam.addInput(samActivationMO);
+                sam.addInput(attentionsMC);
+                sam.addOutput(sharedAttentionsMC);
+                sam.addOutput(tommActivationMO);
+                sam.setThreshold(1.0d);
+                insertCodelet(sam);
+
+                // ToMM
+                Codelet tomm = new TheoryOfMindModuleCodelet();
+                tomm.addInput(tommActivationMO);
+                tomm.addInput(attentionsMC);
+                tomm.addInput(sharedAttentionsMC);
+                tomm.addInput(intentionsMC);
+                tomm.addOutput(idActivationMO);
+                tomm.setThreshold(1.0d);
+                insertCodelet(tomm);
 
                 // sets a time step for running the codelets to avoid heating too much your
                 // machine

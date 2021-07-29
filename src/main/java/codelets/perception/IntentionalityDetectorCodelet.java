@@ -23,7 +23,7 @@ import java.util.List;
  * @author fabiogr
  *
  */
-public class IntentionalityDetector extends Codelet {
+public class IntentionalityDetectorCodelet extends Codelet {
 
    List<ToMEntity> entities;
    List<ToMIntention> intentions;
@@ -38,7 +38,7 @@ public class IntentionalityDetector extends Codelet {
    // Codelets do not seem to record the current time step.
    int mindStep;
 
-   public IntentionalityDetector() {
+   public IntentionalityDetectorCodelet() {
 
       try {
 			Table entityTable = Table.read().csv("input/entities.csv");

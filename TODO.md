@@ -9,11 +9,11 @@ This is an exercise on porting the CogTom cognitive architecture to the CST tool
 
 ### AgentMind
 - [x] Create all Memory Containers
-- [ ] Create and instantiate Codelets, with inputs and outputs
-  - [ ] ID
-  - [ ] EDD
-  - [ ] SAM
-  - [ ] ToMM
+- [x] Create and instantiate Codelets, with inputs and outputs
+  - [x] ID
+  - [x] EDD
+  - [x] SAM
+  - [x] ToMM
 
 ### Create Codelets on Working Memory
 - [x] ID Codelet  
