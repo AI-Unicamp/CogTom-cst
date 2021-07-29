@@ -30,6 +30,9 @@ This is an exercise on porting the CogTom cognitive architecture to the CST tool
 - [ ] SAM Codelet
 - [ ] ToMM Codelet
 
+### User Interface
+- [ ] Re-use MindView to display information about the state of the MindObjects in the simulation
+
 ### Open Questions
 - [x] Should MOs have information only for the current simulation step? - Solution is to clear out when necessary.
 - [x] Implement mechanism to update the MOs on the containers for each simulation step.

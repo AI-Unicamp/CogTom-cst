@@ -1,15 +1,16 @@
-package base;
+package memory.working;
 
 /*
 * Class to encapsulate the Entity data read in from the input files.
 */
-public class ToMEyeDirection extends ToMBase {
+public class ToMEyeDirection {
       
+   private int mindStep;
    private String agent;
    private String object;
 
    public ToMEyeDirection(int aMindStep, String aAgent, String aObject) {
-      setMindStep(aMindStep);
+      mindStep = aMindStep;
       agent = aAgent;
       object = aObject;
    }
@@ -17,8 +18,15 @@ public class ToMEyeDirection extends ToMBase {
    /*
    Setters and Getters
    */
+   public void setMindStep(int aMindStep) {
+      mindStep = aMindStep;
+   }
+
+   public int mindStep() {
+      return mindStep;
+   }
    public void setAgent(String aAgent) {
-       agent = aAgent;
+         agent = aAgent;
    }
 
    public String agent() {
@@ -26,9 +34,9 @@ public class ToMEyeDirection extends ToMBase {
    }
 
    public void setObject(String aObject) {
-       object = aObject;
+         object = aObject;
    }
-   
+
    public String object() {
       return object;
    } 

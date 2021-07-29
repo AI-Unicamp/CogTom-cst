@@ -1,15 +1,15 @@
-package base;
+package memory.working;
 
 /*
 * Class to encapsulate the Entity data read in from the input files.
 */
-public class ToMEntity extends ToMBase {
+public class ToMEntity {
       
+   private int mindStep;
    private String name;
    private boolean isAgent;
 
    public ToMEntity(int aMindStep, String aName, boolean aIsAgent) {
-      setMindStep(aMindStep);
       name = aName;
       isAgent = aIsAgent;
    }
@@ -17,8 +17,15 @@ public class ToMEntity extends ToMBase {
    /*
    Setters and Getters
    */
+   public void setMindStep(int aMindStep) {
+      mindStep = aMindStep;
+   }
+
+   public int mindStep() {
+      return mindStep;
+   }
    public void setName(String aName) {
-       name = aName;
+         name = aName;
    }
 
    public String name() {
@@ -26,9 +33,9 @@ public class ToMEntity extends ToMBase {
    }
 
    public void setIsAgent(boolean aIsAgent) {
-       isAgent = aIsAgent;
+         isAgent = aIsAgent;
    }
-   
+
    public boolean isAgent() {
       return isAgent;
    } 

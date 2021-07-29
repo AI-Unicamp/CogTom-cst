@@ -8,6 +8,7 @@ import codelets.perception.EyeDirectionDetectorCodelet;
 import codelets.perception.IntentionalityDetectorCodelet;
 import codelets.perception.SharedAttentionCodelet;
 import codelets.perception.TheoryOfMindModuleCodelet;
+import codelets.perception.AffordancesCodelet;
 
 /**
  * Mind class. Instantiates Memory and Codelets.
@@ -30,6 +31,7 @@ public class AgentMind extends Mind {
         MemoryObject eddActivationMO;
         MemoryObject samActivationMO;
         MemoryObject tommActivationMO;
+        MemoryObject affordActivationMO;
 
         public AgentMind() throws CodeletThresholdBoundsException,
                                   CodeletActivationBoundsException {
@@ -44,14 +46,14 @@ public class AgentMind extends Mind {
                 sharedAttentionsMC = createMemoryContainer("SHAREDATTN");
                 beliefsMC = createMemoryContainer("BELIEFS");
 
-                // ID is initially activated.
+                // Activation MOs
                 idActivationMO = createMemoryObject("ID_ACTIVATION", false);
                 eddActivationMO = createMemoryObject("EDD_ACTIVATION", false);
                 samActivationMO = createMemoryObject("SAM_ACTIVATION", false);
                 tommActivationMO = createMemoryObject("TOMM_ACTIVATION", false);
+                affordActivationMO = createMemoryObject("AFFORD_ACTIVATION", false);
                
                 // Create and Populate MindViewer
-                // TODO: Create output system later.
                 // MindView mv = new MindView("MindView");
                 // mv.addMO(visionMO);
                 // mv.addMO(innerSenseMO);
@@ -80,7 +82,7 @@ public class AgentMind extends Mind {
                 edd.setThreshold(1.0d);
                 insertCodelet(edd);
 
-                // SAM
+                /* SAM
                 Codelet sam = new SharedAttentionCodelet();
                 sam.addInput(samActivationMO);
                 sam.addInput(attentionsMC);
@@ -98,6 +100,14 @@ public class AgentMind extends Mind {
                 tomm.addOutput(idActivationMO);
                 tomm.setThreshold(1.0d);
                 insertCodelet(tomm);
+                */
+
+                // Create Semantic Memory Codelets
+                Codelet afford = new AffordancesCodelet();
+                afford.addInput(affordActivationMO);
+                afford.addOutput(affordancesMC);
+                afford.setActivation(1.0d);
+                insertCodelet(afford);
 
                 // sets a time step for running the codelets to avoid heating too much your
                 // machine
@@ -112,6 +122,7 @@ public class AgentMind extends Mind {
         public void run() {
                 // Start Cognitive Cycle
                 idActivationMO.setI(true);
+                affordActivationMO.setI(true);
                 start();
         }
 }

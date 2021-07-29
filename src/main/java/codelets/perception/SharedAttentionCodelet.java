@@ -1,12 +1,11 @@
 package codelets.perception;
 
-import base.ToMEyeDirection;
-
 import br.unicamp.cst.core.entities.Codelet;
 import br.unicamp.cst.core.entities.Memory;
 import br.unicamp.cst.core.entities.MemoryContainer;
 import br.unicamp.cst.core.entities.MemoryObject;
 import br.unicamp.cst.core.exceptions.CodeletActivationBoundsException;
+import memory.working.ToMEyeDirection;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
 
@@ -34,7 +33,6 @@ public class SharedAttentionCodelet extends Codelet {
     int mindStep;
 
     public SharedAttentionCodelet() {
-
         try {
             Table entityTable = Table.read().csv("input/eye_directions.csv");
 
