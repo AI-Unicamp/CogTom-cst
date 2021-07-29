@@ -15,8 +15,6 @@ import java.io.IOException;
 
 /**
  * SAM
- * @author fabiogr
- *
  */
 public class SharedAttentionCodelet extends Codelet {
 

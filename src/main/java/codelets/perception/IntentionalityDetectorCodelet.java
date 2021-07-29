@@ -5,6 +5,7 @@ import br.unicamp.cst.core.entities.Memory;
 import br.unicamp.cst.core.entities.MemoryContainer;
 import br.unicamp.cst.core.entities.MemoryObject;
 import br.unicamp.cst.core.exceptions.CodeletActivationBoundsException;
+import memory.working.ToMActivationObject;
 import memory.working.ToMEntity;
 import memory.working.ToMIntention;
 import tech.tablesaw.api.Row;
@@ -18,9 +19,6 @@ import java.util.List;
  * The Intentionality Detector creates Memory Objects for the Agents, objects
  * and Intentions.
  * Input for this exercise is provided through the csv files entities.txt and intentions.csv
- * 
- * @author fabiogr
- *
  */
 public class IntentionalityDetectorCodelet extends Codelet {
 
@@ -34,7 +32,7 @@ public class IntentionalityDetectorCodelet extends Codelet {
    MemoryObject idActivationMO;
    MemoryObject eddActivationMO;
 
-   // Codelets do not seem to record the current time step.
+   // Mindstep the codelet is currently processing.
    int mindStep;
 
    public IntentionalityDetectorCodelet() {
@@ -101,10 +99,10 @@ public class IntentionalityDetectorCodelet extends Codelet {
          if (e.mindStep() == mindStep) {
             if (e.isAgent()) {
                // An Agent, create Memory Object and add to Memory Container
-               agentsContainer.setI(e);
+               agentsContainer.setI(e.name());
             } else {
                // An Object, create Memory Object and add to Memory Container
-               objectsContainer.setI(e);
+               objectsContainer.setI(e.name());
             }
          }
       }
@@ -116,17 +114,23 @@ public class IntentionalityDetectorCodelet extends Codelet {
          }
       }
 
-      mindStep++;
-
       // Sets EDD activation, indicating it can run now.
-      eddActivationMO.setI(true);
+      ToMActivationObject act = new ToMActivationObject(mindStep, true);
+      eddActivationMO.setI(act);
+
+      // Deactivate this codelet until the next mind step
+      ToMActivationObject self = new ToMActivationObject(mindStep, false);
+      idActivationMO.setI(self);
    }// end proc
 
    @Override
    public void calculateActivation() {
       try {
-         if ((boolean) idActivationMO.getI() == true) {
+         ToMActivationObject act = (ToMActivationObject) idActivationMO.getI();
+         if (act.Activation() == true) {
+            // Set mind step for the codelet.
             setActivation(1.0d);
+            mindStep = act.mindStep();
          } else {
             setActivation(0.0d);
          }

@@ -22,7 +22,7 @@ This is an exercise on porting the CogTom cognitive architecture to the CST tool
   - [x] Read intentions.csv file
   - [x] Create internal objects for entities and intentions.
   - [x] Populate output Memory Objects for the entities and intentions.
-- [ ] Affordances codelet
+- [x] Affordances codelet
 - [ ] EDD Codelet
   - [x] Read eye direction data from file
   - [ ] Read MemoryContainers from ID

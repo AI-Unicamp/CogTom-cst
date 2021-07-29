@@ -6,7 +6,6 @@ import br.unicamp.cst.core.exceptions.CodeletThresholdBoundsException;
 
 /**
  * This is the base Java class.
- * @author fabiogr
  */
 public class Main {
 

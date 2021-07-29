@@ -8,12 +8,12 @@ import codelets.perception.EyeDirectionDetectorCodelet;
 import codelets.perception.IntentionalityDetectorCodelet;
 import codelets.perception.SharedAttentionCodelet;
 import codelets.perception.TheoryOfMindModuleCodelet;
+import memory.working.ToMActivationObject;
 import codelets.perception.AffordancesCodelet;
 
 /**
  * Mind class. Instantiates Memory and Codelets.
  * Synchronizes processing of the codelets.
- * @author fabiogr
  */
 public class AgentMind extends Mind {
 
@@ -106,7 +106,7 @@ public class AgentMind extends Mind {
                 Codelet afford = new AffordancesCodelet();
                 afford.addInput(affordActivationMO);
                 afford.addOutput(affordancesMC);
-                afford.setActivation(1.0d);
+                afford.setThreshold(1.0d);
                 insertCodelet(afford);
 
                 // sets a time step for running the codelets to avoid heating too much your
@@ -120,9 +120,10 @@ public class AgentMind extends Mind {
         * Starts running the cognitive cycles
         */
         public void run() {
-                // Start Cognitive Cycle
-                idActivationMO.setI(true);
-                affordActivationMO.setI(true);
+                // Start Cognitive Cycle for the first mind step.
+                ToMActivationObject act = new ToMActivationObject(1, true);
+                idActivationMO.setI(act);
+                affordActivationMO.setI(act);
                 start();
         }
 }

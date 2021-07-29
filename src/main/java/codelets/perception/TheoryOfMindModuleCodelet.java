@@ -14,9 +14,7 @@ import java.util.List;
 import java.io.IOException;
 
 /**
- * ToMM
- * @author fabiogr
- *
+ * ToMM Codelet
  */
 public class TheoryOfMindModuleCodelet extends Codelet {
 
