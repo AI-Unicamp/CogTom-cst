@@ -23,10 +23,10 @@ This is an exercise on porting the CogTom cognitive architecture to the CST tool
   - [x] Create internal objects for entities and intentions.
   - [x] Populate output Memory Objects for the entities and intentions.
 - [x] Affordances codelet
-- [ ] EDD Codelet
+- [x] EDD Codelet
   - [x] Read eye direction data from file
-  - [ ] Read MemoryContainers from ID
-  - [ ] Create Attention Memory Objects as output
+  - [x] Read MemoryContainers from ID
+  - [x] Create Attention Memory Objects as output
 - [ ] SAM Codelet
 - [ ] ToMM Codelet
 
