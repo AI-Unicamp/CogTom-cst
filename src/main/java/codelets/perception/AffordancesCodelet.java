@@ -1,6 +1,7 @@
 package codelets.perception;
 
 import memory.semantic.ToMAffordances;
+import memory.working.ToMActivationObject;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
 import br.unicamp.cst.core.entities.Codelet;
@@ -22,6 +23,7 @@ public class AffordancesCodelet extends Codelet {
     MemoryContainer affordancesContainer;
     MemoryObject affordActivationMO;
     MemoryObject tommActivationMO;
+    MemoryObject affordDoneActivationMO;
 
     public AffordancesCodelet() {
         try {
@@ -55,14 +57,16 @@ public class AffordancesCodelet extends Codelet {
     @Override
     public void calculateActivation() {
         try {
-            if ((boolean) affordActivationMO.getI() == true) {
+            ToMActivationObject act = (ToMActivationObject) affordActivationMO.getI();
+            if (act.Activation() == true) {
+               // Set mind step for the codelet.
                setActivation(1.0d);
             } else {
-               setActivation(0.0d);
+                setActivation(0.0d);
             }
-         } catch (CodeletActivationBoundsException e) {
-               e.printStackTrace();
-         } 
+        } catch (CodeletActivationBoundsException e) {
+            e.printStackTrace();
+        } 
     }
 
     @Override
@@ -71,8 +75,13 @@ public class AffordancesCodelet extends Codelet {
         for (ToMAffordances a: affordances) {
                affordancesContainer.setI(a);
             }
-         // This Codelet only runs once, so reset the activation MO
-         affordActivationMO.setI(false);
+         
+        // This Codelet only runs once, so reset the activation MO
+        ToMActivationObject self = new ToMActivationObject(0, false);
+        affordActivationMO.setI(self);
+
+        // Affordances processing is done.
+        affordDoneActivationMO.setI(true);
     }
 
 }

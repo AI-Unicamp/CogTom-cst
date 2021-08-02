@@ -32,6 +32,11 @@ public class AgentMind extends Mind {
         MemoryObject samActivationMO;
         MemoryObject tommActivationMO;
         MemoryObject affordActivationMO;
+        MemoryObject idDoneActivationMO;
+        MemoryObject eddDoneActivationMO;
+        MemoryObject samDoneActivationMO;
+        MemoryObject tommDoneActivationMO;
+        MemoryObject affordDoneActivationMO;
 
         public AgentMind() throws CodeletThresholdBoundsException,
                                   CodeletActivationBoundsException {
@@ -47,11 +52,19 @@ public class AgentMind extends Mind {
                 beliefsMC = createMemoryContainer("BELIEFS");
 
                 // Activation MOs
-                idActivationMO = createMemoryObject("ID_ACTIVATION", false);
-                eddActivationMO = createMemoryObject("EDD_ACTIVATION", false);
-                samActivationMO = createMemoryObject("SAM_ACTIVATION", false);
-                tommActivationMO = createMemoryObject("TOMM_ACTIVATION", false);
-                affordActivationMO = createMemoryObject("AFFORD_ACTIVATION", false);
+                // For starting Codelets
+                ToMActivationObject init = new ToMActivationObject(0, false);
+                idActivationMO = createMemoryObject("ID_ACTIVATION", init);
+                eddActivationMO = createMemoryObject("EDD_ACTIVATION", init);
+                samActivationMO = createMemoryObject("SAM_ACTIVATION", init);
+                tommActivationMO = createMemoryObject("TOMM_ACTIVATION", init);
+                affordActivationMO = createMemoryObject("AFFORD_ACTIVATION", init);
+                // For communicating Codelets have finished processing
+                idDoneActivationMO = createMemoryObject("ID_DONE_ACTIVATION", false);
+                eddDoneActivationMO = createMemoryObject("EDD_DONE_ACTIVATION", false);
+                samDoneActivationMO = createMemoryObject("SAM_DONE_ACTIVATION", false);
+                tommDoneActivationMO = createMemoryObject("TOMM_DONE_ACTIVATION", false);
+                affordDoneActivationMO = createMemoryObject("AFFORD_DONE_ACTIVATION", false);
                
                 // Create and Populate MindViewer
                 // MindView mv = new MindView("MindView");

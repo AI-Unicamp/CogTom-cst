@@ -30,6 +30,7 @@ public class IntentionalityDetectorCodelet extends Codelet {
    MemoryContainer intentionsContainer;
 
    MemoryObject idActivationMO;
+   MemoryObject idDoneActivationMO;
    MemoryObject eddActivationMO;
 
    // Mindstep the codelet is currently processing.
@@ -84,6 +85,7 @@ public class IntentionalityDetectorCodelet extends Codelet {
          // Activation MOs
          idActivationMO = (MemoryObject) getInput("ID_ACTIVATION");
          eddActivationMO = (MemoryObject) getOutput("EDD_ACTIVATION");
+         idDoneActivationMO = (MemoryObject) getOutput("ID_DONE_ACTIVATION");
       }
    }
 
@@ -121,6 +123,9 @@ public class IntentionalityDetectorCodelet extends Codelet {
       // Deactivate this codelet until the next mind step
       ToMActivationObject self = new ToMActivationObject(mindStep, false);
       idActivationMO.setI(self);
+
+      // Indicates ID processing is done
+      idDoneActivationMO.setI(true);
    }// end proc
 
    @Override

@@ -30,6 +30,7 @@ public class EyeDirectionDetectorCodelet extends Codelet {
 
     MemoryObject eddActivationMO;
     MemoryObject samActivationMO;
+    MemoryObject eddDoneActivationMO;
 
     // Mindstep the codelet is currently processing.
     int mindStep;
@@ -111,6 +112,9 @@ public class EyeDirectionDetectorCodelet extends Codelet {
         // Deactivate this codelet until the next mind step
         ToMActivationObject self = new ToMActivationObject(mindStep, false);
         eddActivationMO.setI(self);
+
+        // Indicates ID processing is done
+        eddDoneActivationMO.setI(true);
     }
 
     /*
