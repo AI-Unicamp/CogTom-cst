@@ -18,58 +18,54 @@ import java.io.IOException;
  */
 public class TheoryOfMindModuleCodelet extends Codelet {
 
-    List<ToMEyeDirection> eyeDirections;
+    MemoryContainer agentsMC;
+    MemoryContainer objectsMC;
+    MemoryContainer intentionsMC;
+    MemoryContainer affordancesMC;
+    MemoryContainer attentionsMC;
+    MemoryContainer sharedAttentionsMC;
+    MemoryContainer beliefsMC;
 
-    MemoryContainer agentsContainer;
-    MemoryContainer objectsContainer;
-    MemoryContainer intentionsContainer;        
-    MemoryContainer attentionsContainer;
-
-    MemoryObject eddActivationMO;
+    MemoryObject idDoneActivationMO;
+    MemoryObject affordDoneActivationMO;
+    MemoryObject eddDoneActivationMO;
+    MemoryObject samDoneActivationMO;
+    MemoryObject idActivationMO;
 
     // Codelets do not seem to record the current time step.
     int mindStep;
 
     public TheoryOfMindModuleCodelet() {
 
-        try {
-            Table entityTable = Table.read().csv("input/eye_directions.csv");
-
-            eyeDirections = new ArrayList<>();
-
-            // Loop through each one of the rows of the tables.
-            for (int i = 0; i < entityTable.rowCount(); i++) {
-                Row r = entityTable.row(i);
-                int step = r.getInt("t");
-                String agt = r.getString("Agent");
-                String obj = r.getString("Object");
-                // Add to List
-                ToMEyeDirection eye = new ToMEyeDirection(step, agt, obj);
-                eyeDirections.add(eye);
-            }
-          } catch (IOException e1) {
-              e1.printStackTrace();
-          }
-        // Started simulation, set mindStep
-        mindStep = 1;
+ 
     }
 
     @Override
     public void accessMemoryObjects() {
         // Memory Containers
-        agentsContainer = (MemoryContainer) getInput("AGENTS");
-        objectsContainer = (MemoryContainer) getInput("OBJECTS");
-        intentionsContainer = (MemoryContainer) getInput("INTENTIONS");
-        attentionsContainer = (MemoryContainer) getOutput("ATTENTIONS");
+        agentsMC = (MemoryContainer) getInput("AGENTS");
+        objectsMC = (MemoryContainer) getInput("OBJECTS");
+        intentionsMC = (MemoryContainer) getInput("INTENTIONS");
+        affordancesMC = (MemoryContainer) getInput("AFFORDANCES")
+        attentionsMC = (MemoryContainer) getInput("ATTENTIONS");
+        sharedAttentionsMC = (MemoryContainer) getInput("SHAREDATTN"); 
         // Activation MOs
-        eddActivationMO = (MemoryObject) getInput("EDD_ACTIVATION");
-
+        idDoneActivationMO = (MemoryObject) getInput("ID_DONE_ACTIVATION");
+        affordDoneActivationMO = (MemoryObject) getInput("AFFORD_DONE_ACTIVATION");
+        eddDoneActivationMO = (MemoryObject) getInput("EDD_DONE_ACTIVATION");
+        samDoneActivationMO = (MemoryObject) getInput("SAM_DONE_ACTIVATION");
+        // To activate the next mindstep
+        idActivationMO = (MemoryObject) getOutput("ID_ACTIVATION");
     }
 
     @Override
     public void calculateActivation() {
         try {
-            if ((boolean) eddActivationMO.getI() == true) {
+            // After all other codelets finished their runs
+            if ((boolean) idDoneActivationMO.getI() == true &&
+                (boolean) affordDoneActivationMO.getI() == true && 
+                (boolean) eddDoneActivationMO.getI() == true &&
+                (boolean) samDoneActivationMO.getI() == true) {
                setActivation(1.0d);
             } else {
                setActivation(0.0d);
@@ -83,26 +79,11 @@ public class TheoryOfMindModuleCodelet extends Codelet {
     public void proc() {
          // Clear out memory containers.
         clearMemory();
-
-        // Get sublists based on the current mind step and populate Memory Objects.
-        for (ToMEyeDirection eye: eyeDirections) {
-            // Entities from the current mindStep
-            if (eye.mindStep() == mindStep) {
-                // Current mindstep
-                attentionsContainer.setI(eye);
-            }
-        }
-        mindStep++;
     }
 
     /*
    * Utility Method to clear out memory contents between simulation cycles.
    */
    private void clearMemory() {
-
-        // Reset Memory Containers at every mind step, since 
-        // the perception memories are not kept between simulation cycles.
-        ArrayList<Memory> attns = attentionsContainer.getAllMemories();
-        attns.clear();
  }
 }
