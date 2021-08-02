@@ -12,7 +12,7 @@ This is an exercise on porting the CogTom cognitive architecture to the CST tool
 - [x] Create all Memory Containers
 - [x] Create Activation Memory Objects
   - [x] Use activation to synchronize the current mind step 
-  - [ ] Execute simulation time steps to the end, create stop criteria (in ID codelet?)
+  - [x] Execute simulation time steps to the end, create stop criteria (in ID codelet?)
 - [x] Create and instantiate Codelets, with inputs and outputs
   - [x] ID
   - [x] EDD
@@ -32,7 +32,14 @@ This is an exercise on porting the CogTom cognitive architecture to the CST tool
   - [x] Read MemoryContainers from ID
   - [x] Create Attention Memory Objects as output
 - [ ] SAM Codelet
+  - [ ] Create base codelet
+  - [ ] Read data from EDD and ID
+  - [ ] Create MC for Shared Attention 
 - [ ] ToMM Codelet
+  - [ ] Create base codelet
+  - [ ] Read ID, EDD, SAM data 
+  - [ ] Create Belief MOs
+  - [ ] Start next step of the simulation
 
 ### User Interface
 - [ ] Re-use MindView to display information about the state of the MindObjects in the simulation
