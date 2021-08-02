@@ -35,7 +35,7 @@ public class SharedAttentionCodelet extends Codelet {
         attentionsContainer = (MemoryContainer) getInput("ATTENTIONS");
         // Activation MOs
         samActivationMO = (MemoryObject) getInput("SAM_ACTIVATION");
-        samDoneActivationMO = (MemoryObject) getOutput("SAM_DONE_ACTIVATION")
+        samDoneActivationMO = (MemoryObject) getOutput("SAM_DONE_ACTIVATION");
 
     }
 
@@ -66,5 +66,5 @@ public class SharedAttentionCodelet extends Codelet {
    */
    private void clearMemory() {
  }
- 
+
 }

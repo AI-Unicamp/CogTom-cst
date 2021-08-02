@@ -46,7 +46,7 @@ public class TheoryOfMindModuleCodelet extends Codelet {
         agentsMC = (MemoryContainer) getInput("AGENTS");
         objectsMC = (MemoryContainer) getInput("OBJECTS");
         intentionsMC = (MemoryContainer) getInput("INTENTIONS");
-        affordancesMC = (MemoryContainer) getInput("AFFORDANCES")
+        affordancesMC = (MemoryContainer) getInput("AFFORDANCES");
         attentionsMC = (MemoryContainer) getInput("ATTENTIONS");
         sharedAttentionsMC = (MemoryContainer) getInput("SHAREDATTN"); 
         // Activation MOs
