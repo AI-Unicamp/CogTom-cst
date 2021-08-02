@@ -32,13 +32,13 @@ This is an exercise on porting the CogTom cognitive architecture to the CST tool
   - [x] Read MemoryContainers from ID
   - [x] Create Attention Memory Objects as output
 - [ ] SAM Codelet
-  - [ ] Create base codelet
+  - [x] Create base codelet
   - [ ] Read data from EDD and ID
-  - [ ] Create MC for Shared Attention 
+  - [ ] Create MemoryContainer for Shared Attention 
 - [ ] ToMM Codelet
-  - [ ] Create base codelet
-  - [ ] Read ID, EDD, SAM data 
-  - [ ] Create Belief MOs
+  - [x] Create base codelet
+  - [ ] Read ID, Affordances, EDD, SAM data 
+  - [ ] Create Belief MOs in Working Memory and Output
   - [ ] Start next step of the simulation
 
 ### User Interface
