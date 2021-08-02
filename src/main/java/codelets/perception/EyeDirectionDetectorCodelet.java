@@ -66,6 +66,7 @@ public class EyeDirectionDetectorCodelet extends Codelet {
         attentionsContainer = (MemoryContainer) getOutput("ATTENTIONS");
         // Activation MOs
         eddActivationMO = (MemoryObject) getInput("EDD_ACTIVATION");
+        eddDoneActivationMO = (MemoryObject) getOutput("EDD_DONE_ACTIVATION");
         samActivationMO = (MemoryObject) getOutput("SAM_ACTIVATION");
 
     }
@@ -113,7 +114,7 @@ public class EyeDirectionDetectorCodelet extends Codelet {
         ToMActivationObject self = new ToMActivationObject(mindStep, false);
         eddActivationMO.setI(self);
 
-        // Indicates ID processing is done
+        // Indicates EDD processing is done
         eddDoneActivationMO.setI(true);
     }
 

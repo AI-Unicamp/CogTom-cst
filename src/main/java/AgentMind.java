@@ -77,10 +77,11 @@ public class AgentMind extends Mind {
                 // ID
                 Codelet id = new IntentionalityDetectorCodelet();
                 id.addInput(idActivationMO);
+                id.addOutput(idDoneActivationMO);
+                id.addOutput(eddActivationMO);
                 id.addOutput(agentsMC);
                 id.addOutput(objectsMC);
                 id.addOutput(intentionsMC);
-                id.addOutput(eddActivationMO);
                 id.setThreshold(1.0d);
                 insertCodelet(id);
 
@@ -90,8 +91,9 @@ public class AgentMind extends Mind {
                 edd.addInput(agentsMC);
                 edd.addInput(objectsMC);
                 edd.addInput(intentionsMC);
-                edd.addOutput(attentionsMC);  
+                edd.addOutput(eddDoneActivationMO);
                 edd.addOutput(samActivationMO);
+                edd.addOutput(attentionsMC);  
                 edd.setThreshold(1.0d);
                 insertCodelet(edd);
 
@@ -118,6 +120,7 @@ public class AgentMind extends Mind {
                 // Create Semantic Memory Codelets
                 Codelet afford = new AffordancesCodelet();
                 afford.addInput(affordActivationMO);
+                afford.addOutput(affordDoneActivationMO);
                 afford.addOutput(affordancesMC);
                 afford.setThreshold(1.0d);
                 insertCodelet(afford);

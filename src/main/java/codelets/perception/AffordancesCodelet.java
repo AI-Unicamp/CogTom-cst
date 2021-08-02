@@ -51,6 +51,7 @@ public class AffordancesCodelet extends Codelet {
             affordancesContainer = (MemoryContainer) getOutput("AFFORDANCES");
             // Activation MO
             affordActivationMO = (MemoryObject) getInput("AFFORD_ACTIVATION");
+            affordDoneActivationMO = (MemoryObject) getOutput("AFFORD_DONE_ACTIVATION");
          }
     }
 
@@ -60,7 +61,7 @@ public class AffordancesCodelet extends Codelet {
             ToMActivationObject act = (ToMActivationObject) affordActivationMO.getI();
             if (act.Activation() == true) {
                // Set mind step for the codelet.
-               setActivation(1.0d);
+                setActivation(1.0d);
             } else {
                 setActivation(0.0d);
             }
