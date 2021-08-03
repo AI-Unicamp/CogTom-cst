@@ -108,16 +108,23 @@ public class AgentMind extends Mind {
                 sam.setThreshold(1.0d);
                 insertCodelet(sam);
 
-                /* ToMM
+                // ToMM
                 Codelet tomm = new TheoryOfMindModuleCodelet();
-                tomm.addInput(tommActivationMO);
+                tomm.addInput(idActivationMO);
+                tomm.addInput(idDoneActivationMO);
+                tomm.addInput(affordDoneActivationMO);
+                tomm.addInput(eddDoneActivationMO);
+                tomm.addInput(samDoneActivationMO);
+                tomm.addInput(agentsMC);
+                tomm.addInput(objectsMC);
+                tomm.addInput(intentionsMC);
+                tomm.addInput(affordancesMC);
                 tomm.addInput(attentionsMC);
                 tomm.addInput(sharedAttentionsMC);
-                tomm.addInput(intentionsMC);
                 tomm.addOutput(idActivationMO);
+                tomm.addOutput(beliefsMC);
                 tomm.setThreshold(1.0d);
                 insertCodelet(tomm);
-                */
 
                 // Create Semantic Memory Codelets
                 Codelet afford = new AffordancesCodelet();
