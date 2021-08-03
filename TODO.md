@@ -39,7 +39,7 @@ This is an exercise on porting the CogTom cognitive architecture to the CST tool
   - [x] Create base codelet
   - [ ] Read ID, Affordances, EDD, SAM data 
   - [ ] Create Belief MOs in Working Memory and Output
-  - [ ] Start next step of the simulation
+  - [x] Start next step of the simulation
 
 ### User Interface
 - [ ] Re-use MindView to display information about the state of the MindObjects in the simulation
