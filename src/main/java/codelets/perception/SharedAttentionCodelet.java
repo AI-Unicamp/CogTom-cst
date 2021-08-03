@@ -98,7 +98,7 @@ public class SharedAttentionCodelet extends Codelet {
                     interested.add(attention.agent());
                 }
             }
-            // Check how many agents are interested on this target person
+            // Check how many agents are interested on this target object
             if (interested.size() > 1) {
                 // More than one, so we can create a shared attention object.
                 SharedAttention sharedAttn = new SharedAttention(interested, obj.name());

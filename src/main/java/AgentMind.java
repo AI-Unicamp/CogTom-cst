@@ -103,6 +103,7 @@ public class AgentMind extends Mind {
                 sam.addInput(agentsMC);
                 sam.addInput(objectsMC);
                 sam.addInput(attentionsMC);
+                sam.addOutput(samDoneActivationMO);
                 sam.addOutput(sharedAttentionsMC);
                 sam.setThreshold(1.0d);
                 insertCodelet(sam);
