@@ -64,12 +64,15 @@ public class SharedAttentionCodelet extends Codelet {
 
         // Find each agent or object in the Attentions Container and list Agents that have an interest on it.
         ArrayList<Memory> agents = agentsMC.getAllMemories();
+        ArrayList<Memory> objects = objectsMC.getAllMemories();
+            
         for(Memory a: agents) {
-            Agent agt = (Agent) a;
-            agt.name();
+            Agent agt = (Agent) a.getI();
         }
-
-        mindStep++;
+            
+        for(Memory o: objects) {
+            Object obj = (Object) o.getI();
+        }
     }
 
     /*
