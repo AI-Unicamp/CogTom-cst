@@ -1,15 +1,15 @@
-package memory.working;
+package memory.data;
 
 /*
 * Class to encapsulate the Entity data read in from the input files for the ID module.
 */
-public class ToMIDData {
+public class IdData {
       
    private int mindStep;
    private String name;
    private boolean isAgent;
 
-   public ToMIDData(int aMindStep, String aName, boolean aIsAgent) {
+   public IdData(int aMindStep, String aName, boolean aIsAgent) {
       name = aName;
       isAgent = aIsAgent;
    }

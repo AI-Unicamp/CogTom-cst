@@ -1,7 +1,8 @@
 package codelets.perception;
 
-import memory.semantic.ToMAffordance;
-import memory.working.ToMActivation;
+import memory.data.AffordanceData;
+import memory.semantic.model.Affordance;
+import memory.working.sync.Activation;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
 import br.unicamp.cst.core.entities.Codelet;
@@ -18,7 +19,7 @@ import java.util.List;
 */
 public class AffordancesCodelet extends Codelet {
 
-    List<ToMAffordance> affordances;
+    List<AffordanceData> affordData;
 
     MemoryContainer affordancesContainer;
     MemoryObject affordActivationMO;
@@ -28,7 +29,7 @@ public class AffordancesCodelet extends Codelet {
     public AffordancesCodelet() {
         try {
             Table affordancesTable = Table.read().csv("input/affordances.csv");
-            affordances = new ArrayList<ToMAffordance>();
+            affordData = new ArrayList<AffordanceData>();
 
             // Loop through each one of the rows of the tables.
             for (int i = 0; i < affordancesTable.rowCount(); i++) {
@@ -36,8 +37,8 @@ public class AffordancesCodelet extends Codelet {
                 String object = r.getString("Object");
                 String afford = r.getString("Affordance");
                 // Add to List
-                ToMAffordance a = new ToMAffordance(object, afford);
-                affordances.add(a);
+                AffordanceData a = new AffordanceData(object, afford);
+                affordData.add(a);
             }
         } catch (IOException e1) {
 			e1.printStackTrace();
@@ -58,7 +59,7 @@ public class AffordancesCodelet extends Codelet {
     @Override
     public void calculateActivation() {
         try {
-            ToMActivation act = (ToMActivation) affordActivationMO.getI();
+            Activation act = (Activation) affordActivationMO.getI();
             if (act.Activation() == true) {
                // Set mind step for the codelet.
                 setActivation(1.0d);
@@ -73,12 +74,13 @@ public class AffordancesCodelet extends Codelet {
     @Override
     public void proc() {
         // Create Affordances Memory Objects
-        for (ToMAffordance a: affordances) {
-               affordancesContainer.setI(a);
+        for (AffordanceData data: affordData) {
+                Affordance afford = new Affordance(data.object(), data.affordance());
+               affordancesContainer.setI(afford);
             }
          
         // This Codelet only runs once, so reset the activation MO
-        ToMActivation self = new ToMActivation(0, false);
+        Activation self = new Activation(0, false);
         affordActivationMO.setI(self);
 
         // Affordances processing is done.

@@ -1,16 +1,14 @@
-package memory.working;
+package memory.working.model;
 
 /*
-* Class to encapsulate the Eye Direction data read in from the input files for the ID module.
+* Class to encapsulate the Entity data read in from the input files.
 */
-public class ToMEddData {
+public class Attention {
       
-   private int mindStep;
    private String agent;
    private String object;
 
-   public ToMEddData(int aMindStep, String aAgent, String aObject) {
-      mindStep = aMindStep;
+   public Attention(String aAgent, String aObject) {
       agent = aAgent;
       object = aObject;
    }
@@ -18,13 +16,6 @@ public class ToMEddData {
    /*
    Setters and Getters
    */
-   public void setMindStep(int aMindStep) {
-      mindStep = aMindStep;
-   }
-
-   public int mindStep() {
-      return mindStep;
-   }
    public void setAgent(String aAgent) {
          agent = aAgent;
    }

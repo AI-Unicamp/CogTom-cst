@@ -1,13 +1,13 @@
-package memory.working;
+package memory.working.model;
 
 /*
 * Class to encapsulate the Entity data read in from the input files.
 */
-public class ToMObject {
+public class Agent {
       
    private String name;
 
-   public ToMObject(String aName) {
+   public Agent(String aName) {
       name = aName;
    }
 

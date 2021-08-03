@@ -8,7 +8,7 @@ import codelets.perception.EyeDirectionDetectorCodelet;
 import codelets.perception.IntentionalityDetectorCodelet;
 import codelets.perception.SharedAttentionCodelet;
 import codelets.perception.TheoryOfMindModuleCodelet;
-import memory.working.ToMActivation;
+import memory.working.sync.Activation;
 import codelets.perception.AffordancesCodelet;
 
 /**
@@ -53,7 +53,7 @@ public class AgentMind extends Mind {
 
                 // Activation MOs
                 // For starting Codelets
-                ToMActivation init = new ToMActivation(0, false);
+                Activation init = new Activation(0, false);
                 idActivationMO = createMemoryObject("ID_ACTIVATION", init);
                 eddActivationMO = createMemoryObject("EDD_ACTIVATION", init);
                 samActivationMO = createMemoryObject("SAM_ACTIVATION", init);
@@ -137,7 +137,7 @@ public class AgentMind extends Mind {
         */
         public void run() {
                 // Start Cognitive Cycle for the first mind step.
-                ToMActivation act = new ToMActivation(1, true);
+                Activation act = new Activation(1, true);
                 idActivationMO.setI(act);
                 affordActivationMO.setI(act);
                 start();

@@ -5,11 +5,13 @@ import br.unicamp.cst.core.entities.Memory;
 import br.unicamp.cst.core.entities.MemoryContainer;
 import br.unicamp.cst.core.entities.MemoryObject;
 import br.unicamp.cst.core.exceptions.CodeletActivationBoundsException;
-import memory.working.ToMActivation;
-import memory.working.ToMAgent;
-import memory.working.ToMIDData;
-import memory.working.ToMIntention;
-import memory.working.ToMObject;
+
+import memory.data.IdData;
+import memory.working.sync.Activation;
+import memory.working.model.Agent;
+import memory.working.model.Intention;
+import memory.working.model.Object;
+
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
 
@@ -24,8 +26,8 @@ import java.util.List;
  */
 public class IntentionalityDetectorCodelet extends Codelet {
 
-   List<ToMIDData> idData;
-   List<ToMIntention> intentions;
+   List<IdData> idData;
+   List<Intention> intentions;
 
    MemoryContainer agentsContainer;
    MemoryContainer objectsContainer;
@@ -54,7 +56,7 @@ public class IntentionalityDetectorCodelet extends Codelet {
 				String name = r.getString("Entity");
 				Boolean isAgent = r.getBoolean("Is_Agent");
             // Add to List
-            ToMIDData data = new ToMIDData(step, name, isAgent);
+            IdData data = new IdData(step, name, isAgent);
             idData.add(data);
 			}
 
@@ -66,7 +68,7 @@ public class IntentionalityDetectorCodelet extends Codelet {
 				String object = r.getString("Object");
             String target = r.getString("Target");
             // Add to list
-            ToMIntention it = new ToMIntention(step, agent, intention, object, target);
+            Intention it = new Intention(step, agent, intention, object, target);
             intentions.add(it);
 			}
 
@@ -98,22 +100,22 @@ public class IntentionalityDetectorCodelet extends Codelet {
       clearMemory();
       
       // Get sublists based on the current mind step and populate Memory Objects.
-      for (ToMIDData e: idData) {
+      for (IdData e: idData) {
          // Entities from the current mindStep
          if (e.mindStep() == mindStep) {
             if (e.isAgent()) {
                // An Agent, create Memory Object and add to Memory Container
-               ToMAgent agent = new ToMAgent(e.name());
+               Agent agent = new Agent(e.name());
                agentsContainer.setI(agent);
             } else {
                // An Object, create Memory Object and add to Memory Container
-               ToMObject obj = new ToMObject(e.name());
+               Object obj = new Object(e.name());
                objectsContainer.setI(obj);
             }
          }
       }
 
-      for (ToMIntention i: intentions) {
+      for (Intention i: intentions) {
          // Entities from the current mindStep
          if (i.mindStep() == mindStep) {
             intentionsContainer.setI(i);
@@ -121,11 +123,11 @@ public class IntentionalityDetectorCodelet extends Codelet {
       }
 
       // Sets EDD activation, indicating it can run now.
-      ToMActivation act = new ToMActivation(mindStep, true);
+      Activation act = new Activation(mindStep, true);
       eddActivationMO.setI(act);
 
       // Deactivate this codelet until the next mind step
-      ToMActivation self = new ToMActivation(mindStep, false);
+      Activation self = new Activation(mindStep, false);
       idActivationMO.setI(self);
 
       // Indicates ID processing is done
@@ -135,7 +137,7 @@ public class IntentionalityDetectorCodelet extends Codelet {
    @Override
    public void calculateActivation() {
       try {
-         ToMActivation act = (ToMActivation) idActivationMO.getI();
+         Activation act = (Activation) idActivationMO.getI();
          if (act.Activation() == true) {
             // Set mind step for the codelet.
             setActivation(1.0d);

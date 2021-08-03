@@ -1,16 +1,16 @@
-package memory.working;
+package memory.working.sync;
 
 /*
 * Activation object to indicate that the Codelet should run, specifying the current simulation step
 * to be handled.
 */
-public class ToMActivation {
+public class Activation {
     private int mindStep;
-    private boolean activation;
+    private boolean active;
 
-    public ToMActivation(int aMindStep, boolean aActivation) {
+    public Activation(int aMindStep, boolean aActive) {
         mindStep = aMindStep;
-        activation = aActivation;
+        active = aActive;
     }
 
     /*
@@ -24,11 +24,11 @@ public class ToMActivation {
         return mindStep;
     }
 
-    public void setActivation(boolean aActivation) {
-        activation = aActivation;
+    public void setActivation(boolean aActive) {
+        active = aActive;
     }
 
     public boolean Activation() {
-        return activation;
+        return active;
     }
 }

@@ -1,16 +1,16 @@
-package memory.working;
+package memory.working.model;
 
 import java.util.ArrayList;
 
 /*
 * Class to encapsulate the Shared Attention data on Working Memory.
 */
-public class ToMSharedAttention {
+public class SharedAttention {
       
    private ArrayList<String> agents;
    private String object;
 
-   public ToMSharedAttention(ArrayList<String> aAgents, String aObject) {
+   public SharedAttention(ArrayList<String> aAgents, String aObject) {
       agents = aAgents;
       object = aObject;
    }
