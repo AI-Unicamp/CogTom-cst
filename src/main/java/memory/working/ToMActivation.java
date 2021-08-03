@@ -4,11 +4,11 @@ package memory.working;
 * Activation object to indicate that the Codelet should run, specifying the current simulation step
 * to be handled.
 */
-public class ToMActivationObject {
+public class ToMActivation {
     private int mindStep;
     private boolean activation;
 
-    public ToMActivationObject(int aMindStep, boolean aActivation) {
+    public ToMActivation(int aMindStep, boolean aActivation) {
         mindStep = aMindStep;
         activation = aActivation;
     }

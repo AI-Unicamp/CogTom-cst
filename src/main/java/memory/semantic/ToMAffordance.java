@@ -3,12 +3,12 @@ package memory.semantic;
 /*
 * Class to encapsulate the Theory of Mind Affordances objects in Memory.
 */
-public class ToMAffordances {
+public class ToMAffordance {
 
     private String object;
     private String affordance;
 
-    public ToMAffordances(String aObject, String aAffordance) {
+    public ToMAffordance(String aObject, String aAffordance) {
         object = aObject;
         affordance = aAffordance;
     }

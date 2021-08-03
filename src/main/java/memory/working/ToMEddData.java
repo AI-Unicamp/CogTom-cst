@@ -1,15 +1,15 @@
 package memory.working;
 
 /*
-* Class to encapsulate the Entity data read in from the input files.
+* Class to encapsulate the Eye Direction data read in from the input files for the ID module.
 */
-public class ToMEyeDirection {
+public class ToMEddData {
       
    private int mindStep;
    private String agent;
    private String object;
 
-   public ToMEyeDirection(int aMindStep, String aAgent, String aObject) {
+   public ToMEddData(int aMindStep, String aAgent, String aObject) {
       mindStep = aMindStep;
       agent = aAgent;
       object = aObject;

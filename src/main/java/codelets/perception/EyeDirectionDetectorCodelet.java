@@ -5,8 +5,9 @@ import br.unicamp.cst.core.entities.Memory;
 import br.unicamp.cst.core.entities.MemoryContainer;
 import br.unicamp.cst.core.entities.MemoryObject;
 import br.unicamp.cst.core.exceptions.CodeletActivationBoundsException;
-import memory.working.ToMActivationObject;
-import memory.working.ToMEyeDirection;
+import memory.working.ToMActivation;
+import memory.working.ToMAgent;
+import memory.working.ToMEddData;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
 
@@ -21,7 +22,7 @@ import java.io.IOException;
  */
 public class EyeDirectionDetectorCodelet extends Codelet {
 
-    List<ToMEyeDirection> eyeDirections;
+    List<ToMEddData> eddData;
 
     MemoryContainer agentsContainer;
     MemoryContainer objectsContainer;
@@ -40,7 +41,7 @@ public class EyeDirectionDetectorCodelet extends Codelet {
         try {
             Table entityTable = Table.read().csv("input/eye_directions.csv");
 
-            eyeDirections = new ArrayList<>();
+            eddData = new ArrayList<>();
 
             // Loop through each one of the rows of the tables.
             for (int i = 0; i < entityTable.rowCount(); i++) {
@@ -49,8 +50,8 @@ public class EyeDirectionDetectorCodelet extends Codelet {
                 String agt = r.getString("Agent");
                 String obj = r.getString("Object");
                 // Add to List
-                ToMEyeDirection eye = new ToMEyeDirection(step, agt, obj);
-                eyeDirections.add(eye);
+                ToMEddData data = new ToMEddData(step, agt, obj);
+                eddData.add(data);
             }
           } catch (IOException e1) {
               e1.printStackTrace();
@@ -68,13 +69,12 @@ public class EyeDirectionDetectorCodelet extends Codelet {
         eddActivationMO = (MemoryObject) getInput("EDD_ACTIVATION");
         eddDoneActivationMO = (MemoryObject) getOutput("EDD_DONE_ACTIVATION");
         samActivationMO = (MemoryObject) getOutput("SAM_ACTIVATION");
-
     }
 
     @Override
     public void calculateActivation() {
         try {
-            ToMActivationObject act = (ToMActivationObject) eddActivationMO.getI();
+            ToMActivation act = (ToMActivation) eddActivationMO.getI();
             if (act.Activation() == true) {
                // Set mind step for the codelet.
                setActivation(1.0d);
@@ -95,11 +95,11 @@ public class EyeDirectionDetectorCodelet extends Codelet {
         // Get Agents from the Memory Container
         ArrayList<Memory> agents = agentsContainer.getAllMemories();
         for (Memory a: agents) {
-            String agt = (String) a.getI();
-            // Search for the agent Eye Directions in the working memory.
-            for (ToMEyeDirection eye: eyeDirections) {
+            ToMAgent agt = (ToMAgent) a.getI();
+            // Search for the agent Eye Directions in the EDD Data store
+            for (ToMEddData eye: eddData) {
                 // Entities from the current mindStep
-                if (eye.mindStep() == mindStep && eye.agent() == agt) {
+                if (eye.mindStep() == mindStep && eye.agent() == agt.name()) {
                     // Add to container.
                     attentionsContainer.setI(eye);
                 }
@@ -107,11 +107,11 @@ public class EyeDirectionDetectorCodelet extends Codelet {
         }
 
         // Sets SAM activation, indicating it can run now.
-        ToMActivationObject act = new ToMActivationObject(mindStep, true);
+        ToMActivation act = new ToMActivation(mindStep, true);
         samActivationMO.setI(act);
 
         // Deactivate this codelet until the next mind step
-        ToMActivationObject self = new ToMActivationObject(mindStep, false);
+        ToMActivation self = new ToMActivation(mindStep, false);
         eddActivationMO.setI(self);
 
         // Indicates EDD processing is done
