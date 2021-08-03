@@ -1,4 +1,4 @@
-package memory.data;
+package br.unicamp.multimodalai.cogtom.memory.data;
 
 /*
 * Class to encapsulate the Entity data read in from the input files for the ID module.

@@ -1,4 +1,4 @@
-package memory.working.sync;
+package br.unicamp.multimodalai.cogtom.memory.working.sync;
 
 /*
 * Activation object to indicate that the Codelet should run, specifying the current simulation step

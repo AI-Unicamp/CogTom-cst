@@ -1,16 +1,14 @@
-package memory.data;
+package br.unicamp.multimodalai.cogtom.memory.working.model;
 
 /*
-* Class to encapsulate the Eye Direction data read in from the input files for the ID module.
+* Class to encapsulate the Entity data read in from the input files.
 */
-public class EddData {
+public class Attention {
       
-   private int mindStep;
    private String agent;
    private String target;
 
-   public EddData(int aMindStep, String aAgent, String aTarget) {
-      mindStep = aMindStep;
+   public Attention(String aAgent, String aTarget) {
       agent = aAgent;
       target = aTarget;
    }
@@ -18,13 +16,6 @@ public class EddData {
    /*
    Setters and Getters
    */
-   public void setMindStep(int aMindStep) {
-      mindStep = aMindStep;
-   }
-
-   public int mindStep() {
-      return mindStep;
-   }
    public void setAgent(String aAgent) {
          agent = aAgent;
    }

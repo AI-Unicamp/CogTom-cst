@@ -1,14 +1,14 @@
-package memory.data;
+package br.unicamp.multimodalai.cogtom.memory.semantic.model;
 
 /*
-* Class to encapsulate the Affordances read in from the data file.
+* Class to encapsulate the Theory of Mind Affordances objects in Memory.
 */
-public class AffordanceData {
+public class Affordance {
 
     private String object;
     private String affordance;
 
-    public AffordanceData(String aObject, String aAffordance) {
+    public Affordance(String aObject, String aAffordance) {
         object = aObject;
         affordance = aAffordance;
     }

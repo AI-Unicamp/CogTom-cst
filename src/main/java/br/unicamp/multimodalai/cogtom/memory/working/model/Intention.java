@@ -1,4 +1,4 @@
-package memory.working.model;
+package br.unicamp.multimodalai.cogtom.memory.working.model;
 
 /*
 * Class to encapsulate the Intention data read in from the input files.

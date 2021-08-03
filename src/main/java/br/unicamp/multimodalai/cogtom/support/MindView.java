@@ -1,4 +1,4 @@
-package support;
+package br.unicamp.multimodalai.cogtom.support;
 
 import br.unicamp.cst.core.entities.Memory;
 import java.util.ArrayList;

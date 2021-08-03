@@ -1,13 +1,13 @@
-package memory.working.model;
+package br.unicamp.multimodalai.cogtom.memory.working.model;
 
 /*
 * Class to encapsulate the Entity data read in from the input files.
 */
-public class Agent {
+public class Object {
       
    private String name;
 
-   public Agent(String aName) {
+   public Object(String aName) {
       name = aName;
    }
 
