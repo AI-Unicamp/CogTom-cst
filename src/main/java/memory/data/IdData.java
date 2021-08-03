@@ -10,6 +10,7 @@ public class IdData {
    private boolean isAgent;
 
    public IdData(int aMindStep, String aName, boolean aIsAgent) {
+      mindStep = aMindStep;
       name = aName;
       isAgent = aIsAgent;
    }
