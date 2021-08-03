@@ -24,11 +24,11 @@ public class Activation {
         return mindStep;
     }
 
-    public void setActivation(boolean aActive) {
+    public void setActive(boolean aActive) {
         active = aActive;
     }
 
-    public boolean Activation() {
+    public boolean Active() {
         return active;
     }
 }

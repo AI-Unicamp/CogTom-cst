@@ -97,16 +97,17 @@ public class AgentMind extends Mind {
                 edd.setThreshold(1.0d);
                 insertCodelet(edd);
 
-                /* SAM
+                // SAM
                 Codelet sam = new SharedAttentionCodelet();
                 sam.addInput(samActivationMO);
+                sam.addInput(agentsMC);
+                sam.addInput(objectsMC);
                 sam.addInput(attentionsMC);
                 sam.addOutput(sharedAttentionsMC);
-                sam.addOutput(tommActivationMO);
                 sam.setThreshold(1.0d);
                 insertCodelet(sam);
 
-                // ToMM
+                /* ToMM
                 Codelet tomm = new TheoryOfMindModuleCodelet();
                 tomm.addInput(tommActivationMO);
                 tomm.addInput(attentionsMC);

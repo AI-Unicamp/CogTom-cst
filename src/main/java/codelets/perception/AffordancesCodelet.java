@@ -60,7 +60,7 @@ public class AffordancesCodelet extends Codelet {
     public void calculateActivation() {
         try {
             Activation act = (Activation) affordActivationMO.getI();
-            if (act.Activation() == true) {
+            if (act.Active() == true) {
                // Set mind step for the codelet.
                 setActivation(1.0d);
             } else {

@@ -29,9 +29,9 @@ public class IntentionalityDetectorCodelet extends Codelet {
    List<IdData> idData;
    List<Intention> intentions;
 
-   MemoryContainer agentsContainer;
-   MemoryContainer objectsContainer;
-   MemoryContainer intentionsContainer;
+   MemoryContainer agentsMC;
+   MemoryContainer objectsMC;
+   MemoryContainer intentionsMC;
 
    MemoryObject idActivationMO;
    MemoryObject idDoneActivationMO;
@@ -83,9 +83,9 @@ public class IntentionalityDetectorCodelet extends Codelet {
    public void accessMemoryObjects() {
       synchronized (this) {
          // Memory Containers
-         agentsContainer = (MemoryContainer) getOutput("AGENTS");
-         objectsContainer = (MemoryContainer) getOutput("OBJECTS");
-         intentionsContainer = (MemoryContainer) getOutput("INTENTIONS");
+         agentsMC = (MemoryContainer) getOutput("AGENTS");
+         objectsMC = (MemoryContainer) getOutput("OBJECTS");
+         intentionsMC = (MemoryContainer) getOutput("INTENTIONS");
          // Activation MOs
          idActivationMO = (MemoryObject) getInput("ID_ACTIVATION");
          eddActivationMO = (MemoryObject) getOutput("EDD_ACTIVATION");
@@ -106,11 +106,11 @@ public class IntentionalityDetectorCodelet extends Codelet {
             if (e.isAgent()) {
                // An Agent, create Memory Object and add to Memory Container
                Agent agent = new Agent(e.name());
-               agentsContainer.setI(agent);
+               agentsMC.setI(agent);
             } else {
                // An Object, create Memory Object and add to Memory Container
                Object obj = new Object(e.name());
-               objectsContainer.setI(obj);
+               objectsMC.setI(obj);
             }
          }
       }
@@ -118,7 +118,7 @@ public class IntentionalityDetectorCodelet extends Codelet {
       for (Intention i: intentions) {
          // Entities from the current mindStep
          if (i.mindStep() == mindStep) {
-            intentionsContainer.setI(i);
+            intentionsMC.setI(i);
          }
       }
 
@@ -138,7 +138,7 @@ public class IntentionalityDetectorCodelet extends Codelet {
    public void calculateActivation() {
       try {
          Activation act = (Activation) idActivationMO.getI();
-         if (act.Activation() == true) {
+         if (act.Active() == true) {
             // Set mind step for the codelet.
             setActivation(1.0d);
             mindStep = act.mindStep();
@@ -157,11 +157,11 @@ public class IntentionalityDetectorCodelet extends Codelet {
 
       // Reset Memory Containers at every mind step, since 
       // the perception memories are not kept between simulation cycles.
-      ArrayList<Memory> agts = agentsContainer.getAllMemories();
+      ArrayList<Memory> agts = agentsMC.getAllMemories();
       agts.clear();
-      ArrayList<Memory> objs = objectsContainer.getAllMemories();
+      ArrayList<Memory> objs = objectsMC.getAllMemories();
       objs.clear();
-      ArrayList<Memory> ints = intentionsContainer.getAllMemories();
+      ArrayList<Memory> ints = intentionsMC.getAllMemories();
       ints.clear();
    }
 

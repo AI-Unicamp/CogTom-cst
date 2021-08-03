@@ -25,10 +25,10 @@ public class EyeDirectionDetectorCodelet extends Codelet {
 
     List<EddData> eddData;
 
-    MemoryContainer agentsContainer;
-    MemoryContainer objectsContainer;
-    MemoryContainer intentionsContainer;        
-    MemoryContainer attentionsContainer;
+    MemoryContainer agentsMC;
+    MemoryContainer objectsMC;
+    MemoryContainer intentionsMC;        
+    MemoryContainer attentionsMC;
 
     MemoryObject eddActivationMO;
     MemoryObject samActivationMO;
@@ -62,10 +62,10 @@ public class EyeDirectionDetectorCodelet extends Codelet {
     @Override
     public void accessMemoryObjects() {
         // Memory Containers
-        agentsContainer = (MemoryContainer) getInput("AGENTS");
-        objectsContainer = (MemoryContainer) getInput("OBJECTS");
-        intentionsContainer = (MemoryContainer) getInput("INTENTIONS");
-        attentionsContainer = (MemoryContainer) getOutput("ATTENTIONS");
+        agentsMC = (MemoryContainer) getInput("AGENTS");
+        objectsMC = (MemoryContainer) getInput("OBJECTS");
+        intentionsMC = (MemoryContainer) getInput("INTENTIONS");
+        attentionsMC = (MemoryContainer) getOutput("ATTENTIONS");
         // Activation MOs
         eddActivationMO = (MemoryObject) getInput("EDD_ACTIVATION");
         eddDoneActivationMO = (MemoryObject) getOutput("EDD_DONE_ACTIVATION");
@@ -76,7 +76,7 @@ public class EyeDirectionDetectorCodelet extends Codelet {
     public void calculateActivation() {
         try {
             Activation act = (Activation) eddActivationMO.getI();
-            if (act.Activation() == true) {
+            if (act.Active() == true) {
                // Set mind step for the codelet.
                setActivation(1.0d);
                mindStep = act.mindStep();
@@ -94,7 +94,7 @@ public class EyeDirectionDetectorCodelet extends Codelet {
         clearMemory();
 
         // Get Agents from the Memory Container
-        ArrayList<Memory> agents = agentsContainer.getAllMemories();
+        ArrayList<Memory> agents = agentsMC.getAllMemories();
         for (Memory a: agents) {
             Agent agt = (Agent) a.getI();
             // Search for the agent Eye Directions in the EDD Data store
@@ -102,7 +102,7 @@ public class EyeDirectionDetectorCodelet extends Codelet {
                 // Entities from the current mindStep
                 if (eye.mindStep() == mindStep && eye.agent() == agt.name()) {
                     // Add to container.
-                    attentionsContainer.setI(eye);
+                    attentionsMC.setI(eye);
                 }
             }
         }
@@ -126,7 +126,7 @@ public class EyeDirectionDetectorCodelet extends Codelet {
 
         // Reset Memory Containers at every mind step, since 
         // the perception memories are not kept between simulation cycles.
-        ArrayList<Memory> attns = attentionsContainer.getAllMemories();
+        ArrayList<Memory> attns = attentionsMC.getAllMemories();
         attns.clear();
  }
 }
