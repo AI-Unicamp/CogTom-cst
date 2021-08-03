@@ -25,6 +25,7 @@ public class SharedAttentionCodelet extends Codelet {
     MemoryContainer sharedAttentionsMC;
     MemoryObject samActivationMO;
     MemoryObject samDoneActivationMO;
+    MemoryObject tommActivationMO;
 
     // The current mindstep
     int mindStep;
@@ -43,6 +44,7 @@ public class SharedAttentionCodelet extends Codelet {
         // Activation MOs
         samActivationMO = (MemoryObject) getInput("SAM_ACTIVATION");
         samDoneActivationMO = (MemoryObject) getOutput("SAM_DONE_ACTIVATION");
+        tommActivationMO = (MemoryObject) getOutput("TOMM_ACTIVATION");
     }
 
     @Override
@@ -110,8 +112,12 @@ public class SharedAttentionCodelet extends Codelet {
         Activation self = new Activation(mindStep, false);
         samActivationMO.setI(self);
 
-        // Indicates EDD processing is done
+        // Indicates SAM processing is done
         samDoneActivationMO.setI(true);
+
+        // Sets TOMM activation, indicating it can run now.
+        Activation act = new Activation(mindStep, true);
+        tommActivationMO.setI(act);
     }
 
     /*
@@ -123,5 +129,4 @@ public class SharedAttentionCodelet extends Codelet {
         ArrayList<Memory> sharedAttns = sharedAttentionsMC.getAllMemories();
         sharedAttns.clear();
    }
-
 }
