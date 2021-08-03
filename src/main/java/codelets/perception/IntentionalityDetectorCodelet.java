@@ -39,8 +39,13 @@ public class IntentionalityDetectorCodelet extends Codelet {
 
    // Mindstep the codelet is currently processing.
    int mindStep;
+   // Max mindstep for the simulaton
+   int maxMindStep;
 
    public IntentionalityDetectorCodelet() {
+
+      // to control the end of the simulation
+      maxMindStep = 0;
 
       try {
 			Table entityTable = Table.read().csv("input/entities.csv");
@@ -56,6 +61,9 @@ public class IntentionalityDetectorCodelet extends Codelet {
 				String name = r.getString("Entity");
 				Boolean isAgent = r.getBoolean("Is_Agent");
             // Add to List
+            if (step > maxMindStep) {
+               maxMindStep = step;
+            }
             IdData data = new IdData(step, name, isAgent);
             idData.add(data);
 			}
@@ -96,6 +104,12 @@ public class IntentionalityDetectorCodelet extends Codelet {
    @Override
    public void proc() {
 
+      if (mindStep > maxMindStep) {
+         System.out.println("Simulation ended.");
+         System.exit(0);
+      }
+
+      System.out.println("Simulation running mind step: " + mindStep);
       // Clear out memory containers.
       clearMemory();
       

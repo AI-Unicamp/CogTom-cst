@@ -104,13 +104,14 @@ public class AgentMind extends Mind {
                 sam.addInput(objectsMC);
                 sam.addInput(attentionsMC);
                 sam.addOutput(samDoneActivationMO);
+                sam.addOutput(tommActivationMO);
                 sam.addOutput(sharedAttentionsMC);
                 sam.setThreshold(1.0d);
                 insertCodelet(sam);
 
                 // ToMM
                 Codelet tomm = new TheoryOfMindModuleCodelet();
-                tomm.addInput(idActivationMO);
+                tomm.addInput(tommActivationMO);
                 tomm.addInput(idDoneActivationMO);
                 tomm.addInput(affordDoneActivationMO);
                 tomm.addInput(eddDoneActivationMO);
@@ -137,8 +138,7 @@ public class AgentMind extends Mind {
                 // sets a time step for running the codelets to avoid heating too much your
                 // machine
                 for (Codelet c : this.getCodeRack().getAllCodelets())
-                        // probably 1 second
-                        c.setTimeStep(1000);
+                        c.setTimeStep(100);
         }
 
         /*
