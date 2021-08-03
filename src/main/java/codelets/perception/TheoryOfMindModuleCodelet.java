@@ -4,6 +4,7 @@ import br.unicamp.cst.core.entities.Codelet;
 import br.unicamp.cst.core.entities.MemoryContainer;
 import br.unicamp.cst.core.entities.MemoryObject;
 import br.unicamp.cst.core.exceptions.CodeletActivationBoundsException;
+import memory.working.sync.Activation;
 
 /**
  * ToMM Codelet
@@ -22,14 +23,13 @@ public class TheoryOfMindModuleCodelet extends Codelet {
     MemoryObject affordDoneActivationMO;
     MemoryObject eddDoneActivationMO;
     MemoryObject samDoneActivationMO;
+    MemoryObject tommActivationMO;
     MemoryObject idActivationMO;
 
-    // Codelets do not seem to record the current time step.
+    // The current mindstep
     int mindStep;
 
     public TheoryOfMindModuleCodelet() {
-
- 
     }
 
     @Override
@@ -46,6 +46,7 @@ public class TheoryOfMindModuleCodelet extends Codelet {
         affordDoneActivationMO = (MemoryObject) getInput("AFFORD_DONE_ACTIVATION");
         eddDoneActivationMO = (MemoryObject) getInput("EDD_DONE_ACTIVATION");
         samDoneActivationMO = (MemoryObject) getInput("SAM_DONE_ACTIVATION");
+        tommActivationMO = (MemoryObject) getInput("TOMM_ACTIVATION");
         // To activate the next mindstep
         idActivationMO = (MemoryObject) getOutput("ID_ACTIVATION");
     }
@@ -58,7 +59,14 @@ public class TheoryOfMindModuleCodelet extends Codelet {
                 (boolean) affordDoneActivationMO.getI() == true && 
                 (boolean) eddDoneActivationMO.getI() == true &&
                 (boolean) samDoneActivationMO.getI() == true) {
-               setActivation(1.0d);
+                    Activation act = (Activation) tommActivationMO.getI();
+                    if (act.Active() == true) {
+                        // Set mind step for the codelet.
+                        setActivation(1.0d);
+                        mindStep = act.mindStep();
+                    } else {
+                        setActivation(0.0d);     
+                    }
             } else {
                setActivation(0.0d);
             }
@@ -71,6 +79,20 @@ public class TheoryOfMindModuleCodelet extends Codelet {
     public void proc() {
          // Clear out memory containers.
         clearMemory();
+
+        // Deactivate this codelet until the next mind step
+        Activation self = new Activation(mindStep, false);
+        tommActivationMO.setI(self);
+
+        // Clear codelets activation statuses
+        idDoneActivationMO.setI(false);
+        eddDoneActivationMO.setI(false);
+        samDoneActivationMO.setI(false);
+    
+        // Sets ID activation for the next step.
+        mindStep++;
+        Activation act = new Activation(mindStep, true);
+        idActivationMO.setI(act);
     }
 
     /*
