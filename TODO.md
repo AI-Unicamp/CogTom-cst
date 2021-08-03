@@ -31,10 +31,10 @@ This is an exercise on porting the CogTom cognitive architecture to the CST tool
   - [x] Read eye direction data from file
   - [x] Read MemoryContainers from ID
   - [x] Create Attention Memory Objects as output
-- [ ] SAM Codelet
+- [x] SAM Codelet
   - [x] Create base codelet
-  - [ ] Read data from EDD and ID
-  - [ ] Create MemoryContainer for Shared Attention 
+  - [x] Read data from EDD and ID
+  - [x] Create MemoryContainer for Shared Attention 
 - [ ] ToMM Codelet
   - [x] Create base codelet
   - [ ] Read ID, Affordances, EDD, SAM data 

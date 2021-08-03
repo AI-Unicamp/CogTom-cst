@@ -9,7 +9,9 @@ import br.unicamp.cst.core.entities.MemoryObject;
 import br.unicamp.cst.core.exceptions.CodeletActivationBoundsException;
 
 import memory.working.model.Agent;
+import memory.working.model.Attention;
 import memory.working.model.Object;
+import memory.working.model.SharedAttention;
 import memory.working.sync.Activation;
 
 /**
@@ -20,6 +22,7 @@ public class SharedAttentionCodelet extends Codelet {
     MemoryContainer agentsMC;
     MemoryContainer objectsMC;
     MemoryContainer attentionsMC;
+    MemoryContainer sharedAttentionsMC;
     MemoryObject samActivationMO;
     MemoryObject samDoneActivationMO;
 
@@ -36,6 +39,7 @@ public class SharedAttentionCodelet extends Codelet {
         agentsMC = (MemoryContainer) getInput("AGENTS");
         objectsMC = (MemoryContainer) getInput("OBJECTS");
         attentionsMC = (MemoryContainer) getInput("ATTENTIONS");
+        sharedAttentionsMC = (MemoryContainer) getOutput("SHAREDATTN");
         // Activation MOs
         samActivationMO = (MemoryObject) getInput("SAM_ACTIVATION");
         samDoneActivationMO = (MemoryObject) getOutput("SAM_DONE_ACTIVATION");
@@ -68,18 +72,56 @@ public class SharedAttentionCodelet extends Codelet {
             
         for(Memory a: agents) {
             Agent agt = (Agent) a.getI();
+            ArrayList<Memory> attentions = attentionsMC.getAllMemories();
+            ArrayList<String> interested = new ArrayList<String>();
+            for (Memory at: attentions) {
+                Attention attention = (Attention) at.getI();
+                if (agt.name().equals(attention.target())) {
+                    interested.add(attention.agent());
+                }
+            }
+            // Check how many agents are interested on this target person
+            if (interested.size() > 1) {
+                // More than one, so we can create a shared attention object.
+                SharedAttention sharedAttn = new SharedAttention(interested, agt.name());
+                sharedAttentionsMC.setI(sharedAttn);
+            }
         }
             
         for(Memory o: objects) {
             Object obj = (Object) o.getI();
+            ArrayList<Memory> attentions = attentionsMC.getAllMemories();
+            ArrayList<String> interested = new ArrayList<String>();
+            for (Memory at: attentions) {
+                Attention attention = (Attention) at.getI();
+                if (obj.name().equals(attention.target())) {
+                    interested.add(attention.agent());
+                }
+            }
+            // Check how many agents are interested on this target person
+            if (interested.size() > 1) {
+                // More than one, so we can create a shared attention object.
+                SharedAttention sharedAttn = new SharedAttention(interested, obj.name());
+                sharedAttentionsMC.setI(sharedAttn);
+            }
         }
+
+        // Deactivate this codelet until the next mind step
+        Activation self = new Activation(mindStep, false);
+        samActivationMO.setI(self);
+
+        // Indicates EDD processing is done
+        samDoneActivationMO.setI(true);
     }
 
     /*
    * Utility Method to clear out memory contents between simulation cycles.
    */
    private void clearMemory() {
-
+        // Reset Memory Containers at every mind step, since 
+        // the perception memories are not kept between simulation cycles.
+        ArrayList<Memory> sharedAttns = sharedAttentionsMC.getAllMemories();
+        sharedAttns.clear();
    }
 
 }

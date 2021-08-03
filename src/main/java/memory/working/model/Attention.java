@@ -6,11 +6,11 @@ package memory.working.model;
 public class Attention {
       
    private String agent;
-   private String object;
+   private String target;
 
-   public Attention(String aAgent, String aObject) {
+   public Attention(String aAgent, String aTarget) {
       agent = aAgent;
-      object = aObject;
+      target = aTarget;
    }
 
    /*
@@ -24,11 +24,11 @@ public class Attention {
       return agent;
    }
 
-   public void setObject(String aObject) {
-         object = aObject;
+   public void setTarget(String aTarget) {
+         target = aTarget;
    }
 
-   public String object() {
-      return object;
+   public String target() {
+      return target;
    } 
 }

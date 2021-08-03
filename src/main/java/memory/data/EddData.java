@@ -7,12 +7,12 @@ public class EddData {
       
    private int mindStep;
    private String agent;
-   private String object;
+   private String target;
 
-   public EddData(int aMindStep, String aAgent, String aObject) {
+   public EddData(int aMindStep, String aAgent, String aTarget) {
       mindStep = aMindStep;
       agent = aAgent;
-      object = aObject;
+      target = aTarget;
    }
 
    /*
@@ -33,11 +33,11 @@ public class EddData {
       return agent;
    }
 
-   public void setObject(String aObject) {
-         object = aObject;
+   public void setTarget(String aTarget) {
+         target = aTarget;
    }
 
-   public String object() {
-      return object;
+   public String target() {
+      return target;
    } 
 }

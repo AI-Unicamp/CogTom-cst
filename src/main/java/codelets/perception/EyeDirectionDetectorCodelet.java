@@ -9,6 +9,7 @@ import br.unicamp.cst.core.exceptions.CodeletActivationBoundsException;
 import memory.data.EddData;
 import memory.working.sync.Activation;
 import memory.working.model.Agent;
+import memory.working.model.Attention;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
 
@@ -49,9 +50,9 @@ public class EyeDirectionDetectorCodelet extends Codelet {
                 Row r = entityTable.row(i);
                 int step = r.getInt("t");
                 String agt = r.getString("Agent");
-                String obj = r.getString("Object");
+                String tgt = r.getString("Target");
                 // Add to List
-                EddData data = new EddData(step, agt, obj);
+                EddData data = new EddData(step, agt, tgt);
                 eddData.add(data);
             }
           } catch (IOException e1) {
@@ -98,11 +99,12 @@ public class EyeDirectionDetectorCodelet extends Codelet {
         for (Memory a: agents) {
             Agent agt = (Agent) a.getI();
             // Search for the agent Eye Directions in the EDD Data store
-            for (EddData eye: eddData) {
+            for (EddData data: eddData) {
                 // Entities from the current mindStep
-                if (eye.mindStep() == mindStep && eye.agent() == agt.name()) {
+                if (data.mindStep() == mindStep && data.agent().equals(agt.name())) {
                     // Add to container.
-                    attentionsMC.setI(eye);
+                    Attention att = new Attention(data.agent(), data.target());
+                    attentionsMC.setI(att);
                 }
             }
         }
