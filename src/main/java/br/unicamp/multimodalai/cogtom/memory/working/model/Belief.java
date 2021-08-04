@@ -1,7 +1,5 @@
 package br.unicamp.multimodalai.cogtom.memory.working.model;
 
-import java.util.ArrayList;
-
 /*
 * Class to encapsulate the Belief data on Working Memory.
 * Beliefs are structures of the form:
@@ -25,7 +23,7 @@ public class Belief {
       agent = aAgent;
       object = aObject;
    }
-   
+
    public Belief(String aAgent, String aObject, String aAffordance, String aTgtObject) {
       agent = aAgent;
       object = aObject;
@@ -69,9 +67,9 @@ public class Belief {
    }
 
    /*
-   * Output utility
+   * Output utility - overrides base class Object
    */
-   public String fullBelief() {
+   public String toStr() {
       String fullBelief = agent + " " + object + " " + mentalState + " " + affordance + " " + tgtObject;
       return fullBelief;
    }
