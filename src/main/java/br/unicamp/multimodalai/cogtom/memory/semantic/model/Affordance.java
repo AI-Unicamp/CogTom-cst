@@ -23,6 +23,7 @@ public class Affordance {
     public String object() {
         return object;
     }
+    
     public void setAffordance(String aAffordance) {
         affordance = aAffordance;
     }

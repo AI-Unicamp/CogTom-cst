@@ -1,9 +1,16 @@
 package br.unicamp.multimodalai.cogtom.codelets.perception;
 
+import java.util.ArrayList;
+import java.util.stream.Collectors;
+
 import br.unicamp.cst.core.entities.Codelet;
+import br.unicamp.cst.core.entities.Memory;
 import br.unicamp.cst.core.entities.MemoryContainer;
 import br.unicamp.cst.core.entities.MemoryObject;
 import br.unicamp.cst.core.exceptions.CodeletActivationBoundsException;
+import br.unicamp.multimodalai.cogtom.memory.working.model.Agent;
+import br.unicamp.multimodalai.cogtom.memory.working.model.Attention;
+import br.unicamp.multimodalai.cogtom.memory.working.model.Belief;
 import br.unicamp.multimodalai.cogtom.memory.working.sync.Activation;
 
 /**
@@ -79,6 +86,24 @@ public class TheoryOfMindModuleCodelet extends Codelet {
     public void proc() {
          // Clear out memory containers.
         clearMemory();
+
+        ArrayList<Belief> beliefs = new ArrayList<>();
+
+        // First step to compose beliefs is to retrieve for an Agent their objects of interest on a scene.
+        int numAgents = agentsMC.getAllMemories().size();
+        for (int i = 0; i < numAgents; i++) {
+            Agent agt = (Agent) agentsMC.getI(i);
+            // For this agent get the objects of interest from EDD.
+            int numAttns = attentionsMC.getAllMemories().size();
+            for (int j = 0; j < numAttns; j++) {
+                Attention attn = (Attention) attentionsMC.getI(j);
+                if (attn.agent().equals(agt.name())) {
+                    // Object in this attention is of interest
+                    // Create Belief
+                    Belief b = new Belief(agt.name(), attn.target());
+                }
+            }
+        }
 
         // Deactivate this codelet until the next mind step
         Activation self = new Activation(mindStep, false);
