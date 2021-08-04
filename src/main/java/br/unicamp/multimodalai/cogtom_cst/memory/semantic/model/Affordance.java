@@ -1,4 +1,4 @@
-package br.unicamp.multimodalai.cogtom.memory.semantic.model;
+package br.unicamp.multimodalai.cogtom_cst.memory.semantic.model;
 
 /*
 * Class to encapsulate the Theory of Mind Affordances objects in Memory.

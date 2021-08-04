@@ -1,4 +1,4 @@
-package br.unicamp.multimodalai.cogtom.codelets.perception;
+package br.unicamp.multimodalai.cogtom_cst.codelets.perception;
 
 import java.util.ArrayList;
 
@@ -7,12 +7,11 @@ import br.unicamp.cst.core.entities.Memory;
 import br.unicamp.cst.core.entities.MemoryContainer;
 import br.unicamp.cst.core.entities.MemoryObject;
 import br.unicamp.cst.core.exceptions.CodeletActivationBoundsException;
-
-import br.unicamp.multimodalai.cogtom.memory.working.model.Agent;
-import br.unicamp.multimodalai.cogtom.memory.working.model.Attention;
-import br.unicamp.multimodalai.cogtom.memory.working.model.Object;
-import br.unicamp.multimodalai.cogtom.memory.working.model.SharedAttention;
-import br.unicamp.multimodalai.cogtom.memory.working.sync.Activation;
+import br.unicamp.multimodalai.cogtom_cst.memory.working.model.Agent;
+import br.unicamp.multimodalai.cogtom_cst.memory.working.model.Attention;
+import br.unicamp.multimodalai.cogtom_cst.memory.working.model.Object;
+import br.unicamp.multimodalai.cogtom_cst.memory.working.model.SharedAttention;
+import br.unicamp.multimodalai.cogtom_cst.memory.working.sync.Activation;
 
 /**
  * SAM

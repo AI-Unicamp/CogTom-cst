@@ -1,4 +1,4 @@
-package br.unicamp.multimodalai.cogtom;
+package br.unicamp.multimodalai.cogtom_cst;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

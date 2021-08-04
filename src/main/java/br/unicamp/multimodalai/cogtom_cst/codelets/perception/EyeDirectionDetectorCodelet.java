@@ -1,14 +1,14 @@
-package br.unicamp.multimodalai.cogtom.codelets.perception;
+package br.unicamp.multimodalai.cogtom_cst.codelets.perception;
 
 import br.unicamp.cst.core.entities.Codelet;
 import br.unicamp.cst.core.entities.Memory;
 import br.unicamp.cst.core.entities.MemoryContainer;
 import br.unicamp.cst.core.entities.MemoryObject;
 import br.unicamp.cst.core.exceptions.CodeletActivationBoundsException;
-import br.unicamp.multimodalai.cogtom.memory.data.EddData;
-import br.unicamp.multimodalai.cogtom.memory.working.sync.Activation;
-import br.unicamp.multimodalai.cogtom.memory.working.model.Agent;
-import br.unicamp.multimodalai.cogtom.memory.working.model.Attention;
+import br.unicamp.multimodalai.cogtom_cst.memory.data.EddData;
+import br.unicamp.multimodalai.cogtom_cst.memory.working.model.Agent;
+import br.unicamp.multimodalai.cogtom_cst.memory.working.model.Attention;
+import br.unicamp.multimodalai.cogtom_cst.memory.working.sync.Activation;
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
 

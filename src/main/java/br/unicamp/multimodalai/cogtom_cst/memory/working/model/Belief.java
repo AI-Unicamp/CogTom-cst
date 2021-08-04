@@ -1,4 +1,4 @@
-package br.unicamp.multimodalai.cogtom.memory.working.model;
+package br.unicamp.multimodalai.cogtom_cst.memory.working.model;
 
 /*
 * Class to encapsulate the Belief data on Working Memory.

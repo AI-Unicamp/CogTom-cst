@@ -1,4 +1,4 @@
-package br.unicamp.multimodalai.cogtom.memory.data;
+package br.unicamp.multimodalai.cogtom_cst.memory.data;
 
 /*
 * Class to encapsulate the Affordances read in from the data file.

@@ -1,4 +1,4 @@
-package br.unicamp.multimodalai.cogtom.memory.working.model;
+package br.unicamp.multimodalai.cogtom_cst.memory.working.model;
 
 /*
 * Class to encapsulate the Entity data read in from the input files.

@@ -1,4 +1,4 @@
-package br.unicamp.multimodalai.cogtom.codelets.perception;
+package br.unicamp.multimodalai.cogtom_cst.codelets.perception;
 
 import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
@@ -6,9 +6,9 @@ import br.unicamp.cst.core.entities.Codelet;
 import br.unicamp.cst.core.entities.MemoryContainer;
 import br.unicamp.cst.core.entities.MemoryObject;
 import br.unicamp.cst.core.exceptions.CodeletActivationBoundsException;
-import br.unicamp.multimodalai.cogtom.memory.data.AffordanceData;
-import br.unicamp.multimodalai.cogtom.memory.semantic.model.Affordance;
-import br.unicamp.multimodalai.cogtom.memory.working.sync.Activation;
+import br.unicamp.multimodalai.cogtom_cst.memory.data.AffordanceData;
+import br.unicamp.multimodalai.cogtom_cst.memory.semantic.model.Affordance;
+import br.unicamp.multimodalai.cogtom_cst.memory.working.sync.Activation;
 
 import java.io.IOException;
 import java.util.ArrayList;
