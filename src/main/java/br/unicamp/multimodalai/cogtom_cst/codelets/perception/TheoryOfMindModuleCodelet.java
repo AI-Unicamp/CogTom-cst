@@ -11,6 +11,7 @@ import br.unicamp.cst.core.exceptions.CodeletActivationBoundsException;
 import br.unicamp.multimodalai.cogtom_cst.memory.semantic.model.Affordance;
 import br.unicamp.multimodalai.cogtom_cst.memory.working.model.Agent;
 import br.unicamp.multimodalai.cogtom_cst.memory.working.model.Attention;
+import br.unicamp.multimodalai.cogtom_cst.memory.working.model.Intention;
 import br.unicamp.multimodalai.cogtom_cst.memory.working.model.Belief;
 import br.unicamp.multimodalai.cogtom_cst.memory.working.sync.Activation;
 
@@ -85,8 +86,6 @@ public class TheoryOfMindModuleCodelet extends Codelet {
 
     @Override
     public void proc() {
-         // Clear out memory containers.
-        clearMemory();
 
         ArrayList<Belief> beliefs = new ArrayList<>();
 
@@ -98,21 +97,19 @@ public class TheoryOfMindModuleCodelet extends Codelet {
             int numAttns = attentionsMC.getAllMemories().size();
             for (int j = 0; j < numAttns; j++) {
                 Attention attn = (Attention) attentionsMC.getI(j);
-                if (attn.agent().equals(agt.name())) {
-                    // Object in this attention is of interest
-                    // Create Belief
-                    Belief b = new Belief(agt.name(), attn.target());
+                if (attn.agent().equals(agt.name())) {                    
+                    // Get the intention for this agent
+                    Intention intt = getIntention(agt.name());
                     // Get affordances for the object.
                     String afford = getAffordance(attn.target());
-                    b.setAffordance(afford);
-
+                    Belief b = createBelief(agt.name(), attn.target(), intt, afford);
                     beliefs.add(b);
                 }
             }
         }
 
-        // Add all beliefs to the Memory Container.
-
+        // Update beliefs in working memory.
+        updateMemory(beliefs);
 
         // Deactivate this codelet until the next mind step
         Activation self = new Activation(mindStep, false);
@@ -130,6 +127,13 @@ public class TheoryOfMindModuleCodelet extends Codelet {
     }
 
     /*
+     * Method to encapsulate the main logic for creating a belief.
+    */
+    Belief createBelief(String agent, String object, Intention intt, String affordance) {
+        return new Belief();
+    }
+
+    /*
     * Utility method to get the affordance for an entity.
     */
     String getAffordance(String entity) {
@@ -139,9 +143,18 @@ public class TheoryOfMindModuleCodelet extends Codelet {
     }
 
     /*
-    * Utility Method to clear out memory contents between simulation cycles.
+    * Utility method to get the intention for an agent.
     */
-    private void clearMemory() {       
+    Intention getIntention(String agent) {
+        Predicate<Memory> pred = mem -> ((Intention) mem.getI()).agent().equals(agent); 
+        Intention intent = (Intention) intentionsMC.getI(pred);
+        return intent;
+    }
+
+    /*
+    * Utility Method to update Belief Memory.
+    */
+    private void updateMemory(ArrayList<Belief> beliefs) {       
     }
 }
 
