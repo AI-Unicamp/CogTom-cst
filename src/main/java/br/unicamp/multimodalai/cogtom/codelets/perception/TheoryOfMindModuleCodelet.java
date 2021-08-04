@@ -101,9 +101,17 @@ public class TheoryOfMindModuleCodelet extends Codelet {
                     // Object in this attention is of interest
                     // Create Belief
                     Belief b = new Belief(agt.name(), attn.target());
+                    // Get affordances for the object.
+                    String afford = getAffordance(attn.target());
+                    b.setAffordance(afford);
+
+                    beliefs.add(b);
                 }
             }
         }
+
+        // Add all beliefs to the Memory Container.
+
 
         // Deactivate this codelet until the next mind step
         Activation self = new Activation(mindStep, false);
@@ -121,8 +129,18 @@ public class TheoryOfMindModuleCodelet extends Codelet {
     }
 
     /*
-   * Utility Method to clear out memory contents between simulation cycles.
-   */
-   private void clearMemory() {
- }
+    * Utility method to get the affordance for an entity.
+    */
+    String getAffordance(String entity) {
+        Predicate<Memory> pred = mem -> ((Affordance) mem.getI()).object().equals(entity); 
+        Affordance aff = (Affordance) affordancesMC.getI(pred);
+        return aff.affordance();
+    }
+
+    /*
+    * Utility Method to clear out memory contents between simulation cycles.
+    */
+    private void clearMemory() {       
+    }
 }
+
