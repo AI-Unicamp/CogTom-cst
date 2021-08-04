@@ -67,13 +67,6 @@ public class AgentMind extends Mind {
                 samDoneActivationMO = createMemoryObject("SAM_DONE_ACTIVATION", false);
                 tommDoneActivationMO = createMemoryObject("TOMM_DONE_ACTIVATION", false);
                 affordDoneActivationMO = createMemoryObject("AFFORD_DONE_ACTIVATION", false);
-               
-                // Create and Populate MindViewer
-                // MindView mv = new MindView("MindView");
-                // mv.addMO(visionMO);
-                // mv.addMO(innerSenseMO);
-                // mv.StartTimer();
-                // mv.setVisible(true);
 
                 // Create Perception Codelets
                 // ID

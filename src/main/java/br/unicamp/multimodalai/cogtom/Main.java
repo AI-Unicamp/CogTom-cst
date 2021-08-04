@@ -15,6 +15,9 @@ public class Main {
 
         public Main() {
                 Logger.getLogger("codelets").setLevel(Level.SEVERE);
+        }
+
+        private void run() {
                 // Create the Agent Mind and start the cognitive cycles.
                 try {
                         AgentMind mind = new AgentMind();
@@ -31,6 +34,6 @@ public class Main {
          */
         public static void main(String[] args) {
                 Main em = new Main();
+                em.run();
         }
-
 }
