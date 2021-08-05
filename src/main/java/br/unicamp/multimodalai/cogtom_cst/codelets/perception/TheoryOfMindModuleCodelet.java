@@ -14,6 +14,7 @@ import br.unicamp.multimodalai.cogtom_cst.memory.working.model.Attention;
 import br.unicamp.multimodalai.cogtom_cst.memory.working.model.Intention;
 import br.unicamp.multimodalai.cogtom_cst.memory.working.model.Belief;
 import br.unicamp.multimodalai.cogtom_cst.memory.working.sync.Activation;
+import br.unicamp.multimodalai.cogtom_cst.util.IntentionMapper;
 
 /**
  * ToMM Codelet
@@ -131,6 +132,11 @@ public class TheoryOfMindModuleCodelet extends Codelet {
     Belief createBelief(String agent, String object, Intention intt, String affordance) {
         Belief b = new Belief(agent, object);
         b.setAffordance(affordance);
+        
+        // Modify beliefs now based on probable intentions of the agent
+        IntentionMapper mapper = new IntentionMapper();
+        mapper.modifyBelief(b, intt);
+        
         return b;
     }
 
