@@ -101,7 +101,7 @@
         </descriptorRefs>
         <archive>
           <manifest>
-            <mainClass>br.unicamp.multimodal_ai.cogtom_cst.Mains</mainClass> 
+            <mainClass>br.unicamp.multimodal_ai.cogtom_cst.Main</mainClass> 
           </manifest>
         </archive>
       </configuration>
