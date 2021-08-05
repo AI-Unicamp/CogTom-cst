@@ -88,7 +88,31 @@
             <mainClass>br.unicamp.multimodal_ai.cogtom_cst.Main</mainClass>
           </manifest>
         </archive>
+        <includes>
+            <include>input/*</include>
+          </includes>
       </configuration>
+    </plugin>
+    <plugin>
+      <artifactId>maven-assembly-plugin</artifactId>
+      <configuration>
+        <descriptorRefs>
+          <descriptorRef>jar-with-dependencies</descriptorRef>                            
+        </descriptorRefs>
+        <archive>
+          <manifest>
+            <mainClass>br.unicamp.multimodal_ai.cogtom_cst.Mains</mainClass> 
+          </manifest>
+        </archive>
+      </configuration>
+      <executions>
+        <execution>
+          <goals>
+            <goal>single</goal>                                                           
+          </goals>
+          <phase>package</phase>                                                          
+        </execution>
+      </executions>
     </plugin>
   </plugins>
   </build>
