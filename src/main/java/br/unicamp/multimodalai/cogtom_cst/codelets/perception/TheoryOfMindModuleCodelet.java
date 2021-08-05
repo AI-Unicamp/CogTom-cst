@@ -50,6 +50,7 @@ public class TheoryOfMindModuleCodelet extends Codelet {
         affordancesMC = (MemoryContainer) getInput("AFFORDANCES");
         attentionsMC = (MemoryContainer) getInput("ATTENTIONS");
         sharedAttentionsMC = (MemoryContainer) getInput("SHAREDATTN"); 
+        beliefsMC = (MemoryContainer) getOutput("BELIEFS");
         // Activation MOs
         idDoneActivationMO = (MemoryObject) getInput("ID_DONE_ACTIVATION");
         affordDoneActivationMO = (MemoryObject) getInput("AFFORD_DONE_ACTIVATION");
@@ -87,8 +88,6 @@ public class TheoryOfMindModuleCodelet extends Codelet {
     @Override
     public void proc() {
 
-        ArrayList<Belief> beliefs = new ArrayList<>();
-
         // First step to compose beliefs is to retrieve for an Agent their objects of interest on a scene.
         int numAgents = agentsMC.getAllMemories().size();
         for (int i = 0; i < numAgents; i++) {
@@ -103,13 +102,13 @@ public class TheoryOfMindModuleCodelet extends Codelet {
                     // Get affordances for the object.
                     String afford = getAffordance(attn.target());
                     Belief b = createBelief(agt.name(), attn.target(), intt, afford);
-                    beliefs.add(b);
+                    addBeliefToMemory(b);
                 }
             }
         }
 
-        // Update beliefs in working memory.
-        updateMemory(beliefs);
+        // Output beliefs at the end of ths simulation cycle
+        printBeliefs();
 
         // Deactivate this codelet until the next mind step
         Activation self = new Activation(mindStep, false);
@@ -130,7 +129,9 @@ public class TheoryOfMindModuleCodelet extends Codelet {
      * Method to encapsulate the main logic for creating a belief.
     */
     Belief createBelief(String agent, String object, Intention intt, String affordance) {
-        return new Belief();
+        Belief b = new Belief(agent, object);
+        b.setAffordance(affordance);
+        return b;
     }
 
     /*
@@ -152,9 +153,44 @@ public class TheoryOfMindModuleCodelet extends Codelet {
     }
 
     /*
+    * Utility method to printout Beliefs at the end of the cycle
+    */
+    void printBeliefs() {
+        System.out.println();
+        ArrayList<Memory> beliefs = beliefsMC.getAllMemories();
+        for(int i = 0; i < beliefs.size(); i++) {
+            Belief b = (Belief) beliefsMC.getI(i);
+            System.out.println(b.toStr());
+        }
+        System.out.println();
+    }
+
+    /*
     * Utility Method to update Belief Memory.
     */
-    private void updateMemory(ArrayList<Belief> beliefs) {       
+    private void addBeliefToMemory(Belief b) {
+       // Get current beliefs in Memory
+       ArrayList<Memory> existing = beliefsMC.getAllMemories();
+
+       // If memory is empty, just insert.
+       if (existing.size() == 0) {
+           beliefsMC.setI(b);
+           return;
+       }
+       else {
+           // There are beliefs in memory, so search before inserting.
+           for(int i = 0; i < existing.size(); i++) {
+               Belief search = (Belief) beliefsMC.getI(i);
+               if (search.agent().equals(b.agent()) && search.object().equals(b.object())) {
+                   // Found in memory, so just update at the index.
+                   beliefsMC.setI(b, i);
+                   return;
+               }
+           }
+           // Not found, just insert
+           beliefsMC.setI(b);
+           return;
+        }
     }
 }
 

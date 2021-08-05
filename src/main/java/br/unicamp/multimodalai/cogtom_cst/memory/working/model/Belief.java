@@ -58,7 +58,7 @@ public class Belief {
       return affordance;
    }
 
-   public void seTgtObject(String aTgtObject) {
+   public void setTgtObject(String aTgtObject) {
       tgtObject = aTgtObject;
    }
 
@@ -70,7 +70,7 @@ public class Belief {
    * Output utility - overrides base class Object
    */
    public String toStr() {
-      String fullBelief = agent + " " + object + " " + mentalState + " " + affordance + " " + tgtObject;
+      String fullBelief = agent + " " + mentalState + " " + object + " " + affordance + " " + tgtObject;
       return fullBelief;
    }
 }

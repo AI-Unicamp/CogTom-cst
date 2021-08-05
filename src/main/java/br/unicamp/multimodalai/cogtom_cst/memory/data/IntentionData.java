@@ -1,16 +1,18 @@
-package br.unicamp.multimodalai.cogtom_cst.memory.working.model;
+package br.unicamp.multimodalai.cogtom_cst.memory.data;
 
 /*
-* Class to encapsulate the Intention data in working memory.
+* Class to encapsulate the Intention data read in from the input files.
 */
-public class Intention {
+public class IntentionData {
 
+    private int mindStep;
     private String agent;
     private String intention;
     private String object;
     private String target;
 
-    public Intention(String aAgent, String aIntention, String aObject, String aTarget){
+    public IntentionData(int aMindStep, String aAgent,String aIntention, String aObject, String aTarget){
+        mindStep = aMindStep;
         agent = aAgent;
         intention = aIntention;
         object = aObject;
@@ -20,6 +22,14 @@ public class Intention {
     /*
     Setters and Getters
     */
+    public void setMindStep(int aMindStep) {
+        mindStep = aMindStep;
+    }
+
+        public int mindStep() {
+        return mindStep;
+    }
+
     public void setAgent(String aAgent) {
         agent = aAgent;
     }

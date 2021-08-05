@@ -6,6 +6,7 @@ import br.unicamp.cst.core.entities.MemoryContainer;
 import br.unicamp.cst.core.entities.MemoryObject;
 import br.unicamp.cst.core.exceptions.CodeletActivationBoundsException;
 import br.unicamp.multimodalai.cogtom_cst.memory.data.IdData;
+import br.unicamp.multimodalai.cogtom_cst.memory.data.IntentionData;
 import br.unicamp.multimodalai.cogtom_cst.memory.working.model.Agent;
 import br.unicamp.multimodalai.cogtom_cst.memory.working.model.Intention;
 import br.unicamp.multimodalai.cogtom_cst.memory.working.model.Object;
@@ -25,7 +26,7 @@ import java.util.List;
 public class IntentionalityDetectorCodelet extends Codelet {
 
    List<IdData> idData;
-   List<Intention> intentions;
+   List<IntentionData> intentionsData;
 
    MemoryContainer agentsMC;
    MemoryContainer objectsMC;
@@ -50,7 +51,7 @@ public class IntentionalityDetectorCodelet extends Codelet {
          Table intentionTable = Table.read().csv("input/intentions.csv");
 
          idData = new ArrayList<>();
-         intentions = new ArrayList<>();
+         intentionsData = new ArrayList<>();
 
 			// Loop through each one of the rows of the tables.
 			for (int i = 0; i < entityTable.rowCount(); i++) {
@@ -74,8 +75,8 @@ public class IntentionalityDetectorCodelet extends Codelet {
 				String object = r.getString("Object");
             String target = r.getString("Target");
             // Add to list
-            Intention it = new Intention(step, agent, intention, object, target);
-            intentions.add(it);
+            IntentionData data = new IntentionData(step, agent, intention, object, target);
+            intentionsData.add(data);
 			}
 
 		} catch (IOException e1) {
@@ -127,10 +128,11 @@ public class IntentionalityDetectorCodelet extends Codelet {
          }
       }
 
-      for (Intention i: intentions) {
+      for (IntentionData i: intentionsData) {
          // Entities from the current mindStep
          if (i.mindStep() == mindStep) {
-            intentionsMC.setI(i);
+            Intention intn = new Intention(i.agent(), i.intention(), i.object(), i.target());
+            intentionsMC.setI(intn);
          }
       }
 
