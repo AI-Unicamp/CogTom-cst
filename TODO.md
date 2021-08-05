@@ -35,15 +35,15 @@ This is an exercise on porting the CogTom cognitive architecture to the CST tool
   - [x] Create base codelet
   - [x] Read data from EDD and ID
   - [x] Create MemoryContainer for Shared Attention 
-- [ ] ToMM Codelet
+- [x] ToMM Codelet
   - [x] Create base codelet
   - [x] Read ID, Affordances, EDD, SAM data 
   - [x] Create Belief MOs in Working Memory and Output
-  - [ ] Belief processing based on Intentions/Affordances
+  - [x] Belief processing based on Intentions/Affordances
   - [x] Start next step of the simulation
 
 ### User Interface
-- [ ] Re-use MindView to display information about the state of the MindObjects in the simulation
+- [x] Output beliefs after each mind step.
 
 ### Open Questions
 - [x] Should MOs have information only for the current simulation step? - Solution is to clear out when necessary.
