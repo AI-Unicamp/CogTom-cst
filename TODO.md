@@ -37,8 +37,9 @@ This is an exercise on porting the CogTom cognitive architecture to the CST tool
   - [x] Create MemoryContainer for Shared Attention 
 - [ ] ToMM Codelet
   - [x] Create base codelet
-  - [ ] Read ID, Affordances, EDD, SAM data 
-  - [ ] Create Belief MOs in Working Memory and Output
+  - [x] Read ID, Affordances, EDD, SAM data 
+  - [x] Create Belief MOs in Working Memory and Output
+  - [ ] Belief processing based on Intentions/Affordances
   - [x] Start next step of the simulation
 
 ### User Interface
@@ -55,3 +56,4 @@ This is an exercise on porting the CogTom cognitive architecture to the CST tool
 - [x] Codelets run in separate threads. Do not assume sequential execution.
 
 ### Test-Run for Sally-Anne
+- [x] Basic test run finished
