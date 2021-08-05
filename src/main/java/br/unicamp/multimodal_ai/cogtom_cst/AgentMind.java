@@ -6,12 +6,12 @@ import br.unicamp.cst.core.entities.MemoryObject;
 import br.unicamp.cst.core.entities.Mind;
 import br.unicamp.cst.core.exceptions.CodeletActivationBoundsException;
 import br.unicamp.cst.core.exceptions.CodeletThresholdBoundsException;
-import br.unicamp.multimodalai.cogtom_cst.codelets.perception.AffordancesCodelet;
-import br.unicamp.multimodalai.cogtom_cst.codelets.perception.EyeDirectionDetectorCodelet;
-import br.unicamp.multimodalai.cogtom_cst.codelets.perception.IntentionalityDetectorCodelet;
-import br.unicamp.multimodalai.cogtom_cst.codelets.perception.SharedAttentionCodelet;
-import br.unicamp.multimodalai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet;
-import br.unicamp.multimodalai.cogtom_cst.memory.working.sync.Activation;
+import br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.AffordancesCodelet;
+import br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.EyeDirectionDetectorCodelet;
+import br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.IntentionalityDetectorCodelet;
+import br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.SharedAttentionCodelet;
+import br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet;
+import br.unicamp.multimodal_ai.cogtom_cst.memory.working.sync.Activation;
 
 /**
  * Mind class. Instantiates Memory and Codelets.
