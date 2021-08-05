@@ -11,6 +11,7 @@ import br.unicamp.multimodal_ai.cogtom_cst.memory.semantic.model.Affordance;
 import br.unicamp.multimodal_ai.cogtom_cst.memory.working.sync.Activation;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 /*
@@ -28,7 +29,10 @@ public class AffordancesCodelet extends Codelet {
 
     public AffordancesCodelet() {
         try {
-            Table affordancesTable = Table.read().csv("input/affordances.csv");
+            ClassLoader classLoader = getClass().getClassLoader();
+            InputStream affordStream = classLoader.getResourceAsStream("input//affordances.csv");
+
+            Table affordancesTable = Table.read().csv(affordStream);
             affordData = new ArrayList<AffordanceData>();
 
             // Loop through each one of the rows of the tables.

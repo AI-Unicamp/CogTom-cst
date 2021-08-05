@@ -15,6 +15,7 @@ import tech.tablesaw.api.Row;
 import tech.tablesaw.api.Table;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,8 +48,12 @@ public class IntentionalityDetectorCodelet extends Codelet {
       maxMindStep = 0;
 
       try {
-			Table entityTable = Table.read().csv("input/entities.csv");
-         Table intentionTable = Table.read().csv("input/intentions.csv");
+         ClassLoader classLoader = getClass().getClassLoader();
+         InputStream entitiesStream = classLoader.getResourceAsStream("input/entities.csv");
+         InputStream intentionsStream = classLoader.getResourceAsStream("input/intentions.csv");
+
+			Table entityTable = Table.read().csv(entitiesStream);
+         Table intentionTable = Table.read().csv(intentionsStream);
 
          idData = new ArrayList<>();
          intentionsData = new ArrayList<>();

@@ -15,6 +15,7 @@ import tech.tablesaw.api.Table;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * EDD codelet identifies eye direction and attaches that information to the Attention MOs.
@@ -40,13 +41,16 @@ public class EyeDirectionDetectorCodelet extends Codelet {
     public EyeDirectionDetectorCodelet() {
 
         try {
-            Table entityTable = Table.read().csv("input/eye_directions.csv");
+            ClassLoader classLoader = getClass().getClassLoader();
+            InputStream entitiesStream = classLoader.getResourceAsStream("input/eye_directions.csv");
+
+			Table eddDataTable = Table.read().csv(entitiesStream);
 
             eddData = new ArrayList<>();
 
             // Loop through each one of the rows of the tables.
-            for (int i = 0; i < entityTable.rowCount(); i++) {
-                Row r = entityTable.row(i);
+            for (int i = 0; i < eddDataTable.rowCount(); i++) {
+                Row r = eddDataTable.row(i);
                 int step = r.getInt("t");
                 String agt = r.getString("Agent");
                 String tgt = r.getString("Target");
