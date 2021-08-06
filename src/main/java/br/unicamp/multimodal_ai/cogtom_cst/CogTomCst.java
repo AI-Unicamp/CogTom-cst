@@ -1,5 +1,7 @@
 package br.unicamp.multimodal_ai.cogtom_cst;
 
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,10 +19,10 @@ public class CogTomCst {
                 Logger.getLogger("codelets").setLevel(Level.SEVERE);
         }
 
-        private void run() {
+        public void run(ArrayList<InputStream> streams) {
                 // Create the Agent Mind and start the cognitive cycles.
                 try {
-                        AgentMind mind = new AgentMind();
+                        AgentMind mind = new AgentMind(streams);
                         mind.run();
                 } catch (CodeletThresholdBoundsException e) {
                         e.printStackTrace();
@@ -33,7 +35,8 @@ public class CogTomCst {
          * @param args
          */
         public static void main(String[] args) {
+                // Execution without a test set
                 CogTomCst em = new CogTomCst();
-                em.run();
+                em.run(null);
         }
 }
