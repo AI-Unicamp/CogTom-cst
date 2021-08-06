@@ -143,6 +143,7 @@ public class AgentMind extends Mind {
                 tomm.addInput(attentionsMC);
                 tomm.addInput(sharedAttentionsMC);
                 tomm.addOutput(idActivationMO);
+                tomm.addOutput(tommDoneActivationMO);
                 tomm.addOutput(beliefsMC);
                 tomm.setThreshold(1.0d);
                 insertCodelet(tomm);

@@ -33,6 +33,7 @@ public class TheoryOfMindModuleCodelet extends Codelet {
     MemoryObject affordDoneActivationMO;
     MemoryObject eddDoneActivationMO;
     MemoryObject samDoneActivationMO;
+    MemoryObject tommDoneActivationMO;
     MemoryObject tommActivationMO;
     MemoryObject idActivationMO;
 
@@ -57,6 +58,7 @@ public class TheoryOfMindModuleCodelet extends Codelet {
         affordDoneActivationMO = (MemoryObject) getInput("AFFORD_DONE_ACTIVATION");
         eddDoneActivationMO = (MemoryObject) getInput("EDD_DONE_ACTIVATION");
         samDoneActivationMO = (MemoryObject) getInput("SAM_DONE_ACTIVATION");
+        tommDoneActivationMO = (MemoryObject) getOutput("TOMM_DONE_ACTIVATION");
         tommActivationMO = (MemoryObject) getInput("TOMM_ACTIVATION");
         // To activate the next mindstep
         idActivationMO = (MemoryObject) getOutput("ID_ACTIVATION");
