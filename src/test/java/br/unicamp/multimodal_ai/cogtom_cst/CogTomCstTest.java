@@ -26,7 +26,7 @@ public class CogTomCstTest {
     }
 
     @Test
-    public void testSallyAnne() {
+    public void testSallyAnne() throws InterruptedException {
         System.out.println("Sally-Anne test case");
 
         entitiesStream = loader.getResourceAsStream(sally_anne + "/entities.csv");
@@ -43,10 +43,13 @@ public class CogTomCstTest {
 
         CogTomCst cogTom = new CogTomCst();
         cogTom.run(inputStreams);
+
+        // Wait for the test to finish - this could be of course much better.
+        Thread.sleep(5000);
     }
 
     @Test
-    public void testfbAbl01() {
+    public void testfbAbl01() throws InterruptedException {
         System.out.println("Facebook bAbl1 test case");
 
         entitiesStream = loader.getResourceAsStream(fbAbl01 + "/entities.csv");
@@ -63,10 +66,13 @@ public class CogTomCstTest {
 
         CogTomCst cogTom = new CogTomCst();
         cogTom.run(inputStreams);
+
+        // Wait for the test to finish - this could be of course much better.
+        Thread.sleep(5000);
     }
 
     @Test
-    public void testfbAbl02() {
+    public void testfbAbl02() throws InterruptedException {
         System.out.println("Facebook bAbl1 test case");
 
         entitiesStream = loader.getResourceAsStream(fbAbl02 + "/entities.csv");
@@ -83,10 +89,13 @@ public class CogTomCstTest {
 
         CogTomCst cogTom = new CogTomCst();
         cogTom.run(inputStreams);
+
+        // Wait for the test to finish - this could be of course much better.
+        Thread.sleep(5000);
     }
 
     @Test
-    public void testfbAbl03() {
+    public void testfbAbl03() throws InterruptedException {
         System.out.println("Facebook bAbl1 test case");
 
         entitiesStream = loader.getResourceAsStream(fbAbl03 + "/entities.csv");
@@ -103,10 +112,13 @@ public class CogTomCstTest {
 
         CogTomCst cogTom = new CogTomCst();
         cogTom.run(inputStreams);
+
+        // Wait for the test to finish - this could be of course much better.
+        Thread.sleep(5000);
     }
 
     @Test
-    public void testfbAbl05() {
+    public void testfbAbl05() throws InterruptedException {
         System.out.println("Facebook bAbl1 test case");
 
         entitiesStream = loader.getResourceAsStream(fbAbl05 + "/entities.csv");
@@ -123,10 +135,13 @@ public class CogTomCstTest {
 
         CogTomCst cogTom = new CogTomCst();
         cogTom.run(inputStreams);
+
+        // Wait for the test to finish - this could be of course much better.
+        Thread.sleep(5000);
     }
 
     @Test
-    public void testfbAbl06() {
+    public void testfbAbl06() throws InterruptedException {
         System.out.println("Facebook bAbl6 test case");
 
         entitiesStream = loader.getResourceAsStream(fbAbl06 + "/entities.csv");
@@ -143,5 +158,8 @@ public class CogTomCstTest {
 
         CogTomCst cogTom = new CogTomCst();
         cogTom.run(inputStreams);
+
+        // Wait for the test to finish - this could be of course much better.
+        Thread.sleep(5000);
     }
 }
