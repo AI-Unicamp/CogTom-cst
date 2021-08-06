@@ -38,13 +38,10 @@ public class EyeDirectionDetectorCodelet extends Codelet {
     // Mindstep the codelet is currently processing.
     int mindStep;
 
-    public EyeDirectionDetectorCodelet() {
+    public EyeDirectionDetectorCodelet(InputStream eyeDirectionsStream) {
 
         try {
-            ClassLoader classLoader = getClass().getClassLoader();
-            InputStream entitiesStream = classLoader.getResourceAsStream("input/eye_directions.csv");
-
-			Table eddDataTable = Table.read().csv(entitiesStream);
+			Table eddDataTable = Table.read().csv(eyeDirectionsStream);
 
             eddData = new ArrayList<>();
 
