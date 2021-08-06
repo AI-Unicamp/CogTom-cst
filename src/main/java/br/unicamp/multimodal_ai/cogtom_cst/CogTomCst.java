@@ -9,11 +9,11 @@ import br.unicamp.cst.core.exceptions.CodeletThresholdBoundsException;
 /**
  * This is the base Java class.
  */
-public class Main {
+public class CogTomCst {
 
-        public Logger logger = Logger.getLogger(Main.class.getName());
+        public Logger logger = Logger.getLogger(CogTomCst.class.getName());
 
-        public Main() {
+        public CogTomCst() {
                 Logger.getLogger("codelets").setLevel(Level.SEVERE);
         }
 
@@ -33,7 +33,7 @@ public class Main {
          * @param args
          */
         public static void main(String[] args) {
-                Main em = new Main();
+                CogTomCst em = new CogTomCst();
                 em.run();
         }
 }

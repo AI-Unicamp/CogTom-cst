@@ -84,7 +84,7 @@
         </descriptorRefs>
         <archive>
           <manifest>
-            <mainClass>br.unicamp.multimodal_ai.cogtom_cst.Main</mainClass> 
+            <mainClass>br.unicamp.multimodal_ai.cogtom_cst.CogTomCst</mainClass> 
           </manifest>
         </archive>
       </configuration>
