@@ -42,16 +42,12 @@ public class IntentionalityDetectorCodelet extends Codelet {
    // Max mindstep for the simulaton
    int maxMindStep;
 
-   public IntentionalityDetectorCodelet() {
+   public IntentionalityDetectorCodelet(InputStream entitiesStream, InputStream intentionsStream) {
 
       // to control the end of the simulation
       maxMindStep = 0;
 
       try {
-         ClassLoader classLoader = getClass().getClassLoader();
-         InputStream entitiesStream = classLoader.getResourceAsStream("input/entities.csv");
-         InputStream intentionsStream = classLoader.getResourceAsStream("input/intentions.csv");
-
 			Table entityTable = Table.read().csv(entitiesStream);
          Table intentionTable = Table.read().csv(intentionsStream);
 
