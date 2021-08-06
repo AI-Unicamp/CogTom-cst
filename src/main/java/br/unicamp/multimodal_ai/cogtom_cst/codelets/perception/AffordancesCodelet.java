@@ -27,11 +27,8 @@ public class AffordancesCodelet extends Codelet {
     MemoryObject tommActivationMO;
     MemoryObject affordDoneActivationMO;
 
-    public AffordancesCodelet() {
+    public AffordancesCodelet(InputStream affordStream) {
         try {
-            ClassLoader classLoader = getClass().getClassLoader();
-            InputStream affordStream = classLoader.getResourceAsStream("input//affordances.csv");
-
             Table affordancesTable = Table.read().csv(affordStream);
             affordData = new ArrayList<AffordanceData>();
 
@@ -90,5 +87,4 @@ public class AffordancesCodelet extends Codelet {
         // Affordances processing is done.
         affordDoneActivationMO.setI(true);
     }
-
 }
