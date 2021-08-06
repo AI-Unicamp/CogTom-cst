@@ -1,5 +1,8 @@
 package br.unicamp.multimodal_ai.cogtom_cst;
 
+import java.io.InputStream;
+import java.util.ArrayList;
+
 import br.unicamp.cst.core.entities.Codelet;
 import br.unicamp.cst.core.entities.MemoryContainer;
 import br.unicamp.cst.core.entities.MemoryObject;
@@ -19,30 +22,52 @@ import br.unicamp.multimodal_ai.cogtom_cst.memory.working.sync.Activation;
  */
 public class AgentMind extends Mind {
 
+        // Input Streams
+        private ClassLoader loader;
+        private InputStream entitiesStream;
+        private InputStream intentionsStream;
+        private InputStream affordancesStream;
+        private InputStream eyeDirectionsStream;
+
         // Memory Containers
-        MemoryContainer agentsMC;
-        MemoryContainer objectsMC;
-        MemoryContainer intentionsMC;
-        MemoryContainer affordancesMC;
-        MemoryContainer attentionsMC;
-        MemoryContainer sharedAttentionsMC;
-        MemoryContainer beliefsMC;
+        private MemoryContainer agentsMC;
+        private MemoryContainer objectsMC;
+        private MemoryContainer intentionsMC;
+        private MemoryContainer affordancesMC;
+        private MemoryContainer attentionsMC;
+        private MemoryContainer sharedAttentionsMC;
+        private MemoryContainer beliefsMC;
 
         // Activation Memory Objects
-        MemoryObject idActivationMO;
-        MemoryObject eddActivationMO;
-        MemoryObject samActivationMO;
-        MemoryObject tommActivationMO;
-        MemoryObject affordActivationMO;
-        MemoryObject idDoneActivationMO;
-        MemoryObject eddDoneActivationMO;
-        MemoryObject samDoneActivationMO;
-        MemoryObject tommDoneActivationMO;
-        MemoryObject affordDoneActivationMO;
+        private MemoryObject idActivationMO;
+        private MemoryObject eddActivationMO;
+        private MemoryObject samActivationMO;
+        private MemoryObject tommActivationMO;
+        private MemoryObject affordActivationMO;
+        private MemoryObject idDoneActivationMO;
+        private MemoryObject eddDoneActivationMO;
+        private MemoryObject samDoneActivationMO;
+        private MemoryObject tommDoneActivationMO;
+        private MemoryObject affordDoneActivationMO;
 
-        public AgentMind() throws CodeletThresholdBoundsException,
-                                  CodeletActivationBoundsException {
+        public AgentMind(ArrayList<InputStream> streams) throws CodeletThresholdBoundsException,
+                                                                CodeletActivationBoundsException {
                 super();
+
+                loader = getClass().getClassLoader();
+                
+                // Check input streams
+                if (streams == null) {
+                        entitiesStream = loader.getResourceAsStream("sally-anne/entities.csv");
+                        intentionsStream = loader.getResourceAsStream("sally-anne/intentions.csv");
+                        affordancesStream = loader.getResourceAsStream("sally-anne/affordances.csv");
+                        eyeDirectionsStream = loader.getResourceAsStream("sally-anne/eye_directions.csv");
+                } else {
+                        entitiesStream = streams.get(0);
+                        intentionsStream = streams.get(1);
+                        affordancesStream = streams.get(2);
+                        eyeDirectionsStream = streams.get(3);
+                }
 
                 // Declare and initialize Memory Containers & Memory Objects.
                 agentsMC = createMemoryContainer("AGENTS");
@@ -70,7 +95,7 @@ public class AgentMind extends Mind {
 
                 // Create Perception Codelets
                 // ID
-                Codelet id = new IntentionalityDetectorCodelet();
+                Codelet id = new IntentionalityDetectorCodelet(entitiesStream, intentionsStream);
                 id.addInput(idActivationMO);
                 id.addOutput(idDoneActivationMO);
                 id.addOutput(eddActivationMO);
@@ -81,7 +106,7 @@ public class AgentMind extends Mind {
                 insertCodelet(id);
 
                 // EDD
-                Codelet edd = new EyeDirectionDetectorCodelet();
+                Codelet edd = new EyeDirectionDetectorCodelet(eyeDirectionsStream);
                 edd.addInput(eddActivationMO);
                 edd.addInput(agentsMC);
                 edd.addInput(objectsMC);
@@ -123,7 +148,7 @@ public class AgentMind extends Mind {
                 insertCodelet(tomm);
 
                 // Create Semantic Memory Codelets
-                Codelet afford = new AffordancesCodelet();
+                Codelet afford = new AffordancesCodelet(affordancesStream);
                 afford.addInput(affordActivationMO);
                 afford.addOutput(affordDoneActivationMO);
                 afford.addOutput(affordancesMC);
