@@ -1,0 +1,10 @@
+t,Entity,Is_Agent
+1,John,True
+1,Apple,False
+2,John,True
+2,Apple,False
+3,John,True
+3,Apple,False
+4,John,True
+4,Apple,False
+

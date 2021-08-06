@@ -1,0 +1,5 @@
+t,Agent,Intention,Object,Target
+1,John,Go,Self,Playground
+1,Daniel,Go,,Self,Bathroom
+2,John,Go,Self,Hallway
+2,Daniel,None,Self,None

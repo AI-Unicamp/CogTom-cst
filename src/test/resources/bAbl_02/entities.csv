@@ -1,0 +1,7 @@
+t,Entity,Is_Agent
+1,John,True
+1,Bob,True
+1,Football,False
+2,John,True
+2,Football,False
+

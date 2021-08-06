@@ -1,0 +1,4 @@
+t,Agent,Intention,Object,Target
+1,Mary,Give,Cake,Fred
+2,Fred,Give,Cake,Bill
+3,Bill,Give,Milk,Jeff
