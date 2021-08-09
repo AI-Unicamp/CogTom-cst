@@ -106,7 +106,10 @@ public class IntentionalityDetectorCodelet extends Codelet {
 
       if (mindStep > maxMindStep) {
          System.out.println("Simulation ended.");
-         System.exit(0);
+         // Deactivate this codelet, system will not run anymore.
+         Activation self = new Activation(mindStep, false);
+         idActivationMO.setI(self);
+         return;
       }
 
       System.out.println("Simulation running mind step: " + mindStep);
@@ -179,5 +182,4 @@ public class IntentionalityDetectorCodelet extends Codelet {
       ArrayList<Memory> ints = intentionsMC.getAllMemories();
       ints.clear();
    }
-
 }// end class
