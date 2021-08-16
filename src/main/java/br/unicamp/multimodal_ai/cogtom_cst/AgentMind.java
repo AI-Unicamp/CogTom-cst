@@ -58,10 +58,10 @@ public class AgentMind extends Mind {
                 
                 // Check input streams
                 if (streams == null) {
-                        entitiesStream = loader.getResourceAsStream("sally-anne/entities.csv");
-                        intentionsStream = loader.getResourceAsStream("sally-anne/intentions.csv");
-                        affordancesStream = loader.getResourceAsStream("sally-anne/affordances.csv");
-                        eyeDirectionsStream = loader.getResourceAsStream("sally-anne/eye_directions.csv");
+                        entitiesStream = loader.getResourceAsStream("entities.csv");
+                        intentionsStream = loader.getResourceAsStream("intentions.csv");
+                        affordancesStream = loader.getResourceAsStream("affordances.csv");
+                        eyeDirectionsStream = loader.getResourceAsStream("eye_directions.csv");
                 } else {
                         entitiesStream = streams.get(0);
                         intentionsStream = streams.get(1);
