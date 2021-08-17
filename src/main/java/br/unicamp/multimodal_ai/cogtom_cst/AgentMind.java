@@ -72,7 +72,8 @@ public class AgentMind extends Mind {
                         entitiesStream = streams.get(0);
                         intentionsStream = streams.get(1);
                         affordancesStream = streams.get(2);
-                        eyeDirectionsStream = streams.get(3);
+                        positioningStream = streams.get(3);
+                        eyeDirectionsStream = streams.get(4);
                 }
 
                 // Declare and initialize Memory Containers & Memory Objects.

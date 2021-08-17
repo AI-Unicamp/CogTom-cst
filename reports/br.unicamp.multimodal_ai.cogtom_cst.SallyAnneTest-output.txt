@@ -1,0 +1,146 @@
+Sally-Anne test case
+Simulation running mind step: 1
+
+Sally BELIEVES Anne Exists None
+Sally BELIEVES Basket Contains None
+Sally BELIEVES Box Contains None
+Sally BELIEVES Ball Hides None
+Anne BELIEVES Sally Exists None
+Anne BELIEVES Basket Contains None
+Anne BELIEVES Box Contains None
+Anne BELIEVES Ball Hides None
+Observer KNOWS Sally IS AT Room
+Observer KNOWS Anne IS AT Room
+Observer KNOWS Basket IS AT Room
+Observer KNOWS Box IS AT Room
+Observer KNOWS Ball IS AT Room
+
+Simulation running mind step: 2
+
+Sally BELIEVES Anne Exists None
+Sally BELIEVES Basket Contains None
+Sally BELIEVES Box Contains None
+Sally BELIEVES Ball OnHand Of Sally
+Anne BELIEVES Sally Exists None
+Anne BELIEVES Basket Contains None
+Anne BELIEVES Box Contains None
+Anne BELIEVES Ball Hides None
+Observer KNOWS Sally IS AT Room
+Observer KNOWS Anne IS AT Room
+Observer KNOWS Basket IS AT Room
+Observer KNOWS Box IS AT Room
+Observer KNOWS Ball IS AT Room
+
+Simulation running mind step: 3
+
+Sally BELIEVES Anne Exists None
+Sally BELIEVES Basket Contains None
+Sally BELIEVES Box Contains None
+Sally BELIEVES Ball Hidden In Basket
+Anne BELIEVES Sally Exists None
+Anne BELIEVES Basket Contains None
+Anne BELIEVES Box Contains None
+Anne BELIEVES Ball Hides None
+Observer KNOWS Sally IS AT Room
+Observer KNOWS Anne IS AT Room
+Observer KNOWS Basket IS AT Room
+Observer KNOWS Box IS AT Room
+Observer KNOWS Ball IS AT Room
+
+Simulation running mind step: 4
+
+Sally BELIEVES Anne Exists None
+Sally BELIEVES Basket Contains None
+Sally BELIEVES Box Contains None
+Sally BELIEVES Ball Hidden In Basket
+Anne BELIEVES Sally Exists None
+Anne BELIEVES Basket Contains None
+Anne BELIEVES Box Contains None
+Anne BELIEVES Ball Hides None
+Observer KNOWS Sally IS AT Outside
+Observer KNOWS Anne IS AT Room
+Observer KNOWS Basket IS AT Room
+Observer KNOWS Box IS AT Room
+Observer KNOWS Ball IS AT Room
+
+Simulation running mind step: 5
+
+Sally BELIEVES Anne Exists None
+Sally BELIEVES Basket Contains None
+Sally BELIEVES Box Contains None
+Sally BELIEVES Ball Hidden In Basket
+Anne BELIEVES Sally Exists None
+Anne BELIEVES Basket OnHand Of Anne
+Anne BELIEVES Box Contains None
+Anne BELIEVES Ball Hides None
+Observer KNOWS Sally IS AT Outside
+Observer KNOWS Anne IS AT Room
+Observer KNOWS Basket IS AT Room
+Observer KNOWS Box IS AT Room
+Observer KNOWS Ball IS AT Room
+
+Simulation running mind step: 6
+
+Sally BELIEVES Anne Exists None
+Sally BELIEVES Basket Contains None
+Sally BELIEVES Box Contains None
+Sally BELIEVES Ball Hidden In Basket
+Anne BELIEVES Sally Exists None
+Anne BELIEVES Basket Contains None
+Anne BELIEVES Box Contains None
+Anne BELIEVES Ball OnHand Of Anne
+Observer KNOWS Sally IS AT Outside
+Observer KNOWS Anne IS AT Room
+Observer KNOWS Basket IS AT Room
+Observer KNOWS Box IS AT Room
+Observer KNOWS Ball IS AT Room
+
+Simulation running mind step: 7
+
+Sally BELIEVES Anne Exists None
+Sally BELIEVES Basket Contains None
+Sally BELIEVES Box Contains None
+Sally BELIEVES Ball Hidden In Basket
+Anne BELIEVES Sally Exists None
+Anne BELIEVES Basket Contains None
+Anne BELIEVES Box Contains None
+Anne BELIEVES Ball OnHand Of Anne
+Observer KNOWS Sally IS AT Outside
+Observer KNOWS Anne IS AT Room
+Observer KNOWS Basket IS AT Room
+Observer KNOWS Box IS AT Room
+Observer KNOWS Ball IS AT Outside
+
+Simulation running mind step: 8
+
+Sally BELIEVES Anne Exists None
+Sally BELIEVES Basket Contains None
+Sally BELIEVES Box Contains None
+Sally BELIEVES Ball Hidden In Basket
+Anne BELIEVES Sally Exists None
+Anne BELIEVES Basket Contains None
+Anne BELIEVES Box Contains None
+Anne BELIEVES Ball OnHand Of Anne
+Observer KNOWS Sally IS AT Room
+Observer KNOWS Anne IS AT Outside
+Observer KNOWS Basket IS AT Room
+Observer KNOWS Box IS AT Room
+Observer KNOWS Ball IS AT Outside
+
+Simulation running mind step: 9
+
+Sally BELIEVES Anne Exists None
+Sally BELIEVES Basket Contains None
+Sally BELIEVES Box Contains None
+Sally BELIEVES Ball Hidden In Basket
+Anne BELIEVES Sally Exists None
+Anne BELIEVES Basket Contains None
+Anne BELIEVES Box Contains None
+Anne BELIEVES Ball OnHand Of Anne
+Observer KNOWS Sally IS AT Room
+Observer KNOWS Anne IS AT Outside
+Observer KNOWS Basket IS AT Room
+Observer KNOWS Box IS AT Room
+Observer KNOWS Ball IS AT Room
+
+Simulation ended.

@@ -1,0 +1,22 @@
+Facebook bAbl test case 2
+Simulation running mind step: 1
+
+John BELIEVES Bob Exists None
+John BELIEVES Football OnHand Of John
+Bob BELIEVES John Exists None
+Bob BELIEVES Football Pickup None
+Observer KNOWS John IS AT Playground
+Observer KNOWS Bob IS AT Playground
+Observer KNOWS Football IS AT Playground
+
+Simulation running mind step: 2
+
+John BELIEVES Bob Exists None
+John BELIEVES Football Pickup None
+Bob BELIEVES John Exists None
+Bob BELIEVES Football Pickup None
+Observer KNOWS John IS AT Playground
+Observer KNOWS Bob IS AT Kitchen
+Observer KNOWS Football IS AT Playground
+
+Simulation ended.

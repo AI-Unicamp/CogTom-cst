@@ -1,0 +1,16 @@
+Facebook bAbl test case 1
+Simulation running mind step: 1
+
+Mary BELIEVES John Exists None
+John BELIEVES Mary Exists None
+Observer KNOWS Mary IS AT Bathroom
+Observer KNOWS John IS AT Hallway
+
+Simulation running mind step: 2
+
+Mary BELIEVES John Exists None
+John BELIEVES Mary Exists None
+Observer KNOWS Mary IS AT Office
+Observer KNOWS John IS AT Hallway
+
+Simulation ended.

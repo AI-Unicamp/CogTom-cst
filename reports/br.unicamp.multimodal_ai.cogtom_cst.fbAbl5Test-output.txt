@@ -1,0 +1,89 @@
+Facebook bAbl test case 5
+Simulation running mind step: 1
+
+Mary BELIEVES Fred Exists None
+Mary BELIEVES Jeff Exists None
+Mary BELIEVES Bill Exists None
+Mary BELIEVES Cake Was Given To Fred
+Mary BELIEVES Milk Transferable None
+Fred BELIEVES Mary Exists None
+Fred BELIEVES Jeff Exists None
+Fred BELIEVES Bill Exists None
+Fred BELIEVES Cake Transferable None
+Fred BELIEVES Milk Transferable None
+Jeff BELIEVES Fred Exists None
+Jeff BELIEVES Mary Exists None
+Jeff BELIEVES Bill Exists None
+Jeff BELIEVES Cake Transferable None
+Jeff BELIEVES Milk Transferable None
+Bill BELIEVES Fred Exists None
+Bill BELIEVES Jeff Exists None
+Bill BELIEVES Mary Exists None
+Bill BELIEVES Cake Transferable None
+Bill BELIEVES Milk Transferable None
+Observer KNOWS Mary IS AT Room
+Observer KNOWS Fred IS AT Room
+Observer KNOWS Jeff IS AT Room
+Observer KNOWS Bill IS AT Room
+Observer KNOWS Cake IS AT Room
+Observer KNOWS Milk IS AT Room
+
+Simulation running mind step: 2
+
+Mary BELIEVES Fred Exists None
+Mary BELIEVES Jeff Exists None
+Mary BELIEVES Bill Exists None
+Mary BELIEVES Cake Transferable None
+Mary BELIEVES Milk Transferable None
+Fred BELIEVES Mary Exists None
+Fred BELIEVES Jeff Exists None
+Fred BELIEVES Bill Exists None
+Fred BELIEVES Cake Was Given To Bill
+Fred BELIEVES Milk Transferable None
+Jeff BELIEVES Fred Exists None
+Jeff BELIEVES Mary Exists None
+Jeff BELIEVES Bill Exists None
+Jeff BELIEVES Cake Transferable None
+Jeff BELIEVES Milk Transferable None
+Bill BELIEVES Fred Exists None
+Bill BELIEVES Jeff Exists None
+Bill BELIEVES Mary Exists None
+Bill BELIEVES Cake Transferable None
+Bill BELIEVES Milk Transferable None
+Observer KNOWS Mary IS AT Room
+Observer KNOWS Fred IS AT Room
+Observer KNOWS Jeff IS AT Room
+Observer KNOWS Bill IS AT Room
+Observer KNOWS Cake IS AT Room
+Observer KNOWS Milk IS AT Room
+
+Simulation running mind step: 3
+
+Mary BELIEVES Fred Exists None
+Mary BELIEVES Jeff Exists None
+Mary BELIEVES Bill Exists None
+Mary BELIEVES Cake Transferable None
+Mary BELIEVES Milk Transferable None
+Fred BELIEVES Mary Exists None
+Fred BELIEVES Jeff Exists None
+Fred BELIEVES Bill Exists None
+Fred BELIEVES Cake Transferable None
+Fred BELIEVES Milk Transferable None
+Jeff BELIEVES Fred Exists None
+Jeff BELIEVES Mary Exists None
+Jeff BELIEVES Bill Exists None
+Jeff BELIEVES Cake Transferable None
+Jeff BELIEVES Milk Transferable None
+Bill BELIEVES Fred Exists None
+Bill BELIEVES Jeff Exists None
+Bill BELIEVES Mary Exists None
+Bill BELIEVES Cake Transferable None
+Bill BELIEVES Milk Was Given To Jeff
+Observer KNOWS Mary IS AT Room
+Observer KNOWS Fred IS AT Room
+Observer KNOWS Jeff IS AT Room
+Observer KNOWS Bill IS AT Room
+Observer KNOWS Cake IS AT Room
+Observer KNOWS Milk IS AT Room
+
+Simulation ended.

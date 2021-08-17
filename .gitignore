@@ -71,3 +71,9 @@ buildNumber.properties
 .mvn/timing.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
+
+#Test Reports
+reports/*.xml
+reports/*.dumpstream
+reports/*.txt
+!*-output.txt
