@@ -13,6 +13,7 @@ import br.unicamp.multimodal_ai.cogtom_cst.memory.working.model.Agent;
 import br.unicamp.multimodal_ai.cogtom_cst.memory.working.model.Attention;
 import br.unicamp.multimodal_ai.cogtom_cst.memory.working.model.Belief;
 import br.unicamp.multimodal_ai.cogtom_cst.memory.working.model.Intention;
+import br.unicamp.multimodal_ai.cogtom_cst.memory.working.model.Positioning;
 import br.unicamp.multimodal_ai.cogtom_cst.memory.working.sync.Activation;
 import br.unicamp.multimodal_ai.cogtom_cst.util.IntentionMapper;
 
@@ -21,16 +22,23 @@ import br.unicamp.multimodal_ai.cogtom_cst.util.IntentionMapper;
  */
 public class TheoryOfMindModuleCodelet extends Codelet {
 
+    private String observerEntity = "Observer";
+    private String believesMentalState = "BELIEVES";
+    private String knowsMentalState = "KNOWS";
+    private String positionAffordance = "IS AT";
+
     MemoryContainer agentsMC;
     MemoryContainer objectsMC;
     MemoryContainer intentionsMC;
     MemoryContainer affordancesMC;
+    MemoryContainer positioningMC;
     MemoryContainer attentionsMC;
     MemoryContainer sharedAttentionsMC;
     MemoryContainer beliefsMC;
 
     MemoryObject idDoneActivationMO;
     MemoryObject affordDoneActivationMO;
+    MemoryObject positioningDoneActivationMO;
     MemoryObject eddDoneActivationMO;
     MemoryObject samDoneActivationMO;
     MemoryObject tommDoneActivationMO;
@@ -51,12 +59,14 @@ public class TheoryOfMindModuleCodelet extends Codelet {
         objectsMC = (MemoryContainer) getInput("OBJECTS");
         intentionsMC = (MemoryContainer) getInput("INTENTIONS");
         affordancesMC = (MemoryContainer) getInput("AFFORDANCES");
+        positioningMC = (MemoryContainer) getInput("POSITIONING");
         attentionsMC = (MemoryContainer) getInput("ATTENTIONS");
         sharedAttentionsMC = (MemoryContainer) getInput("SHAREDATTN"); 
         beliefsMC = (MemoryContainer) getOutput("BELIEFS");
         // Activation MOs
         idDoneActivationMO = (MemoryObject) getInput("ID_DONE_ACTIVATION");
         affordDoneActivationMO = (MemoryObject) getInput("AFFORD_DONE_ACTIVATION");
+        positioningDoneActivationMO = (MemoryObject) getInput("POSITIONING_DONE_ACTIVATION");
         eddDoneActivationMO = (MemoryObject) getInput("EDD_DONE_ACTIVATION");
         samDoneActivationMO = (MemoryObject) getInput("SAM_DONE_ACTIVATION");
         tommDoneActivationMO = (MemoryObject) getOutput("TOMM_DONE_ACTIVATION");
@@ -72,6 +82,7 @@ public class TheoryOfMindModuleCodelet extends Codelet {
             // After all other codelets finished their runs
             if ((boolean) idDoneActivationMO.getI() == true &&
                 (boolean) affordDoneActivationMO.getI() == true && 
+                (boolean) positioningDoneActivationMO.getI() == true &&
                 (boolean) eddDoneActivationMO.getI() == true &&
                 (boolean) samDoneActivationMO.getI() == true) {
                     Activation act = (Activation) tommActivationMO.getI();
@@ -106,28 +117,26 @@ public class TheoryOfMindModuleCodelet extends Codelet {
                     Intention intt = getIntention(agt.name());
                     // Get affordances for the object.
                     String afford = getAffordance(attn.target());
-                    Belief b = createBelief(agt.name(), attn.target(), intt, afford);
+                    Belief b = createBaseBelief(agt.name(), attn.target(), intt, afford);
                     addBeliefToMemory(b);
                 }
             }
         }
 
         // Positioning Beliefs
-        /*
-        # Mental states for the observer entity - positioning
-        # These are mental states to indicate where the agents and objects are positioned in the environment.
-        # The mental states are not the states for each of the agents in the scene, but rather for the Observer entity.
-        # The mental states here will be of the form
-        # OBSERVER KNOWS AGENT IS AT PLACE or
-        # OBSERVER KNOWS OBJECT IS AT PLACE
-        for pos_data in self.positioning:
-            obs_belief = []
-            obs_belief.append(self.OBS_ENTITY)
-            obs_belief.append(self.MENTAL_STATES[1])
-            obs_belief.append(pos_data[0])
-            obs_belief.append("IS AT")
-            obs_belief.append(pos_data[1])
-        */
+        //
+        // Mental states for the observer entity - positioning
+        // These are mental states to indicate where the agents and objects are positioned in the environment.
+        // The mental states are not the states for each of the agents in the scene, but rather for the Observer entity.
+        // The mental states here will be of the form
+        // OBSERVER KNOWS AGENT IS AT PLACE or
+        // OBSERVER KNOWS OBJECT IS AT PLACE
+        int positioningNum = positioningMC.getAllMemories().size();
+        for (int i = 0; i < positioningNum; i++) {
+            Positioning pos = (Positioning) positioningMC.getI(i);
+            Belief b = createPositioningBelief(pos.name(), pos.location());
+            addBeliefToMemory(b);
+        }
         
         // Output beliefs at the end of ths simulation cycle
         printBeliefs();
@@ -151,13 +160,26 @@ public class TheoryOfMindModuleCodelet extends Codelet {
     /*
      * Method to encapsulate the main logic for creating a belief.
     */
-    Belief createBelief(String agent, String object, Intention intt, String affordance) {
+    Belief createBaseBelief(String agent, String object, Intention intt, String affordance) {
         Belief b = new Belief(agent, object);
+        b.setMentalState(believesMentalState);
         b.setAffordance(affordance);
         
         // Modify beliefs now based on probable intentions of the agent
         IntentionMapper mapper = new IntentionMapper();
         mapper.modifyBelief(b, intt);
+        
+        return b;
+    }
+
+    /*
+     * Method to encapsulate the logic for creating positioning beliefs.
+    */
+    Belief createPositioningBelief(String name, String location) {
+        Belief b = new Belief(observerEntity, name);
+        b.setMentalState(knowsMentalState);
+        b.setAffordance(positionAffordance);
+        b.setTgtObject(location);
         
         return b;
     }
