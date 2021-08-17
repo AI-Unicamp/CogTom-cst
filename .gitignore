@@ -71,11 +71,3 @@ buildNumber.properties
 .mvn/timing.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
-
-# Do not add testing resources in the main folder.
-src/main/resources/affordances.csv
-src/main/resources/entities.csv
-src/main/resources/eye_directions.csv
-src/main/resources/intentions.csv
-src/main/resources/positioning.csv
-src/main/resources/scenes.csv
