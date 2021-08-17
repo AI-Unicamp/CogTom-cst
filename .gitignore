@@ -72,7 +72,7 @@ buildNumber.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
 
-# Ignore changes to main resources folder
+# Do not add testing resources in the main folder.
 src/main/resources/affordances.csv
 src/main/resources/entities.csv
 src/main/resources/eye_directions.csv

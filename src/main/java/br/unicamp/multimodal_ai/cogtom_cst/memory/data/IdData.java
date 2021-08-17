@@ -25,6 +25,7 @@ public class IdData {
    public int mindStep() {
       return mindStep;
    }
+   
    public void setName(String aName) {
          name = aName;
    }

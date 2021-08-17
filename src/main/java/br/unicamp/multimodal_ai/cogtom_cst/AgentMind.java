@@ -12,6 +12,7 @@ import br.unicamp.cst.core.exceptions.CodeletThresholdBoundsException;
 import br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.AffordancesCodelet;
 import br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.EyeDirectionDetectorCodelet;
 import br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.IntentionalityDetectorCodelet;
+import br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.PositioningCodelet;
 import br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.SharedAttentionCodelet;
 import br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet;
 import br.unicamp.multimodal_ai.cogtom_cst.memory.working.sync.Activation;
@@ -27,6 +28,7 @@ public class AgentMind extends Mind {
         private InputStream entitiesStream;
         private InputStream intentionsStream;
         private InputStream affordancesStream;
+        private InputStream positioningStream;
         private InputStream eyeDirectionsStream;
 
         // Memory Containers
@@ -34,6 +36,7 @@ public class AgentMind extends Mind {
         private MemoryContainer objectsMC;
         private MemoryContainer intentionsMC;
         private MemoryContainer affordancesMC;
+        private MemoryContainer positioningMC;
         private MemoryContainer attentionsMC;
         private MemoryContainer sharedAttentionsMC;
         private MemoryContainer beliefsMC;
@@ -44,11 +47,13 @@ public class AgentMind extends Mind {
         private MemoryObject samActivationMO;
         private MemoryObject tommActivationMO;
         private MemoryObject affordActivationMO;
+        private MemoryObject positioningActivationMO;
         private MemoryObject idDoneActivationMO;
         private MemoryObject eddDoneActivationMO;
         private MemoryObject samDoneActivationMO;
         private MemoryObject tommDoneActivationMO;
         private MemoryObject affordDoneActivationMO;
+        private MemoryObject positioningDoneActivationMO;
 
         public AgentMind(ArrayList<InputStream> streams) throws CodeletThresholdBoundsException,
                                                                 CodeletActivationBoundsException {
@@ -61,6 +66,7 @@ public class AgentMind extends Mind {
                         entitiesStream = loader.getResourceAsStream("entities.csv");
                         intentionsStream = loader.getResourceAsStream("intentions.csv");
                         affordancesStream = loader.getResourceAsStream("affordances.csv");
+                        positioningStream = loader.getResourceAsStream("positioning.csv");
                         eyeDirectionsStream = loader.getResourceAsStream("eye_directions.csv");
                 } else {
                         entitiesStream = streams.get(0);
@@ -74,6 +80,7 @@ public class AgentMind extends Mind {
                 objectsMC = createMemoryContainer("OBJECTS");
                 intentionsMC = createMemoryContainer("INTENTIONS");
                 affordancesMC = createMemoryContainer("AFFORDANCES");
+                positioningMC = createMemoryContainer("POSITIONING");
                 attentionsMC = createMemoryContainer("ATTENTIONS");
                 sharedAttentionsMC = createMemoryContainer("SHAREDATTN");
                 beliefsMC = createMemoryContainer("BELIEFS");
@@ -86,12 +93,14 @@ public class AgentMind extends Mind {
                 samActivationMO = createMemoryObject("SAM_ACTIVATION", init);
                 tommActivationMO = createMemoryObject("TOMM_ACTIVATION", init);
                 affordActivationMO = createMemoryObject("AFFORD_ACTIVATION", init);
+                positioningActivationMO = createMemoryObject("POSITIONING_ACTIVATION", init);
                 // For communicating Codelets have finished processing
                 idDoneActivationMO = createMemoryObject("ID_DONE_ACTIVATION", false);
                 eddDoneActivationMO = createMemoryObject("EDD_DONE_ACTIVATION", false);
                 samDoneActivationMO = createMemoryObject("SAM_DONE_ACTIVATION", false);
                 tommDoneActivationMO = createMemoryObject("TOMM_DONE_ACTIVATION", false);
                 affordDoneActivationMO = createMemoryObject("AFFORD_DONE_ACTIVATION", false);
+                positioningDoneActivationMO = createMemoryObject("POSITIONING_DONE_ACTIVATION", false);
 
                 // Create Perception Codelets
                 // ID
@@ -148,6 +157,14 @@ public class AgentMind extends Mind {
                 tomm.setThreshold(1.0d);
                 insertCodelet(tomm);
 
+                // Create Working Memory Codelets
+                Codelet positioning = new PositioningCodelet(positioningStream);
+                positioning.addInput(positioningActivationMO);
+                positioning.addOutput(positioningDoneActivationMO);
+                positioning.addOutput(positioningMC);
+                positioning.setThreshold(1.0d);
+                insertCodelet(positioning);
+
                 // Create Semantic Memory Codelets
                 Codelet afford = new AffordancesCodelet(affordancesStream);
                 afford.addInput(affordActivationMO);
@@ -170,6 +187,7 @@ public class AgentMind extends Mind {
                 Activation act = new Activation(1, true);
                 idActivationMO.setI(act);
                 affordActivationMO.setI(act);
+                positioningActivationMO.setI(act);
                 start();
         }
 }

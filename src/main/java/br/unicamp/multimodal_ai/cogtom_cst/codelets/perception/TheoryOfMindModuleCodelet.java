@@ -36,6 +36,7 @@ public class TheoryOfMindModuleCodelet extends Codelet {
     MemoryObject tommDoneActivationMO;
     MemoryObject tommActivationMO;
     MemoryObject idActivationMO;
+    MemoryObject positioningActivationMO;
 
     // The current mindstep
     int mindStep;
@@ -62,6 +63,7 @@ public class TheoryOfMindModuleCodelet extends Codelet {
         tommActivationMO = (MemoryObject) getInput("TOMM_ACTIVATION");
         // To activate the next mindstep
         idActivationMO = (MemoryObject) getOutput("ID_ACTIVATION");
+        positioningActivationMO = (MemoryObject) getOutput("POSITIONING_ACTIVATION");
     }
 
     @Override
@@ -110,6 +112,23 @@ public class TheoryOfMindModuleCodelet extends Codelet {
             }
         }
 
+        // Positioning Beliefs
+        /*
+        # Mental states for the observer entity - positioning
+        # These are mental states to indicate where the agents and objects are positioned in the environment.
+        # The mental states are not the states for each of the agents in the scene, but rather for the Observer entity.
+        # The mental states here will be of the form
+        # OBSERVER KNOWS AGENT IS AT PLACE or
+        # OBSERVER KNOWS OBJECT IS AT PLACE
+        for pos_data in self.positioning:
+            obs_belief = []
+            obs_belief.append(self.OBS_ENTITY)
+            obs_belief.append(self.MENTAL_STATES[1])
+            obs_belief.append(pos_data[0])
+            obs_belief.append("IS AT")
+            obs_belief.append(pos_data[1])
+        */
+        
         // Output beliefs at the end of ths simulation cycle
         printBeliefs();
 
@@ -126,6 +145,7 @@ public class TheoryOfMindModuleCodelet extends Codelet {
         mindStep++;
         Activation act = new Activation(mindStep, true);
         idActivationMO.setI(act);
+        positioningActivationMO.setI(act);
     }
 
     /*

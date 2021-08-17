@@ -14,6 +14,7 @@ public class SallyAnneTest {
     private InputStream entitiesStream;
     private InputStream intentionsStream;
     private InputStream affordancesStream;
+    private InputStream positioningStream;
     private InputStream eyeDirectionsStream;
 
     public SallyAnneTest() {
@@ -27,6 +28,7 @@ public class SallyAnneTest {
         entitiesStream = loader.getResourceAsStream(folder + "/entities.csv");
         intentionsStream = loader.getResourceAsStream(folder + "/intentions.csv");
         affordancesStream = loader.getResourceAsStream(folder + "/affordances.csv");
+        positioningStream = loader.getResourceAsStream(folder + "/positioning.csv");
         eyeDirectionsStream = loader.getResourceAsStream(folder + "/eye_directions.csv");
 
         // Main Class test
@@ -34,6 +36,7 @@ public class SallyAnneTest {
         inputStreams.add(entitiesStream);
         inputStreams.add(intentionsStream);
         inputStreams.add(affordancesStream);
+        inputStreams.add(positioningStream);
         inputStreams.add(eyeDirectionsStream);
 
         CogTomCst cogTom = new CogTomCst();
