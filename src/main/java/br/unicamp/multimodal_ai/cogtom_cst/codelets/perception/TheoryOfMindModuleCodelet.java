@@ -165,9 +165,12 @@ public class TheoryOfMindModuleCodelet extends Codelet {
         b.setMentalState(believesMentalState);
         b.setAffordance(affordance);
         
-        // Modify beliefs now based on probable intentions of the agent
-        IntentionMapper mapper = new IntentionMapper();
-        mapper.modifyBelief(b, intt);
+        // Check if we have an applicable intention
+        if (intt != null) {
+            // Modify beliefs now based on probable intentions of the agent
+            IntentionMapper mapper = new IntentionMapper();
+            mapper.modifyBelief(b, intt);
+        }
         
         return b;
     }
@@ -243,4 +246,3 @@ public class TheoryOfMindModuleCodelet extends Codelet {
         }
     }
 }
-
