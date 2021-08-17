@@ -11,7 +11,7 @@ public class Belief {
       
    private String agent;
    private String object;
-   private String mentalState = "BELIEVES";
+   private String mentalState;
    private String affordance;
    private String tgtObject = "None";
 
@@ -24,8 +24,9 @@ public class Belief {
       object = aObject;
    }
 
-   public Belief(String aAgent, String aObject, String aAffordance, String aTgtObject) {
+   public Belief(String aAgent, String aMentalState, String aObject, String aAffordance, String aTgtObject) {
       agent = aAgent;
+      mentalState = aMentalState;
       object = aObject;
       affordance = aAffordance;
       tgtObject = aTgtObject;
@@ -40,6 +41,14 @@ public class Belief {
 
    public String agent() {
       return agent;
+   }
+
+   public void setMentalState(String aMentalState) {
+      mentalState = aMentalState;
+   }
+
+   public String mentalState() {
+      return mentalState;
    }
 
    public void setObject(String aObject) {
