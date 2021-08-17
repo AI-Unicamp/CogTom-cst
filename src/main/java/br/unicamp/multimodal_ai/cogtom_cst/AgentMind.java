@@ -143,15 +143,18 @@ public class AgentMind extends Mind {
                 tomm.addInput(tommActivationMO);
                 tomm.addInput(idDoneActivationMO);
                 tomm.addInput(affordDoneActivationMO);
+                tomm.addInput(positioningDoneActivationMO);
                 tomm.addInput(eddDoneActivationMO);
                 tomm.addInput(samDoneActivationMO);
                 tomm.addInput(agentsMC);
                 tomm.addInput(objectsMC);
                 tomm.addInput(intentionsMC);
                 tomm.addInput(affordancesMC);
+                tomm.addInput(positioningMC);
                 tomm.addInput(attentionsMC);
                 tomm.addInput(sharedAttentionsMC);
                 tomm.addOutput(idActivationMO);
+                tomm.addOutput(positioningActivationMO);
                 tomm.addOutput(tommDoneActivationMO);
                 tomm.addOutput(beliefsMC);
                 tomm.setThreshold(1.0d);
