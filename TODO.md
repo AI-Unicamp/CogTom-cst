@@ -57,7 +57,7 @@ This is an exercise on porting the CogTom cognitive architecture to the CST tool
 
 ### Test-Runs
 - [x] Sally-Anne
-- [ ] Fb bAbl1
+- [x] Fb bAbl1
 - [ ] Fb bAbl2
 - [ ] Fb bAbl3
 - [ ] Fb bAbl5
