@@ -16,8 +16,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 /*
-* The Affordances Codelet create Affordances Memory Objects in Semantic Memory.
-* Input is provided by the file affordances.csv
+* The Positioning Codelet create Positioning Memory Objects in Episodic Memory for each mind step.
+* Input is provided by the file positioning.csv
 */
 public class PositioningCodelet extends Codelet {
 
