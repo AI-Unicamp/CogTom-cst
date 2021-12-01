@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 public class fbAbl4Test {
 
     // Folder names for test csv files
-    public static final String folder = "bAbl_03";
+    public static final String folder = "bAbl_04";
 
     private ClassLoader loader;
     private InputStream entitiesStream;
@@ -23,7 +23,7 @@ public class fbAbl4Test {
 
     @Test
     public void cogTomCstTest() throws InterruptedException {
-        System.out.println("Facebook bAbl test case 3");
+        System.out.println("Facebook bAbl test case 4");
 
         entitiesStream = loader.getResourceAsStream(folder + "/entities.csv");
         intentionsStream = loader.getResourceAsStream(folder + "/intentions.csv");

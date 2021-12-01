@@ -1,26 +1,290 @@
-Facebook bAbl test case 3
+Facebook bAbl test case 4
 Simulation running mind step: 1
-
-John BELIEVES Apple OnHand Of John
-Observer KNOWS John IS AT Room
-Observer KNOWS Apple IS AT Room
-
-Simulation running mind step: 2
-
-John BELIEVES Apple Pickup None
-Observer KNOWS John IS AT Office
-Observer KNOWS Apple IS AT Office
-
-Simulation running mind step: 3
-
-John BELIEVES Apple Pickup None
-Observer KNOWS John IS AT Kitchen
-Observer KNOWS Apple IS AT Kitchen
-
-Simulation running mind step: 4
-
-John BELIEVES Apple Dropped None
-Observer KNOWS John IS AT Kitchen
-Observer KNOWS Apple IS AT Kitchen
-
-Simulation ended.
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
+java.lang.NullPointerException
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.getAffordance(TheoryOfMindModuleCodelet.java:196)
+	at br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet.proc(TheoryOfMindModuleCodelet.java:119)
+	at br.unicamp.cst.core.entities.Codelet$CodeletTimerTask.run(Codelet.java:762)
+	at java.base/java.util.TimerThread.mainLoop(Timer.java:556)
+	at java.base/java.util.TimerThread.run(Timer.java:506)
