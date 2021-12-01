@@ -62,3 +62,4 @@ This is an exercise on porting the CogTom cognitive architecture to the CST tool
 - [x] Fb bAbl3
 - [x] Fb bAbl5
 - [x] Fb bAbl6
+- [ ] Fb bAbl7
