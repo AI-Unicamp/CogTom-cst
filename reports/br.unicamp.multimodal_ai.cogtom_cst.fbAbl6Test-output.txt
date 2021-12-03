@@ -1,4 +1,4 @@
-Facebook bAbl test case 5
+Facebook bAbl test case 6
 Simulation running mind step: 1
 
 John BELIEVES Daniel Exists None
