@@ -1,0 +1,26 @@
+t,Scene 
+1,"Daniel picked up the football."
+2,"Daniel dropped the football." 
+3,"Daniel got the milk."
+4,"Daniel took the apple."
+
+
+Task 8: Lists/Sets
+Daniel picks up the football.
+Daniel drops the newspaper.
+Daniel picks up the milk.
+John took the apple.
+What is Daniel holding? milk, football
+
+
+Task 9: Simple Negation 
+Sandra travelled to the office.
+Fred is no longer in the office.
+
+
+
+Task 10: Indefinite Knowledge
+John is either in the classroom or the playground.
+Sandra is in the garden.
+Is John in the classroom? A:maybe
+Is John in the office? A:no
