@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
-public class fbAbl7Test {
+public class fbAbl06Test {
 
     // Folder names for test csv files
-    public static final String folder = "bAbl_07";
+    public static final String folder = "bAbl_06";
 
     private ClassLoader loader;
     private InputStream entitiesStream;
@@ -17,13 +17,13 @@ public class fbAbl7Test {
     private InputStream positioningStream;
     private InputStream eyeDirectionsStream;
 
-    public fbAbl7Test() {
+    public fbAbl06Test() {
         loader = getClass().getClassLoader();
     }
 
     @Test
     public void cogTomCstTest() throws InterruptedException {
-        System.out.println("Facebook bAbl test case 7");
+        System.out.println("Facebook bAbl test case 06");
 
         entitiesStream = loader.getResourceAsStream(folder + "/entities.csv");
         intentionsStream = loader.getResourceAsStream(folder + "/intentions.csv");

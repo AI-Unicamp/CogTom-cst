@@ -1,5 +1,3 @@
 t,Agent,Intention,Object,Target
-1,Daniel,Pickup,Football,None
-2,Daniel,Drop,Football,None
-2,Daniel,Get,Milk,None
-2,Daniel,Take,Apple,None
+1,Sandra,Go,Self,Office
+1,Fred,Go,Self,Elsewhere
