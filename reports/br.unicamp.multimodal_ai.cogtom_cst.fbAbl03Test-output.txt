@@ -1,4 +1,15 @@
-Facebook bAbl test case 03
+Test Case: Facebook bAbl03 - Three Supporting Facts
+Test Case Description: Task 3 consists of answering questions where three supporting statements have to be chained to answer the question.
+
+Scenes: 
+Step 1: John picked up the apple.
+Step 2: John went to the office.
+Step 3: John went to the kitchen.
+Step 4: John dropped the apple.
+
+Questions to be asked: 
+Where was the apple before the kitchen? A: office
+
 Simulation running mind step: 1
 
 John BELIEVES Apple OnHand Of John

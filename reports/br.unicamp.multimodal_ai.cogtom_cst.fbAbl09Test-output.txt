@@ -2,7 +2,7 @@ Test Case: Facebook bAbl09 - Simple Negation
 Test Case Description: Task 9 tests one of the simplest forms of negation, that of supporting facts that imply a statement is false.
 
 Scenes: 
-Step 1 : Sandra travelled to the office. Fred is no longer in the office.
+Step 1: Sandra travelled to the office. Fred is no longer in the office.
 
 Questions to be asked: 
 Is Fred in the office? A: no

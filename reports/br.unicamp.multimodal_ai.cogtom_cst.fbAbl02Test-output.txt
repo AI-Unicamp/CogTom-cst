@@ -1,4 +1,14 @@
-Facebook bAbl test case 02
+Test Case: Facebook bAbl02 - Two Supporting Facts
+Test Case Description: Task 2 consists of answering questions where two supporting statements
+have to be chained to answer the question.
+
+Scenes: 
+Step 1: John is in the playground and picks up the football.
+Step 2: Bob goes to the kitchen.
+
+Questions to be asked: 
+Where is the football? A: playground
+
 Simulation running mind step: 1
 
 John BELIEVES Bob Exists None

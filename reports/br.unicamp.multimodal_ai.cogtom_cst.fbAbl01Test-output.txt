@@ -1,4 +1,14 @@
-Facebook bAbl test case 01
+Test Case: Facebook bAbl01 - Single Supporting Fact
+Test Case Description: Task 1 consists of questions where a previously given single supporting
+fact, potentially amongst a set of other irrelevant facts, provides the answer
+
+Scenes: 
+Step 1: Mary went to the bathroom, John moved to the hallway.
+Step 2: Mary travelled to the office.
+
+Questions to be asked: 
+Where is Mary? A: office
+
 Simulation running mind step: 1
 
 Mary BELIEVES John Exists None

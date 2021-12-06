@@ -1,4 +1,15 @@
-Facebook bAbl test case 05
+Test Case: Facebook bAbl05 - Three Argument Relations
+Test Case Description: Task 5 involves statements like â€œJeff was given the milk by Billâ€? and then queries who is the giver, receiver or which object is involved.
+
+Scenes: 
+Step 1: Mary gave the cake to Fred.
+Step 2: Fred gave the cake to Bill.
+Step 3: Jeff was given the milk by Bill.
+
+Questions to be asked: 
+Who gave the cake to Fred? A: Mary
+Who did Fred give the cake to? A: Bill
+
 Simulation running mind step: 1
 
 Mary BELIEVES Fred Exists None

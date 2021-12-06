@@ -1,4 +1,15 @@
-Facebook bAbl test case 04
+Test Case: Facebook bAbl04 - Two Argument Relations
+Test Case Description: To answer questions the ability to differentiate and recognize
+subjects and objects is crucial. In task 4 we consider the extreme case where sentences feature reordered
+words, i.e. a bag-of-words will not work.
+
+Scenes: 
+Step 1: The office is north of the bedroom, The bedroom is north of the bathroom, The kitchen is west of the garden.
+
+Questions to be asked: 
+What is north of the bedroom? A: office
+What is the bedroom north of? A: bathroom
+
 Simulation running mind step: 1
 
 Observer BELIEVES None None None

@@ -1,10 +1,8 @@
-Facebook bAbl test case 10
-Test Case: Facebook bAbl1 - Single Supporting Fact
-Test Case Description: Task 1 consists of questions where a previously given single supporting
-fact, potentially amongst a set of other irrelevant facts, provides the answer.
+Test Case: Facebook bAbl10 - Indefinite Knowledge
+Test Case Description: Task 10 tests if we can model statements that describe possibilities rather than certainties.
 
 Scenes: 
-Step 1 : John is either in the classroom or the playground. Sandra is in the garden.
+Step 1: John is either in the classroom or the playground. Sandra is in the garden.
 
 Questions to be asked: 
 Is John in the classroom? A: maybe

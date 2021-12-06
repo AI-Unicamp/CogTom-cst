@@ -1,4 +1,15 @@
-Facebook bAbl test case 07
+Test Case: Facebook bAbl07 - Counting
+Test Case Description: Task 7 tests the ability of the Question-Answering system to perform simple counting operations.
+
+Scenes: 
+Step 1: Daniel picked up the football.
+Step 2: Daniel dropped the football.
+Step 3: Daniel got the milk.
+Step 4: Daniel took the apple.
+
+Questions to be asked: 
+How many objects is Daniel holding? A: two
+
 Simulation running mind step: 1
 
 Daniel BELIEVES Football OnHand Of Daniel

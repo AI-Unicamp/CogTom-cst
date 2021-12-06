@@ -1,4 +1,14 @@
-Facebook bAbl test case 06
+Test Case: Facebook bAbl06 - Yes/No Questions
+Test Case Description: Task 6 tests, on some of the simplest questions possible (specifically, ones with a single supporting fact), the ability of a model to answer true/false type questions.
+
+Scenes: 
+Step 1: John moved to the playground and Daniel went to the bathroom.
+Step 2: John went to the hallway.
+
+Questions to be asked: 
+Is John in the playground? A: no
+Is Daniel in the bathroom? A: yes
+
 Simulation running mind step: 1
 
 John BELIEVES Daniel Exists None
