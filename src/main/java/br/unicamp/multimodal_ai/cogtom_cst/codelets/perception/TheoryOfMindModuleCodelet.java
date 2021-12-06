@@ -191,9 +191,14 @@ public class TheoryOfMindModuleCodelet extends Codelet {
     * Utility method to get the affordance for an entity.
     */
     String getAffordance(String entity) {
-        Predicate<Memory> pred = mem -> ((Affordance) mem.getI()).object().equals(entity); 
-        Affordance aff = (Affordance) affordancesMC.getI(pred);
-        return aff.affordance();
+        // In some cases entities may have no affordances at all, so handle gracefully.
+        if (entity.equals("None")) {
+            return "None";
+        } else {
+            Predicate<Memory> pred = mem -> ((Affordance) mem.getI()).object().equals(entity); 
+            Affordance aff = (Affordance) affordancesMC.getI(pred);
+            return aff.affordance();
+        }
     }
 
     /*
