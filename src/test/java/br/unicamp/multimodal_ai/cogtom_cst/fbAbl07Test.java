@@ -11,6 +11,9 @@ public class fbAbl07Test {
     public static final String folder = "bAbl_07";
 
     private ClassLoader loader;
+    private InputStream descriptionStream;
+    private InputStream scenesStream;
+    private InputStream questionsStream;
     private InputStream entitiesStream;
     private InputStream intentionsStream;
     private InputStream affordancesStream;
@@ -23,8 +26,10 @@ public class fbAbl07Test {
 
     @Test
     public void cogTomCstTest() throws InterruptedException {
-        System.out.println("Facebook bAbl test case 07");
 
+        descriptionStream = loader.getResourceAsStream(folder + "/description.csv");
+        scenesStream = loader.getResourceAsStream(folder + "/scenes.csv");
+        questionsStream = loader.getResourceAsStream(folder + "/questions.csv");
         entitiesStream = loader.getResourceAsStream(folder + "/entities.csv");
         intentionsStream = loader.getResourceAsStream(folder + "/intentions.csv");
         affordancesStream = loader.getResourceAsStream(folder + "/affordances.csv");
@@ -33,6 +38,9 @@ public class fbAbl07Test {
 
         // Main Class test
         ArrayList<InputStream> inputStreams = new ArrayList<>();
+        inputStreams.add(descriptionStream);
+        inputStreams.add(scenesStream);
+        inputStreams.add(questionsStream);
         inputStreams.add(entitiesStream);
         inputStreams.add(intentionsStream);
         inputStreams.add(affordancesStream);

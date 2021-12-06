@@ -11,6 +11,9 @@ public class SallyAnneTest {
     public static final String folder = "sally-anne";
 
     private ClassLoader loader;
+    private InputStream descriptionStream;
+    private InputStream scenesStream;
+    private InputStream questionsStream;
     private InputStream entitiesStream;
     private InputStream intentionsStream;
     private InputStream affordancesStream;
@@ -22,9 +25,11 @@ public class SallyAnneTest {
     }
 
     @Test
-    public void cogTomCstTest() throws InterruptedException {
-        System.out.println("Sally-Anne test case");
+    public void cogTomCstTest() throws InterruptedException {;
 
+        descriptionStream = loader.getResourceAsStream(folder + "/description.csv");
+        scenesStream = loader.getResourceAsStream(folder + "/scenes.csv");
+        questionsStream = loader.getResourceAsStream(folder + "/questions.csv");
         entitiesStream = loader.getResourceAsStream(folder + "/entities.csv");
         intentionsStream = loader.getResourceAsStream(folder + "/intentions.csv");
         affordancesStream = loader.getResourceAsStream(folder + "/affordances.csv");
@@ -33,10 +38,14 @@ public class SallyAnneTest {
 
         // Main Class test
         ArrayList<InputStream> inputStreams = new ArrayList<>();
+        inputStreams.add(descriptionStream);
+        inputStreams.add(scenesStream);
+        inputStreams.add(questionsStream);
         inputStreams.add(entitiesStream);
         inputStreams.add(intentionsStream);
         inputStreams.add(affordancesStream);
         inputStreams.add(positioningStream);
+        inputStreams.add(eyeDirectionsStream);
         inputStreams.add(eyeDirectionsStream);
 
         CogTomCst cogTom = new CogTomCst();

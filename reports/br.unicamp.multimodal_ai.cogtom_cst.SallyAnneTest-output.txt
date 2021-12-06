@@ -1,4 +1,20 @@
-Sally-Anne test case
+Test Case: Canonical False-Belief Task
+Test Case Description: The Canonical False Belief Task checks if the architecture is capable of understanding false-beliefs as decribed by the literature.
+
+Scenes: 
+Step 1: Sally and Anne are in the room. Basket box and ball are on the floor.
+Step 2: Sally reaches for the ball.
+Step 3: Sally puts the ball in the basket.
+Step 4: Sally exits the room.
+Step 5: Anne reaches for the basket.
+Step 6: Anne gets the ball from the basket.
+Step 7: Anne puts the ball in the box.
+Step 8: Anne exits the room and Sally enters.
+Step 9: Sally searches for the ball in the room.
+
+Questions to be asked: 
+Where does Sally believe the ball is? A: Basket
+
 Simulation running mind step: 1
 
 Sally BELIEVES Anne Exists None

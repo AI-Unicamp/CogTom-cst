@@ -1,5 +1,6 @@
 package br.unicamp.multimodal_ai.cogtom_cst;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
@@ -16,6 +17,8 @@ import br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.PositioningCodele
 import br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.SharedAttentionCodelet;
 import br.unicamp.multimodal_ai.cogtom_cst.codelets.perception.TheoryOfMindModuleCodelet;
 import br.unicamp.multimodal_ai.cogtom_cst.memory.working.sync.Activation;
+import tech.tablesaw.api.Row;
+import tech.tablesaw.api.Table;
 
 /**
  * Mind class. Instantiates Memory and Codelets.
@@ -25,6 +28,9 @@ public class AgentMind extends Mind {
 
         // Input Streams
         private ClassLoader loader;
+        private InputStream descriptionStream;
+        private InputStream scenesStream;
+        private InputStream questionsStream;
         private InputStream entitiesStream;
         private InputStream intentionsStream;
         private InputStream affordancesStream;
@@ -63,17 +69,23 @@ public class AgentMind extends Mind {
                 
                 // Check input streams
                 if (streams == null) {
+                        descriptionStream = loader.getResourceAsStream("description.csv");
+                        scenesStream = loader.getResourceAsStream("scenes.csv");
+                        questionsStream = loader.getResourceAsStream("questions.csv");
                         entitiesStream = loader.getResourceAsStream("entities.csv");
                         intentionsStream = loader.getResourceAsStream("intentions.csv");
                         affordancesStream = loader.getResourceAsStream("affordances.csv");
                         positioningStream = loader.getResourceAsStream("positioning.csv");
                         eyeDirectionsStream = loader.getResourceAsStream("eye_directions.csv");
                 } else {
-                        entitiesStream = streams.get(0);
-                        intentionsStream = streams.get(1);
-                        affordancesStream = streams.get(2);
-                        positioningStream = streams.get(3);
-                        eyeDirectionsStream = streams.get(4);
+                        descriptionStream = streams.get(0);
+                        scenesStream = streams.get(1);
+                        questionsStream = streams.get(2);
+                        entitiesStream = streams.get(3);
+                        intentionsStream = streams.get(4);
+                        affordancesStream = streams.get(5);
+                        positioningStream = streams.get(6);
+                        eyeDirectionsStream = streams.get(7);
                 }
 
                 // Declare and initialize Memory Containers & Memory Objects.
@@ -102,6 +114,9 @@ public class AgentMind extends Mind {
                 tommDoneActivationMO = createMemoryObject("TOMM_DONE_ACTIVATION", false);
                 affordDoneActivationMO = createMemoryObject("AFFORD_DONE_ACTIVATION", false);
                 positioningDoneActivationMO = createMemoryObject("POSITIONING_DONE_ACTIVATION", false);
+
+                // Outputs test case data 
+                printTestData(descriptionStream, scenesStream, questionsStream);
 
                 // Create Perception Codelets
                 // ID
@@ -194,4 +209,64 @@ public class AgentMind extends Mind {
                 positioningActivationMO.setI(act);
                 start();
         }
+
+        /*
+        * Prints test case description, scenes and questions to be answered.
+        */
+        void printTestData(InputStream descriptionStream,
+                           InputStream scenesStream,
+                           InputStream questionsStream) {
+                // Test Case Description
+                try {
+                        Table descTable = Table.read().csv(descriptionStream);
+                
+                        // Loop through each one of the rows of the tables.
+                        for (int i = 0; i < descTable.rowCount(); i++) {
+                                Row r = descTable.row(i);
+                                String tc = r.getString("Title");
+                                String tcDesc = r.getString("Description");
+                                // Print out
+                                System.out.println("Test Case: "+ tc);
+                                System.out.println("Test Case Description: " + tcDesc);
+                        }
+                        } catch (IOException e1) {
+                                        e1.printStackTrace();
+                                }
+                // Scenes
+                System.out.println();
+                System.out.println("Scenes: ");
+                try {
+                        Table scenesTable = Table.read().csv(scenesStream);
+                
+                        // Loop through each one of the rows of the tables.
+                        for (int i = 0; i < scenesTable.rowCount(); i++) {
+                                Row r = scenesTable.row(i);
+                                int step = r.getInt("t");
+                                String scene = r.getString("Scene");
+                                // Print out
+                                System.out.println("Step " + step + ": " + scene);
+                        }
+                        } catch (IOException e1) {
+                                        e1.printStackTrace();
+                                }
+                // Questions
+                System.out.println();
+                System.out.println("Questions to be asked: ");
+                try {
+                        Table questionsTable = Table.read().csv(questionsStream);
+                
+                        // Loop through each one of the rows of the tables.
+                        for (int i = 0; i < questionsTable.rowCount(); i++) {
+                                Row r = questionsTable.row(i);
+                                String question = r.getString("Question");
+                                String answer = r.getString("Answer");
+                                // Print out
+                                System.out.println(question + " A: " + answer);
+                        }
+                        } catch (IOException e1) {
+                                        e1.printStackTrace();
+                                }
+                System.out.println();
+        }
+
 }
