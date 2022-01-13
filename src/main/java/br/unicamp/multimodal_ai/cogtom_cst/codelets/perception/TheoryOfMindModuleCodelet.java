@@ -167,7 +167,7 @@ public class TheoryOfMindModuleCodelet extends Codelet {
         
         // Check if we have an applicable intention
         if (intt != null) {
-            // Modify beliefs now based on probable intentions of the agent
+            // Modify beliefs now based on probAbIe intentions of the agent
             IntentionMapper mapper = new IntentionMapper();
             mapper.modifyBelief(b, intt);
         }
